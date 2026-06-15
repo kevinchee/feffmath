@@ -31,9 +31,9 @@ body {
   min-height: 100vh;
   color: var(--ink);
   background:
-    radial-gradient(circle at 9% 10%, rgba(255, 255, 255, 0.8) 0 44px, transparent 45px),
-    radial-gradient(circle at 95% 8%, rgba(255, 255, 255, 0.72) 0 58px, transparent 59px),
-    linear-gradient(180deg, #ddf3ff 0, #fff4dc 150px, #fffaf1 520px, #f8fcff 100%);
+    radial-gradient(ellipse at 7% 137px, rgba(255, 255, 255, 0.64) 0 132px, transparent 134px),
+    radial-gradient(ellipse at 100% 118px, rgba(255, 255, 255, 0.58) 0 90px, transparent 92px),
+    linear-gradient(180deg, #16a4e7 0 140px, #fff3dc 141px, #fffaf2 530px, #fffdf8 100%);
 }
 
 button,
@@ -50,16 +50,17 @@ button {
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 144px;
-  padding: 20px max(18px, calc((100vw - 1240px) / 2)) 18px;
+  height: 140px;
+  min-height: 0;
+  padding: 4px max(8px, calc((100vw - 1520px) / 2)) 0;
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) minmax(360px, 620px);
-  gap: 20px;
+  grid-template-columns: 430px minmax(560px, 1fr);
+  gap: 28px;
   align-items: center;
   color: #fff;
   background:
-    radial-gradient(circle at 34% 18%, rgba(255, 216, 91, 0.7), transparent 32px),
-    linear-gradient(135deg, var(--sky) 0%, var(--sky-deep) 100%);
+    radial-gradient(circle at 28% 27%, rgba(255, 222, 86, 0.72) 0 22px, transparent 31px),
+    linear-gradient(180deg, #13a8ed 0%, #0f91d8 100%);
 }
 
 .app-header::before,
@@ -89,19 +90,24 @@ button {
 
 .brand-lockup {
   display: flex;
-  gap: 18px;
+  gap: 0;
   align-items: center;
 }
 
-.app-header h1 {
-  margin: 0;
-  color: #fff;
-  font-size: clamp(2.3rem, 6vw, 4.7rem);
-  line-height: 0.9;
-  letter-spacing: 0;
-  text-shadow:
-    0 4px 0 rgba(59, 80, 105, 0.35),
-    0 0 0 5px #fff;
+.brand-art {
+  display: block;
+  width: min(432px, 100%);
+  height: auto;
+  filter: drop-shadow(0 4px 0 rgba(40, 80, 112, 0.18));
+}
+
+.brand-copy {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .app-header p {
@@ -113,19 +119,24 @@ button {
 }
 
 .header-cat {
-  width: 132px;
-  min-width: 132px;
-  align-self: end;
+  display: none;
 }
 
-.header-cat .cat-svg {
-  filter: drop-shadow(0 7px 0 rgba(255, 255, 255, 0.36)) drop-shadow(0 12px 14px rgba(23, 69, 107, 0.25));
+.header-bell {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: max(8px, calc((100vw - 1520px) / 2));
+  width: 96px;
+  height: auto;
+  pointer-events: none;
 }
 
 .header-stats {
   display: grid;
-  grid-template-columns: minmax(240px, 1fr) 160px;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 26px;
+  padding-right: 112px;
 }
 
 .progress-card,
@@ -144,8 +155,31 @@ button {
 
 .progress-card,
 .total-card {
-  padding: 16px;
+  min-height: 96px;
+  padding: 17px 26px;
   color: var(--ink);
+  border-radius: 16px;
+}
+
+.progress-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) 112px;
+  gap: 14px;
+  align-items: center;
+}
+
+.progress-card::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 48px;
+  width: 42px;
+  height: 34px;
+  background: inherit;
+  border-left: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transform: skewX(-28deg);
 }
 
 .progress-label,
@@ -162,11 +196,51 @@ button {
   text-transform: uppercase;
 }
 
+.progress-label {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+
+.progress-card > strong {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 0;
+}
+
+.progress-card > strong::first-letter {
+  color: #2cbb82;
+}
+
+.progress-card::after {
+  content: "Next sticker in\a 2 days!";
+  position: relative;
+  z-index: 1;
+  grid-column: 3;
+  grid-row: 1 / 3;
+  white-space: pre;
+  display: grid;
+  place-items: center;
+  min-height: 58px;
+  padding: 8px 10px;
+  color: #313a4b;
+  text-align: center;
+  font-size: 0.84rem;
+  line-height: 1.25;
+  background: #fffaf2;
+  border: 1px solid #eadbc4;
+  border-radius: 14px;
+  box-shadow: var(--small-shadow);
+}
+
 .progress-card strong,
 .total-card strong {
   display: block;
-  margin-top: 4px;
-  font-size: 1.35rem;
+  margin-top: 8px;
+  font-size: 1.5rem;
 }
 
 .total-card strong {
@@ -175,10 +249,15 @@ button {
 }
 
 .header-sticker-trail {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0 10px;
+  gap: 10px;
+  margin: 0;
 }
 
 .sticker-chip,
@@ -191,10 +270,10 @@ button {
 }
 
 .sticker-chip {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  font-size: 1.1rem;
+  font-size: 1.22rem;
 }
 
 .sticker-chip.is-earned,
@@ -215,6 +294,12 @@ button {
   border-radius: 999px;
 }
 
+.progress-track {
+  grid-column: 1 / -1;
+  height: 0;
+  visibility: hidden;
+}
+
 .progress-track span,
 .mission-track span {
   display: block;
@@ -226,10 +311,10 @@ button {
 }
 
 .app-shell {
-  width: min(1240px, calc(100% - 28px));
-  margin: 20px auto 42px;
+  width: min(1500px, calc(100% - 34px));
+  margin: 28px auto 28px;
   display: grid;
-  grid-template-columns: 286px minmax(0, 1fr) 278px;
+  grid-template-columns: 320px minmax(0, 1fr) 320px;
   gap: 18px;
   align-items: start;
 }
@@ -243,7 +328,19 @@ button {
 .day-panel {
   position: sticky;
   top: 14px;
-  padding: 14px;
+  padding: 14px 12px 12px;
+  overflow: visible;
+}
+
+.day-panel::after {
+  content: "";
+  position: absolute;
+  left: -38px;
+  bottom: -25px;
+  width: 98px;
+  height: 96px;
+  background: url("assets/plant.png") center / contain no-repeat;
+  pointer-events: none;
 }
 
 .day-panel-header {
@@ -259,11 +356,33 @@ button {
 }
 
 .day-panel h2 {
-  padding: 12px;
+  position: relative;
+  padding: 12px 44px 12px 60px;
   color: #fff;
-  background: var(--blue);
+  font-size: 1.35rem;
+  background: linear-gradient(180deg, #329ce5, #137dd0);
   border-radius: var(--radius);
   box-shadow: var(--small-shadow);
+}
+
+.day-panel h2::before {
+  content: "▦";
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  color: #eaf7ff;
+  font-size: 1.05rem;
+  transform: translateY(-50%);
+}
+
+.day-panel h2::after {
+  content: "❤";
+  position: absolute;
+  right: 22px;
+  top: -15px;
+  color: #ff7b82;
+  font-size: 1.6rem;
+  text-shadow: 0 2px 0 #fff;
 }
 
 #daySelect {
@@ -280,16 +399,17 @@ button {
   margin-top: 14px;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
+  gap: 8px 9px;
 }
 
 .day-button {
   position: relative;
-  min-height: 40px;
-  border: 1px solid var(--soft-line);
-  border-radius: var(--radius);
+  min-height: 39px;
+  border: 1px solid #eadfce;
+  border-radius: 8px;
   background: #fff;
   color: var(--ink);
+  font-size: 1.02rem;
   font-weight: 850;
   cursor: pointer;
   transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
@@ -325,7 +445,7 @@ button {
 
 .sticker-album {
   margin-top: 14px;
-  padding: 12px;
+  padding: 9px 9px 12px;
   background: linear-gradient(180deg, #fff8e9, #fff);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -345,7 +465,7 @@ button {
 .sticker-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 7px;
+  gap: 8px;
   margin: 10px 0;
 }
 
@@ -357,17 +477,25 @@ button {
 }
 
 .sticker-album p {
-  margin: 0;
-  color: var(--muted);
+  margin: 8px 0 0;
+  padding: 8px;
+  color: #146fb4;
+  text-align: center;
   font-size: 0.86rem;
   line-height: 1.35;
+  background: #eff8ff;
+  border: 1px solid #cae6f8;
+  border-radius: 6px;
 }
 
 .practice-panel {
-  padding: 16px 18px 18px;
+  position: relative;
+  padding: 14px 34px 18px;
+  border-radius: 14px;
 }
 
 .practice-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 14px;
@@ -376,15 +504,40 @@ button {
   border-bottom: 1px dashed #e8d4b7;
 }
 
+.practice-header::after {
+  content: "Let's do this!";
+  position: absolute;
+  right: 24px;
+  top: -4px;
+  padding: 10px 18px;
+  color: #1b73c9;
+  background: #f6fcff;
+  border: 1px solid #9ac7e5;
+  border-radius: 999px;
+  box-shadow: var(--small-shadow);
+  font-weight: 800;
+}
+
 .practice-header h2 {
+  position: relative;
   display: inline-block;
-  min-width: 142px;
-  padding: 12px 22px;
+  min-width: 170px;
+  padding: 13px 30px;
   color: #fff;
   text-align: center;
   background: linear-gradient(180deg, #ff8b7e, var(--coral));
   border-radius: var(--radius);
   box-shadow: 0 6px 0 #e9574d;
+  font-size: 1.55rem;
+}
+
+.practice-header h2::after {
+  content: "⭐";
+  position: absolute;
+  right: -18px;
+  top: -20px;
+  font-size: 1.5rem;
+  text-shadow: 0 2px 0 #fff;
 }
 
 .score-box {
@@ -405,48 +558,49 @@ button {
 
 .encouragement {
   position: relative;
-  margin: 14px 0;
-  padding: 12px 14px 12px 46px;
+  margin: 14px 0 10px;
+  padding: 8px 14px 8px 74px;
   color: #8a382f;
   background: var(--coral-soft);
   border: 1px solid #ffc1b7;
-  border-radius: var(--radius);
+  border-radius: 999px;
+  font-size: 0.88rem;
 }
 
 .encouragement::before {
   content: "🐾";
   position: absolute;
-  left: 14px;
-  top: 10px;
-  font-size: 1.25rem;
+  left: 20px;
+  top: -13px;
+  font-size: 2rem;
 }
 
 .question-list {
   display: grid;
-  gap: 12px;
+  gap: 0;
 }
 
 .question-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(190px, 230px) 86px;
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 220px) 116px;
+  gap: 14px;
   align-items: center;
-  padding: 14px;
-  border: 1px solid #eadcc7;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.94);
+  min-height: 144px;
+  padding: 15px 0 14px;
+  border: 0;
+  border-bottom: 1px dashed #ecd7ba;
+  border-radius: 0;
+  background: transparent;
   transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
 }
 
 .question-card.is-correct {
-  border-color: #aedfbf;
-  background: linear-gradient(90deg, #fff, #f0fff6);
+  background: linear-gradient(90deg, transparent, rgba(234, 255, 242, 0.72));
 }
 
 .question-card.is-wrong {
-  border-color: #ffd0a8;
-  background: linear-gradient(90deg, #fff, #fff8ed);
+  background: linear-gradient(90deg, transparent, rgba(255, 248, 237, 0.7));
 }
 
 .question-main {
@@ -463,8 +617,8 @@ button {
 .question-number {
   display: inline-grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   color: #fff;
   background: var(--blue);
   border-radius: var(--radius);
@@ -483,14 +637,14 @@ button {
 }
 
 .topic {
-  color: var(--muted);
-  font-size: 0.83rem;
+  color: #1783cf;
+  font-size: 1rem;
   font-weight: 850;
 }
 
 .prompt {
   margin: 0;
-  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
   line-height: 1.42;
 }
 
@@ -512,7 +666,7 @@ sup {
 
 .answer-input {
   width: 100%;
-  min-height: 42px;
+  min-height: 40px;
   padding: 0 12px;
   color: var(--ink);
   background: #fff;
@@ -550,7 +704,7 @@ sup {
 
 .hint-button {
   width: 100%;
-  min-height: 36px;
+  min-height: 34px;
   margin-top: 8px;
   color: #176aa7;
   background: #eef8ff;
@@ -570,12 +724,23 @@ sup {
   min-height: 1.35em;
   margin: 8px 0 0;
   color: var(--muted);
-  font-size: 0.86rem;
+  padding: 7px 12px;
+  background: #eef9e9;
+  border: 1px solid #bde2b3;
+  border-radius: 6px;
+  font-size: 0.84rem;
   line-height: 1.35;
 }
 
 .feedback strong {
   color: inherit;
+}
+
+.feedback:empty {
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 .feedback.is-correct {
@@ -585,10 +750,12 @@ sup {
 .feedback.is-wrong,
 .feedback.is-hint {
   color: #8a5a17;
+  background: #fff7e7;
+  border-color: #f5d59d;
 }
 
 .question-cat-reaction {
-  min-width: 76px;
+  min-width: 110px;
   display: grid;
   place-items: center;
 }
@@ -602,7 +769,15 @@ sup {
 .mission-card,
 .mystery-card,
 .fact-card {
-  padding: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.buddy-card {
+  position: relative;
+  height: 305px;
+  padding: 0;
+  background: url("assets/buddy-card-reference.png") center / cover no-repeat;
 }
 
 .buddy-card h2,
@@ -611,45 +786,41 @@ sup {
 .fact-card h2 {
   margin: 0 0 10px;
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 1.08rem;
   letter-spacing: 0;
   text-transform: none;
 }
 
+.buddy-card h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .buddy-scene {
   position: relative;
-  min-height: 228px;
+  min-height: 305px;
   overflow: hidden;
-  padding: 14px 10px 4px;
-  border: 1px solid #d6eef8;
-  border-radius: var(--radius);
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px) 0 0 / 30px 30px,
-    linear-gradient(180deg, #dff7ff, #fff1dc 70%);
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
 }
 
 .buddy-scene::after {
-  content: "";
-  position: absolute;
-  inset: auto 18px 0;
-  height: 54px;
-  background: #ffc5b8;
-  border-radius: 50% 50% 0 0;
-  opacity: 0.8;
+  display: none;
 }
 
 .buddy-bubble {
-  position: relative;
-  z-index: 2;
-  width: min(150px, 74%);
-  padding: 12px;
-  color: #285189;
-  background: #fff;
-  border: 1px solid #b8d8f2;
-  border-radius: var(--radius);
-  box-shadow: var(--small-shadow);
-  font-weight: 800;
-  line-height: 1.35;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .buddy-bubble::after {
@@ -666,15 +837,15 @@ sup {
 }
 
 .buddy-cat {
-  position: absolute;
-  z-index: 2;
-  right: 12px;
-  bottom: 4px;
-  width: 150px;
+  display: none;
 }
 
 .mission-card {
   background: linear-gradient(180deg, #f0ffef, #fff);
+}
+
+.mission-card h2 {
+  color: #137046;
 }
 
 .mission-card p,
@@ -703,21 +874,24 @@ sup {
   background: linear-gradient(180deg, #f1e8ff, #fff);
 }
 
-.mystery-box {
-  position: relative;
-  width: 96px;
-  height: 92px;
-  margin: 10px auto 8px;
+.mystery-card h2 {
+  margin: -14px -16px 10px;
+  padding: 10px 16px;
+  color: #57308f;
+  background: #dbc8ff;
 }
 
-.box-lid,
-.box-body {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #9b76e8, #7045c5);
-  border: 2px solid #5d3ab0;
-  box-shadow: var(--small-shadow);
+.mystery-box {
+  position: relative;
+  width: 150px;
+  height: 98px;
+  margin: 10px auto 8px;
+  background: url("assets/mystery-box.png") center / contain no-repeat;
+}
+
+.mystery-box .box-lid,
+.mystery-box .box-body {
+  display: none !important;
 }
 
 .box-lid {
@@ -749,11 +923,11 @@ sup {
 }
 
 .mystery-box.is-open .box-lid {
-  transform: translate(-42px, -18px) rotate(-16deg);
+  transform: none;
 }
 
 .mystery-box.is-open .box-body {
-  background: linear-gradient(135deg, #35bf87, #2689d4);
+  background: none;
 }
 
 .mystery-box.is-open .box-body::after {
@@ -765,7 +939,37 @@ sup {
 }
 
 .fact-card {
+  position: relative;
+  min-height: 132px;
+  padding-right: 122px;
   background: linear-gradient(180deg, #fff2bf, #fff);
+}
+
+.fact-card::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 112px;
+  height: 82px;
+  background: url("assets/fact-cat-box.png") center / contain no-repeat;
+}
+
+.cat-art {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.cat-art.is-mini {
+  width: 104px;
+  filter: drop-shadow(0 6px 7px rgba(74, 60, 52, 0.17));
+}
+
+.cat-art.is-buddy {
+  width: 205px;
+  filter: drop-shadow(0 8px 12px rgba(74, 60, 52, 0.14));
 }
 
 .cat-svg {
@@ -899,6 +1103,10 @@ sup {
     grid-template-columns: 1fr;
   }
 
+  .header-stats {
+    padding-right: 0;
+  }
+
   .app-shell {
     grid-template-columns: 250px minmax(0, 1fr);
   }
@@ -929,6 +1137,24 @@ sup {
 
   .header-stats {
     grid-template-columns: 1fr;
+    padding-right: 0;
+  }
+
+  .progress-card {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-card::before,
+  .progress-card::after,
+  .header-bell {
+    display: none;
+  }
+
+  .progress-label,
+  .progress-card > strong,
+  .header-sticker-trail {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .app-shell {
@@ -950,6 +1176,8 @@ sup {
 
   .question-card {
     grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding: 16px 0;
   }
 
   .question-cat-reaction {

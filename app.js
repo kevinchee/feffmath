@@ -247,8 +247,6 @@
   }
 
   function initialise() {
-    const headerCat = document.querySelector(".header-cat");
-    if (headerCat) headerCat.innerHTML = catMascotSvg("ready");
     renderDayControls();
     renderDay(1);
   }
@@ -351,7 +349,8 @@
 
       const catReaction = document.createElement("div");
       catReaction.className = "question-cat-reaction";
-      catReaction.innerHTML = catMascotSvg("mini");
+      catReaction.dataset.idleMood = ["happy", "heart", "job", "crown"][index % 4];
+      catReaction.innerHTML = catMascotSvg(catReaction.dataset.idleMood);
 
       card.append(main, answerArea, catReaction);
       questionList.append(card);
@@ -371,7 +370,7 @@
 
     if (!raw) {
       status.textContent = "?";
-      if (catReaction) catReaction.innerHTML = catMascotSvg("mini");
+      if (catReaction) catReaction.innerHTML = catMascotSvg(catReaction.dataset.idleMood || "mini");
       if (forceExplanation) {
         feedback.className = "feedback";
         feedback.textContent = "";
@@ -482,7 +481,7 @@
     headerSlots.forEach((day) => {
       const sticker = document.createElement("span");
       sticker.className = `sticker-chip${day ? " is-earned" : ""}`;
-      sticker.textContent = day ? stickerForDay(day) : "·";
+      sticker.textContent = day ? stickerForDay(day) : "";
       headerStickerTrail.append(sticker);
     });
 
@@ -513,44 +512,19 @@
   }
 
   function catMascotSvg(mood) {
-    const isMini = mood === "mini";
-    const isHappy = mood === "happy" || mood === "celebrate";
-    const isThinking = mood === "thinking";
-    const crown = mood === "celebrate"
-      ? `<path class="cat-crown" d="M48 12l8 13 11-11 7 17H39l7-17 10 11z"/><circle class="cat-crown-gem" cx="48" cy="12" r="2.8"/><circle class="cat-crown-gem" cx="67" cy="14" r="2.8"/>`
-      : "";
-    const sparkles = isHappy || mood === "celebrate"
-      ? `<path class="cat-sparkle" d="M19 31l3-7 3 7 7 3-7 3-3 7-3-7-7-3z"/><path class="cat-sparkle small" d="M86 34l2-5 2 5 5 2-5 2-2 5-2-5-5-2z"/>`
-      : "";
-    const mouth = isHappy
-      ? `<path d="M58 66c-4 7-13 7-17 0M58 66c4 7 13 7 17 0" class="cat-line"/>`
-      : isThinking
-        ? `<path d="M50 68c5 3 13 3 18 0" class="cat-line"/>`
-        : `<path d="M58 66c-3 4-8 4-11 0M58 66c3 4 8 4 11 0" class="cat-line"/>`;
-
-    return `
-      <svg class="cat-svg ${isMini ? "is-mini" : ""}" viewBox="0 0 112 112" role="img" aria-label="Cartoon cream cat with grey face and blue eyes">
-        ${sparkles}
-        <path class="cat-tail" d="M83 76c21-6 20 18 4 17 12-6 5-15-5-9"/>
-        <path class="cat-body" d="M30 68c2-24 51-25 55 0 15 4 15 33-8 34H40c-24-1-25-30-10-34z"/>
-        <path class="cat-ear" d="M33 36L23 10l27 16z"/>
-        <path class="cat-ear" d="M79 36L89 10 62 26z"/>
-        <path class="cat-ear-inner" d="M34 29l-5-12 13 8z"/>
-        <path class="cat-ear-inner" d="M78 29l5-12-13 8z"/>
-        ${crown}
-        <ellipse class="cat-head" cx="56" cy="49" rx="33" ry="29"/>
-        <path class="cat-mask" d="M34 45c7-18 36-21 45 0-2 20-13 28-23 28S37 65 34 45z"/>
-        <ellipse class="cat-eye" cx="45" cy="48" rx="6.5" ry="7.5"/>
-        <ellipse class="cat-eye" cx="67" cy="48" rx="6.5" ry="7.5"/>
-        <circle class="cat-eye-shine" cx="47" cy="45" r="2"/>
-        <circle class="cat-eye-shine" cx="69" cy="45" r="2"/>
-        <path class="cat-nose" d="M56 56l-5 4h10z"/>
-        ${mouth}
-        <path class="cat-whisker" d="M48 59c-12-4-23-4-34 1M48 64c-12 0-22 3-31 8M64 59c12-4 23-4 34 1M64 64c12 0 22 3 31 8"/>
-        <ellipse class="cat-paw" cx="43" cy="91" rx="9" ry="7"/>
-        <ellipse class="cat-paw" cx="69" cy="91" rx="9" ry="7"/>
-      </svg>
-    `;
+    const imageByMood = {
+      crown: "cat-mini-crown.png",
+      celebrate: "cat-mini-crown.png",
+      heart: "cat-mini-heart.png",
+      happy: "cat-mini-happy.png",
+      job: "cat-mini-job.png",
+      mini: "cat-mini-happy.png",
+      ready: "buddy-cat.png",
+      thinking: "cat-mini-heart.png"
+    };
+    const file = imageByMood[mood] || imageByMood.ready;
+    const sizeClass = file === "buddy-cat.png" ? "is-buddy" : "is-mini";
+    return `<img class="cat-art ${sizeClass}" src="assets/${file}" alt="Cartoon cream cat with grey face and blue eyes">`;
   }
 
   function saveAnswer(dayNumber, questionId, value) {
