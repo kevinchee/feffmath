@@ -258,7 +258,7 @@
           <span class="question-number">${index + 1}</span>
           <span class="topic">${escapeHtml(question.topic)}</span>
         </div>
-        <p class="prompt">${escapeHtml(question.prompt)}</p>
+        <p class="prompt">${formatMath(question.prompt)}</p>
       `;
 
       const answerArea = document.createElement("div");
@@ -286,7 +286,7 @@
 
       hintButton.addEventListener("click", () => {
         feedback.className = "feedback is-hint";
-        feedback.textContent = question.hint;
+        feedback.innerHTML = formatMath(question.hint);
       });
 
       card.append(main, answerArea);
@@ -316,8 +316,8 @@
     status.textContent = correct ? "✓" : "×";
     feedback.className = `feedback ${correct ? "is-correct" : "is-wrong"}`;
     feedback.innerHTML = correct
-      ? `<strong>Correct.</strong> ${escapeHtml(question.explanation)}`
-      : `<strong>Try again.</strong> ${escapeHtml(question.hint)}`;
+      ? `<strong>Correct.</strong> ${formatMath(question.explanation)}`
+      : `<strong>Try again.</strong> ${formatMath(question.hint)}`;
     return correct;
   }
 
@@ -867,5 +867,9 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+  }
+
+  function formatMath(value) {
+    return escapeHtml(value).replace(/(\(?-?\d+\)?|\d*[a-z])\^(-?\d+)/gi, "$1<sup>$2</sup>");
   }
 })();
