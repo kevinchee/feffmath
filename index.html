@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feff Math</title>
+    <meta name="description" content="60 days of Year 7 mixed maths practice.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>Feff Math</h1>
+        <p>Year 7 mixed maths practice, 10 questions a day.</p>
+      </div>
+      <div class="progress-card" aria-live="polite">
+        <span class="progress-label">Progress</span>
+        <strong id="progressText">0 of 60 days</strong>
+        <div class="progress-track" aria-hidden="true">
+          <span id="progressBar"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="day-panel" aria-label="Choose a practice day">
+        <div class="day-panel-header">
+          <h2>Choose a day</h2>
+          <select id="daySelect" aria-label="Choose day"></select>
+        </div>
+        <div id="dayGrid" class="day-grid"></div>
+      </aside>
+
+      <section class="practice-panel" aria-live="polite">
+        <div class="practice-header">
+          <div>
+            <p class="section-label">Mixed challenge</p>
+            <h2 id="dayTitle">Day 1</h2>
+          </div>
+          <div class="score-box">
+            <span>Correct</span>
+            <strong id="scoreText">0 / 10</strong>
+          </div>
+        </div>
+
+        <div class="encouragement" id="encouragement">
+          Take your time. A mistake just shows what to practise next.
+        </div>
+
+        <form id="questionList" class="question-list" autocomplete="off"></form>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
