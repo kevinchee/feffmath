@@ -9,15 +9,26 @@
   </head>
   <body>
     <header class="app-header">
-      <div>
-        <h1>Feff Math</h1>
-        <p>Year 7 mixed maths practice, 10 questions a day.</p>
+      <div class="brand-lockup">
+        <div>
+          <h1>Feff Math</h1>
+          <p>Year 7 maths with tiny wins, stickers, and one very serious study cat.</p>
+        </div>
+        <div class="header-cat" aria-hidden="true">
+        </div>
       </div>
-      <div class="progress-card" aria-live="polite">
-        <span class="progress-label">Progress</span>
-        <strong id="progressText">0 of 60 days</strong>
-        <div class="progress-track" aria-hidden="true">
-          <span id="progressBar"></span>
+      <div class="header-stats">
+        <div class="progress-card" aria-live="polite">
+          <span class="progress-label">Progress</span>
+          <strong id="progressText">0 of 60 days</strong>
+          <div id="headerStickerTrail" class="header-sticker-trail" aria-hidden="true"></div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="progressBar"></span>
+          </div>
+        </div>
+        <div class="total-card" aria-live="polite">
+          <span>Total correct</span>
+          <strong id="totalCorrectText">0 / 10</strong>
         </div>
       </div>
     </header>
@@ -29,6 +40,14 @@
           <select id="daySelect" aria-label="Choose day"></select>
         </div>
         <div id="dayGrid" class="day-grid"></div>
+        <div class="sticker-album" aria-live="polite">
+          <div class="album-heading">
+            <span>Sticker album</span>
+            <strong id="albumCount">0 / 60</strong>
+          </div>
+          <div id="stickerGrid" class="sticker-grid"></div>
+          <p id="nextStickerText">Finish a day to collect the first sticker.</p>
+        </div>
       </aside>
 
       <section class="practice-panel" aria-live="polite">
@@ -49,6 +68,42 @@
 
         <form id="questionList" class="question-list" autocomplete="off"></form>
       </section>
+
+      <aside class="buddy-panel" aria-label="Study buddy and rewards">
+        <section class="buddy-card">
+          <h2>Your study buddy</h2>
+          <div class="buddy-scene">
+            <div id="buddyBubble" class="buddy-bubble">Let’s do this.</div>
+            <div id="buddyCat" class="buddy-cat" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <section class="mission-card">
+          <h2>Today’s mission</h2>
+          <p>Answer 10 questions</p>
+          <div class="mission-row">
+            <div class="mission-track" aria-hidden="true">
+              <span id="missionBar"></span>
+            </div>
+            <strong id="missionText">0 / 10</strong>
+          </div>
+          <p id="missionRewardText">10 to open your surprise.</p>
+        </section>
+
+        <section class="mystery-card" aria-live="polite">
+          <h2>Mystery box</h2>
+          <div id="mysteryBox" class="mystery-box">
+            <div class="box-lid"></div>
+            <div class="box-body">?</div>
+          </div>
+          <p id="mysteryText">Finish the day to open it.</p>
+        </section>
+
+        <section class="fact-card">
+          <h2>Cat fact of the day</h2>
+          <p id="catFactText">Cats can jump up to 6 times their height.</p>
+        </section>
+      </aside>
     </main>
 
     <script src="app.js"></script>

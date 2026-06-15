@@ -6,6 +6,33 @@
   const STORAGE_KEY = "feffmath-progress-v1";
   const ANSWERS_KEY = "feffmath-answers-v1";
   const EPSILON = 0.000001;
+  const stickerRewards = ["⭐", "🐾", "🐟", "🧶", "🧁", "🌈", "🎀", "💎", "🌻", "✨"];
+  const catFacts = [
+    "Cats can jump up to 6 times their height.",
+    "A slow blink is a cat way of saying everything is okay.",
+    "Cats use their whiskers to measure tiny spaces.",
+    "A cat nap can still be serious research.",
+    "Most cats have 18 toes, but some have bonus beans.",
+    "Cats can rotate their ears like tiny satellite dishes.",
+    "A cat purr can mean happy, sleepy, or please keep patting.",
+    "Cats walk on their toes like quiet little dancers.",
+    "Blue-eyed cats often look extra dramatic in sunlight.",
+    "A fluffy tail can be a mood report."
+  ];
+  const correctMessages = [
+    "Correct. The cat is impressed.",
+    "Perfect. Tiny paw clap.",
+    "Yes. That was a sneaky one.",
+    "Correct. Math snack unlocked.",
+    "You got it. The cat approves."
+  ];
+  const retryMessages = [
+    "Nearly. The cat tilted her head.",
+    "Try again. She thinks a hint may help.",
+    "Almost. One more careful look.",
+    "Not yet. The cat is staying curious.",
+    "Close. Check the sign and try again."
+  ];
 
   const categories = [
     makeEquationQuestion,
@@ -156,7 +183,7 @@
     },
     {
       topic: "Percentages",
-      prompt: "A $40 jumper is reduced by 25%. What is the new price?",
+      prompt: "A $40 cat cushion is reduced by 25%. What is the new price?",
       answer: numberAnswer(30, "$30"),
       hint: "25% of 40 is 10, then subtract it.",
       explanation: "25% of 40 is 10, so the new price is 40 - 10 = 30."
@@ -175,6 +202,19 @@
   let progressText;
   let progressBar;
   let encouragement;
+  let totalCorrectText;
+  let headerStickerTrail;
+  let albumCount;
+  let stickerGrid;
+  let nextStickerText;
+  let buddyBubble;
+  let buddyCat;
+  let missionBar;
+  let missionText;
+  let missionRewardText;
+  let mysteryBox;
+  let mysteryText;
+  let catFactText;
 
   globalThis.FEFF_MATH_DAYS = days;
   globalThis.FEFF_MATH_TEST = { isCorrect };
@@ -190,10 +230,25 @@
     progressText = document.getElementById("progressText");
     progressBar = document.getElementById("progressBar");
     encouragement = document.getElementById("encouragement");
+    totalCorrectText = document.getElementById("totalCorrectText");
+    headerStickerTrail = document.getElementById("headerStickerTrail");
+    albumCount = document.getElementById("albumCount");
+    stickerGrid = document.getElementById("stickerGrid");
+    nextStickerText = document.getElementById("nextStickerText");
+    buddyBubble = document.getElementById("buddyBubble");
+    buddyCat = document.getElementById("buddyCat");
+    missionBar = document.getElementById("missionBar");
+    missionText = document.getElementById("missionText");
+    missionRewardText = document.getElementById("missionRewardText");
+    mysteryBox = document.getElementById("mysteryBox");
+    mysteryText = document.getElementById("mysteryText");
+    catFactText = document.getElementById("catFactText");
     initialise();
   }
 
   function initialise() {
+    const headerCat = document.querySelector(".header-cat");
+    if (headerCat) headerCat.innerHTML = catMascotSvg("ready");
     renderDayControls();
     renderDay(1);
   }
@@ -244,6 +299,9 @@
 
     daySelect.value = String(dayNumber);
     dayTitle.textContent = `Day ${dayNumber}`;
+    catFactText.textContent = catFacts[(dayNumber - 1) % catFacts.length];
+    buddyBubble.textContent = "Let’s do this.";
+    buddyCat.innerHTML = catMascotSvg("ready");
     questionList.innerHTML = "";
 
     day.questions.forEach((question, index) => {
@@ -287,9 +345,15 @@
       hintButton.addEventListener("click", () => {
         feedback.className = "feedback is-hint";
         feedback.innerHTML = formatMath(question.hint);
+        buddyBubble.textContent = "Hint mode: whiskers focused.";
+        buddyCat.innerHTML = catMascotSvg("thinking");
       });
 
-      card.append(main, answerArea);
+      const catReaction = document.createElement("div");
+      catReaction.className = "question-cat-reaction";
+      catReaction.innerHTML = catMascotSvg("mini");
+
+      card.append(main, answerArea, catReaction);
       questionList.append(card);
       checkQuestion(question, input, status, feedback, false);
     });
@@ -300,10 +364,14 @@
 
   function checkQuestion(question, input, status, feedback, forceExplanation) {
     const raw = input.value.trim();
+    const card = input.closest(".question-card");
+    const catReaction = card ? card.querySelector(".question-cat-reaction") : null;
     status.className = "status";
+    if (card) card.classList.remove("is-correct", "is-wrong");
 
     if (!raw) {
       status.textContent = "?";
+      if (catReaction) catReaction.innerHTML = catMascotSvg("mini");
       if (forceExplanation) {
         feedback.className = "feedback";
         feedback.textContent = "";
@@ -314,10 +382,12 @@
     const correct = isCorrect(raw, question.answer);
     status.classList.add(correct ? "is-correct" : "is-wrong");
     status.textContent = correct ? "✓" : "×";
+    if (card) card.classList.add(correct ? "is-correct" : "is-wrong");
+    if (catReaction) catReaction.innerHTML = catMascotSvg(correct ? "happy" : "thinking");
     feedback.className = `feedback ${correct ? "is-correct" : "is-wrong"}`;
     feedback.innerHTML = correct
-      ? `<strong>Correct.</strong> ${formatMath(question.explanation)}`
-      : `<strong>Try again.</strong> ${formatMath(question.hint)}`;
+      ? `<strong>${escapeHtml(pickLine(correctMessages, question.id))}</strong> ${formatMath(question.explanation)}`
+      : `<strong>${escapeHtml(pickLine(retryMessages, question.id))}</strong> ${formatMath(question.hint)}`;
     return correct;
   }
 
@@ -330,14 +400,20 @@
     }, 0);
 
     scoreText.textContent = `${correctCount} / ${QUESTIONS_PER_DAY}`;
+    totalCorrectText.textContent = `${correctCount} / ${QUESTIONS_PER_DAY}`;
+    updateRewardPanel(dayNumber, correctCount);
 
     if (correctCount === QUESTIONS_PER_DAY) {
       progress[dayNumber] = true;
-      encouragement.textContent = "Day complete. That is 10 out of 10.";
+      encouragement.textContent = "Day complete. Mystery box opened and a sticker joined the album.";
     } else if (correctCount >= 7) {
-      encouragement.textContent = "Good progress. Check the hints on the last few.";
+      encouragement.textContent = "Good progress. The study cat is watching the last few carefully.";
+      delete progress[dayNumber];
+    } else if (correctCount >= 3) {
+      encouragement.textContent = "Tiny win unlocked. Keep collecting paw points.";
+      delete progress[dayNumber];
     } else {
-      encouragement.textContent = "Take your time. A mistake just shows what to practise next.";
+      encouragement.textContent = "Take your time. Mistakes help your brain grow.";
       delete progress[dayNumber];
     }
 
@@ -355,12 +431,126 @@
     Array.from(dayGrid.children).forEach((button, index) => {
       button.classList.toggle("is-complete", Boolean(progress[index + 1]));
     });
+    renderStickerAlbum(completed);
   }
 
   function updateSelectedDayButton() {
     Array.from(dayGrid.children).forEach((button, index) => {
       button.classList.toggle("is-selected", index + 1 === currentDay);
     });
+  }
+
+  function updateRewardPanel(dayNumber, correctCount) {
+    const remaining = QUESTIONS_PER_DAY - correctCount;
+    const percent = (correctCount / QUESTIONS_PER_DAY) * 100;
+    missionBar.style.width = `${percent}%`;
+    missionText.textContent = `${correctCount} / ${QUESTIONS_PER_DAY}`;
+
+    if (correctCount === QUESTIONS_PER_DAY) {
+      const sticker = stickerForDay(dayNumber);
+      buddyBubble.textContent = "Purr-fect day. Mystery box time.";
+      buddyCat.innerHTML = catMascotSvg("celebrate");
+      missionRewardText.textContent = `Surprise opened: ${sticker} sticker collected.`;
+      mysteryBox.classList.add("is-open");
+      mysteryText.innerHTML = `You found a ${sticker} sticker and a tiny victory sparkle.`;
+      return;
+    }
+
+    mysteryBox.classList.remove("is-open");
+    mysteryText.textContent = "Finish the day to open it.";
+    missionRewardText.textContent = `${remaining} ${remaining === 1 ? "question" : "questions"} to open your surprise.`;
+
+    if (correctCount >= 7) {
+      buddyBubble.textContent = "So close. Tail wiggle activated.";
+      buddyCat.innerHTML = catMascotSvg("happy");
+    } else if (correctCount >= 3) {
+      buddyBubble.textContent = "Nice streak. The cat is alert.";
+      buddyCat.innerHTML = catMascotSvg("ready");
+    } else {
+      buddyBubble.textContent = "Let’s do this.";
+      buddyCat.innerHTML = catMascotSvg("ready");
+    }
+  }
+
+  function renderStickerAlbum(completed) {
+    const completedDays = Array.from({ length: TOTAL_DAYS }, (_, index) => index + 1).filter((day) => progress[day]);
+    albumCount.textContent = `${completedDays.length} / ${TOTAL_DAYS}`;
+    headerStickerTrail.innerHTML = "";
+    stickerGrid.innerHTML = "";
+
+    const headerSlots = Array.from({ length: 8 }, (_, index) => completedDays[index]);
+    headerSlots.forEach((day) => {
+      const sticker = document.createElement("span");
+      sticker.className = `sticker-chip${day ? " is-earned" : ""}`;
+      sticker.textContent = day ? stickerForDay(day) : "·";
+      headerStickerTrail.append(sticker);
+    });
+
+    Array.from({ length: 12 }, (_, index) => completedDays[index]).forEach((day, index) => {
+      const sticker = document.createElement("span");
+      sticker.className = `album-sticker${day ? " is-earned" : ""}`;
+      sticker.textContent = day ? stickerForDay(day) : index === 11 ? "?" : "";
+      sticker.setAttribute("aria-label", day ? `Sticker for day ${day}` : "Locked sticker");
+      stickerGrid.append(sticker);
+    });
+
+    if (completed >= TOTAL_DAYS) {
+      nextStickerText.textContent = "Album complete. Legendary cat scholar.";
+    } else if (completed === 0) {
+      nextStickerText.textContent = "Finish a day to collect the first sticker.";
+    } else {
+      nextStickerText.textContent = `Next surprise in ${Math.min(3, TOTAL_DAYS - completed)} day${TOTAL_DAYS - completed === 1 ? "" : "s"}.`;
+    }
+  }
+
+  function stickerForDay(dayNumber) {
+    return stickerRewards[(dayNumber - 1) % stickerRewards.length];
+  }
+
+  function pickLine(lines, seed) {
+    const total = Array.from(seed).reduce((sum, character) => sum + character.charCodeAt(0), 0);
+    return lines[total % lines.length];
+  }
+
+  function catMascotSvg(mood) {
+    const isMini = mood === "mini";
+    const isHappy = mood === "happy" || mood === "celebrate";
+    const isThinking = mood === "thinking";
+    const crown = mood === "celebrate"
+      ? `<path class="cat-crown" d="M48 12l8 13 11-11 7 17H39l7-17 10 11z"/><circle class="cat-crown-gem" cx="48" cy="12" r="2.8"/><circle class="cat-crown-gem" cx="67" cy="14" r="2.8"/>`
+      : "";
+    const sparkles = isHappy || mood === "celebrate"
+      ? `<path class="cat-sparkle" d="M19 31l3-7 3 7 7 3-7 3-3 7-3-7-7-3z"/><path class="cat-sparkle small" d="M86 34l2-5 2 5 5 2-5 2-2 5-2-5-5-2z"/>`
+      : "";
+    const mouth = isHappy
+      ? `<path d="M58 66c-4 7-13 7-17 0M58 66c4 7 13 7 17 0" class="cat-line"/>`
+      : isThinking
+        ? `<path d="M50 68c5 3 13 3 18 0" class="cat-line"/>`
+        : `<path d="M58 66c-3 4-8 4-11 0M58 66c3 4 8 4 11 0" class="cat-line"/>`;
+
+    return `
+      <svg class="cat-svg ${isMini ? "is-mini" : ""}" viewBox="0 0 112 112" role="img" aria-label="Cartoon cream cat with grey face and blue eyes">
+        ${sparkles}
+        <path class="cat-tail" d="M83 76c21-6 20 18 4 17 12-6 5-15-5-9"/>
+        <path class="cat-body" d="M30 68c2-24 51-25 55 0 15 4 15 33-8 34H40c-24-1-25-30-10-34z"/>
+        <path class="cat-ear" d="M33 36L23 10l27 16z"/>
+        <path class="cat-ear" d="M79 36L89 10 62 26z"/>
+        <path class="cat-ear-inner" d="M34 29l-5-12 13 8z"/>
+        <path class="cat-ear-inner" d="M78 29l5-12-13 8z"/>
+        ${crown}
+        <ellipse class="cat-head" cx="56" cy="49" rx="33" ry="29"/>
+        <path class="cat-mask" d="M34 45c7-18 36-21 45 0-2 20-13 28-23 28S37 65 34 45z"/>
+        <ellipse class="cat-eye" cx="45" cy="48" rx="6.5" ry="7.5"/>
+        <ellipse class="cat-eye" cx="67" cy="48" rx="6.5" ry="7.5"/>
+        <circle class="cat-eye-shine" cx="47" cy="45" r="2"/>
+        <circle class="cat-eye-shine" cx="69" cy="45" r="2"/>
+        <path class="cat-nose" d="M56 56l-5 4h10z"/>
+        ${mouth}
+        <path class="cat-whisker" d="M48 59c-12-4-23-4-34 1M48 64c-12 0-22 3-31 8M64 59c12-4 23-4 34 1M64 64c12 0 22 3 31 8"/>
+        <ellipse class="cat-paw" cx="43" cy="91" rx="9" ry="7"/>
+        <ellipse class="cat-paw" cx="69" cy="91" rx="9" ry="7"/>
+      </svg>
+    `;
   }
 
   function saveAnswer(dayNumber, questionId, value) {
@@ -716,10 +906,10 @@
     const costEach = 4 + ((day * 2 + slot) % 7);
     return {
       topic: "Proportion",
-      prompt: `If ${people} notebooks cost $${people * costEach}, how much do ${people + 2} notebooks cost?`,
+      prompt: `If ${people} cat stickers cost $${people * costEach}, how much do ${people + 2} cat stickers cost?`,
       answer: numberAnswer((people + 2) * costEach, `$${(people + 2) * costEach}`),
-      hint: "Find the cost of one notebook first.",
-      explanation: `One notebook costs $${costEach}, so ${people + 2} notebooks cost $${(people + 2) * costEach}.`
+      hint: "Find the cost of one sticker first.",
+      explanation: `One sticker costs $${costEach}, so ${people + 2} stickers cost $${(people + 2) * costEach}.`
     };
   }
 
@@ -791,10 +981,10 @@
       const total = red + blue;
       return {
         topic: "Probability",
-        prompt: `A bag has ${red} red counters and ${blue} blue counters. What is the probability of picking red?`,
+        prompt: `A treat pouch has ${red} salmon treats and ${blue} tuna treats. What is the probability of picking salmon?`,
         answer: numberAnswer(red / total, formatFraction(simplifyFraction(red, total).n, simplifyFraction(red, total).d)),
         hint: "Probability is wanted outcomes over total outcomes.",
-        explanation: `There are ${red} red out of ${total} counters, so the probability is ${formatFraction(simplifyFraction(red, total).n, simplifyFraction(red, total).d)}.`
+        explanation: `There are ${red} salmon treats out of ${total} treats, so the probability is ${formatFraction(simplifyFraction(red, total).n, simplifyFraction(red, total).d)}.`
       };
     }
 
