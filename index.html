@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feff Math</title>
     <meta name="description" content="60 random sets of Year 7 mixed maths practice.">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
   </head>
   <body>
     <header class="app-header">
@@ -47,7 +47,15 @@
     <main class="app-shell">
       <aside class="day-panel practice-hub" aria-label="Practice hub">
         <div class="day-panel-header">
-          <h2>Today's mix</h2>
+          <h2>Practice</h2>
+          <div class="practice-picker" aria-label="Choose practice set">
+            <button id="todayMixModeButton" class="practice-mode-button is-active" type="button" data-mode="mix">Today's mix</button>
+            <div class="focused-set-section">
+              <span>Focused sets</span>
+              <button id="factorisationModeButton" class="practice-mode-button" type="button" data-mode="factorisation">Factorisation</button>
+              <button id="percentagesModeButton" class="practice-mode-button" type="button" data-mode="percentages">Percentages</button>
+            </div>
+          </div>
           <div class="set-card" aria-live="polite">
             <span id="setLabel">Set 1 of 60</span>
             <strong id="setTitle">Random challenge</strong>
@@ -138,6 +146,6 @@
       </aside>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=2"></script>
   </body>
 </html>

@@ -6,7 +6,31 @@
   const STORAGE_KEY = "feffmath-progress-v1";
   const ANSWERS_KEY = "feffmath-answers-v1";
   const CURRENT_SET_KEY = "feffmath-current-set-v1";
+  const PRACTICE_MODE_KEY = "feffmath-practice-mode-v1";
   const EPSILON = 0.000001;
+  const PRACTICE_MODES = {
+    mix: {
+      label: "Today's mix",
+      sectionLabel: "Mixed challenge",
+      title: "Random challenge",
+      completeTitle: "Sticker collected",
+      emptyMessage: "Preparing today's mixed maths."
+    },
+    factorisation: {
+      label: "Factorisation",
+      sectionLabel: "Focused set",
+      title: "Factorisation focus",
+      completeTitle: "Factorisation sticker collected",
+      emptyMessage: "Preparing factorisation practice."
+    },
+    percentages: {
+      label: "Percentages",
+      sectionLabel: "Focused set",
+      title: "Percentages focus",
+      completeTitle: "Percentages sticker collected",
+      emptyMessage: "Preparing percentage practice."
+    }
+  };
   const stickerRewards = ["⭐", "🐾", "🐟", "🧶", "🧁", "🌈", "🎀", "💎", "🌻", "✨"];
   const catFacts = [
     "Cats can jump up to 6 times their height.",
@@ -41,9 +65,11 @@
   let progress = {};
   let savedAnswers = {};
   let currentDay = 1;
+  let practiceMode = "mix";
   let setLabel;
   let setTitle;
   let setSummary;
+  let modeButtons = [];
   let previousMixButton;
   let newMixButton;
   let completedSetsText;
@@ -79,9 +105,11 @@
   if (typeof document !== "undefined") {
     progress = loadJson(STORAGE_KEY, {});
     savedAnswers = loadJson(ANSWERS_KEY, {});
+    practiceMode = getSavedPracticeMode();
     setLabel = document.getElementById("setLabel");
     setTitle = document.getElementById("setTitle");
     setSummary = document.getElementById("setSummary");
+    modeButtons = Array.from(document.querySelectorAll(".practice-mode-button"));
     previousMixButton = document.getElementById("previousMixButton");
     newMixButton = document.getElementById("newMixButton");
     completedSetsText = document.getElementById("completedSetsText");
@@ -137,10 +165,10 @@
 
   function startPractice(bank) {
     questionBank = bank;
-    days = buildDays(questionBank);
+    days = buildPracticeDays(questionBank, practiceMode);
     currentDay = getInitialSetNumber();
     globalThis.FEFF_MATH_DAYS = days;
-    globalThis.FEFF_MATH_TEST = { isCorrect, buildDays };
+    globalThis.FEFF_MATH_TEST = { isCorrect, buildDays, buildFocusedDays, buildPracticeDays };
     setupNotifications();
     setupSetControls();
     renderDay(currentDay);
@@ -211,6 +239,17 @@
             answer: expression([`${coefficient}x+${constant}`, `${constant}+${coefficient}x`], `${coefficient}x + ${constant}`),
             hint: `Multiply both x and ${term} by ${coefficient}.`,
             explanation: `${coefficient}(x + ${term}) = ${coefficient}x + ${constant}.`
+          };
+        }),
+        makeFallbackGroup("factorisation", "Factorisation", 12, (index) => {
+          const factor = [2, 3, 5, 7][index % 4];
+          const term = 1 + (index % 8);
+          const constant = factor * term;
+          return {
+            prompt: `Factorise ${factor}x + ${constant}.`,
+            answer: expression([`${factor}(x+${term})`], `${factor}(x + ${term})`),
+            hint: `Find the common factor of ${factor}x and ${constant}.`,
+            explanation: `Both terms share ${factor}, so the factorised form is ${factor}(x + ${term}).`
           };
         }),
         makeFallbackGroup("powers", "Powers", 12, (index) => {
@@ -308,10 +347,13 @@
     const questionsPerDay = bank.questionsPerDay || QUESTIONS_PER_DAY;
     const requestedTrapCount = bank.trapQuestionsPerDay ?? 2;
     const groups = normaliseQuestionGroups(bank.groups);
-    const regularGroups = groups
+    const mixedGroups = groups
+      .map((group) => ({ ...group, questions: group.questions.filter((question) => !isFocusedQuestion(group, question)) }))
+      .filter((group) => group.questions.length > 0);
+    const regularGroups = mixedGroups
       .map((group) => ({ ...group, questions: group.questions.filter((question) => !question.trap) }))
       .filter((group) => group.questions.length > 0);
-    const trapPool = groups.flatMap((group) => group.questions.filter((question) => question.trap));
+    const trapPool = groups.flatMap((group) => group.questions.filter((question) => question.trap && !isFocusedQuestion(group, question)));
     const trapCount = Math.min(requestedTrapCount, trapPool.length, questionsPerDay);
 
     if (!regularGroups.length && !trapPool.length) {
@@ -341,8 +383,8 @@
         return selected.filter((candidate) => candidate.trap).length >= trapCount;
       });
 
-      for (let index = 0; selected.length < questionsPerDay && index < groups.length * questionsPerDay; index += 1) {
-        const group = groups[index % groups.length];
+      for (let index = 0; selected.length < questionsPerDay && index < mixedGroups.length * questionsPerDay; index += 1) {
+        const group = mixedGroups[index % mixedGroups.length];
         const question = pickUnusedQuestion(group.questions, usedSourceIds, rng);
         if (question) selected.push(question);
       }
@@ -354,6 +396,62 @@
 
       return { day, questions };
     });
+  }
+
+  function buildPracticeDays(bank, mode) {
+    if (mode === "factorisation") {
+      return buildFocusedDays(bank, {
+        mode,
+        includeQuestion: (group, question) =>
+          isFactorisationQuestion(group, question)
+      });
+    }
+
+    if (mode === "percentages") {
+      return buildFocusedDays(bank, {
+        mode,
+        includeQuestion: (group) => group.id === "percentages"
+      });
+    }
+
+    return buildDays(bank);
+  }
+
+  function buildFocusedDays(bank, options) {
+    const totalDays = bank.dayCount || TOTAL_DAYS;
+    const questionsPerDay = bank.questionsPerDay || QUESTIONS_PER_DAY;
+    const groups = normaliseQuestionGroups(bank.groups);
+    const pool = groups.flatMap((group) =>
+      group.questions
+        .filter((question) => !question.trap && options.includeQuestion(group, question))
+        .map((question) => ({ ...question, topic: PRACTICE_MODES[options.mode].label }))
+    );
+
+    if (!pool.length) {
+      throw new Error(`No questions found for ${PRACTICE_MODES[options.mode].label}.`);
+    }
+
+    return Array.from({ length: totalDays }, (_, dayIndex) => {
+      const day = dayIndex + 1;
+      const rng = createSeededRandom(`${bank.seed || "feff-math"}:${bank.version || 1}:${options.mode}:set-${day}`);
+      const questions = shuffle(pool, rng)
+        .slice(0, questionsPerDay)
+        .map((question, index) => ({
+          ...question,
+          id: `${options.mode}-d${day}-q${index + 1}-${question.sourceId}`
+        }));
+
+      return { day, questions };
+    });
+  }
+
+  function isFocusedQuestion(group, question) {
+    return group.id === "percentages" || isFactorisationQuestion(group, question);
+  }
+
+  function isFactorisationQuestion(group, question) {
+    return (group.id === "algebra" || group.id === "factorisation")
+      && /factorisation|factorise/i.test(`${question.sourceId} ${question.topic} ${question.prompt}`);
   }
 
   function normaliseQuestionGroups(groups) {
@@ -421,7 +519,7 @@
             <span class="question-number">…</span>
             <span class="topic">Loading</span>
           </div>
-          <p class="prompt">Preparing today’s mixed maths.</p>
+          <p class="prompt">${escapeHtml(PRACTICE_MODES[practiceMode].emptyMessage)}</p>
         </div>
       </section>
     `;
@@ -444,6 +542,12 @@
   }
 
   function setupSetControls() {
+    modeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setPracticeMode(button.dataset.mode);
+      });
+    });
+
     previousMixButton.addEventListener("click", () => {
       renderDay(Math.max(1, currentDay - 1));
     });
@@ -453,13 +557,25 @@
     updateProgress();
   }
 
+  function setPracticeMode(mode) {
+    if (!PRACTICE_MODES[mode] || mode === practiceMode) return;
+    practiceMode = mode;
+    days = buildPracticeDays(questionBank, practiceMode);
+    currentDay = getInitialSetNumber();
+    globalThis.FEFF_MATH_DAYS = days;
+    saveJson(PRACTICE_MODE_KEY, practiceMode);
+    renderDay(currentDay);
+  }
+
   function renderDay(dayNumber) {
     currentDay = dayNumber;
     const day = days[dayNumber - 1];
-    const answersForDay = savedAnswers[dayNumber] || {};
+    const answersForDay = getSavedAnswersForSet(dayNumber);
 
-    saveJson(CURRENT_SET_KEY, currentDay);
-    dayTitle.textContent = `Set ${dayNumber}`;
+    saveJson(CURRENT_SET_KEY, { ...normaliseSavedSets(), [practiceMode]: currentDay });
+    const sectionLabel = document.querySelector(".section-label");
+    if (sectionLabel) sectionLabel.textContent = PRACTICE_MODES[practiceMode].sectionLabel;
+    dayTitle.textContent = practiceMode === "mix" ? `Set ${dayNumber}` : `${PRACTICE_MODES[practiceMode].label} ${dayNumber}`;
     catFactText.textContent = catFacts[(dayNumber - 1) % catFacts.length];
     buddyBubble.textContent = "Let’s do this.";
     buddyCat.innerHTML = catMascotSvg("ready");
@@ -498,7 +614,7 @@
 
       input.value = answersForDay[question.id] || "";
       input.addEventListener("input", () => {
-        saveAnswer(dayNumber, question.id, input.value);
+        saveAnswer(getSetKey(dayNumber), question.id, input.value);
         checkQuestion(question, input, status, feedback, false);
         updateScore(dayNumber);
       });
@@ -566,17 +682,17 @@
     updateRewardPanel(dayNumber, correctCount);
 
     if (correctCount === QUESTIONS_PER_DAY) {
-      progress[dayNumber] = true;
+      setProgressForDay(dayNumber, true);
       encouragement.textContent = "Set complete. Mystery box opened and a sticker joined the album.";
     } else if (correctCount >= 7) {
       encouragement.textContent = "Good progress. The study cat is watching the last few carefully.";
-      delete progress[dayNumber];
+      setProgressForDay(dayNumber, false);
     } else if (correctCount >= 3) {
       encouragement.textContent = "Tiny win unlocked. Keep collecting paw points.";
-      delete progress[dayNumber];
+      setProgressForDay(dayNumber, false);
     } else {
       encouragement.textContent = "Take your time. Mistakes help your brain grow.";
-      delete progress[dayNumber];
+      setProgressForDay(dayNumber, false);
     }
 
     saveJson(STORAGE_KEY, progress);
@@ -586,7 +702,7 @@
   }
 
   function updateProgress() {
-    const completed = Object.values(progress).filter(Boolean).length;
+    const completed = getCompletedSetNumbers().length;
     const totalDays = getTotalDays();
     const percent = (completed / totalDays) * 100;
     progressText.textContent = `${completed} of ${totalDays} sets`;
@@ -601,13 +717,25 @@
     const totalDays = getTotalDays();
     const topics = new Set(day.questions.map((question) => question.topic));
     const trapCount = day.questions.filter((question) => question.trap).length;
-    setLabel.textContent = `Set ${currentDay} of ${totalDays}`;
-    setTitle.textContent = progress[currentDay] ? "Sticker collected" : "Random challenge";
-    setSummary.textContent = `${day.questions.length} questions with ${topics.size} topics and ${trapCount} sneaky ${trapCount === 1 ? "trap" : "traps"}.`;
+    const mode = PRACTICE_MODES[practiceMode];
+    const setDescriptor = practiceMode === "mix" ? `Set ${currentDay}` : `${mode.label} ${currentDay}`;
+
+    setTitle.textContent = isDayComplete(currentDay) ? mode.completeTitle : mode.title;
+    setSummary.textContent = practiceMode === "mix"
+      ? `${day.questions.length} questions with ${topics.size} topics and ${trapCount} sneaky ${trapCount === 1 ? "trap" : "traps"}.`
+      : `${day.questions.length} ${mode.label.toLowerCase()} questions for focused practice.`;
     topicCountText.textContent = String(topics.size);
     trapCountText.textContent = String(trapCount);
     previousMixButton.disabled = currentDay <= 1;
     newMixButton.disabled = currentDay >= totalDays;
+    previousMixButton.textContent = "Previous";
+    newMixButton.textContent = practiceMode === "mix" ? "New mix" : "Next set";
+    modeButtons.forEach((button) => {
+      const active = button.dataset.mode === practiceMode;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    if (setLabel) setLabel.textContent = `${setDescriptor} of ${totalDays}`;
   }
 
   function updateRewardPanel(dayNumber, correctCount) {
@@ -644,7 +772,7 @@
 
   function renderStickerAlbum(completed) {
     const totalDays = getTotalDays();
-    const completedDays = Array.from({ length: totalDays }, (_, index) => index + 1).filter((day) => progress[day]);
+    const completedDays = getCompletedSetNumbers();
     albumCount.textContent = `${completedDays.length} / ${totalDays}`;
     headerStickerTrail.innerHTML = "";
     stickerGrid.innerHTML = "";
@@ -720,13 +848,13 @@
   function updateNotifications(correctCount) {
     if (!notificationButton || !notificationList) return;
 
-    const completedDays = Object.values(progress).filter(Boolean).length;
+    const completedDays = getCompletedSetNumbers().length;
     const totalDays = getTotalDays();
     const correct = Number.isFinite(correctCount) ? correctCount : getCurrentCorrectCount();
     const remaining = Math.max(0, QUESTIONS_PER_DAY - correct);
     const dayComplete = remaining === 0;
     const missionBody = dayComplete
-      ? `Set ${currentDay} is complete. The ${stickerForDay(currentDay)} sticker is in your album.`
+      ? `${PRACTICE_MODES[practiceMode].label} ${currentDay} is complete. The ${stickerForDay(currentDay)} sticker is in your album.`
       : `${remaining} ${remaining === 1 ? "question" : "questions"} left to open today's mystery box.`;
     const albumBody = completedDays >= totalDays
       ? "Sticker album complete."
@@ -737,7 +865,7 @@
       <article class="notification-item">
         <span class="notification-dot" aria-hidden="true"></span>
         <div>
-          <strong>Set ${currentDay} mission</strong>
+          <strong>${escapeHtml(PRACTICE_MODES[practiceMode].label)} ${currentDay} mission</strong>
           <p>${escapeHtml(missionBody)}</p>
         </div>
       </article>
@@ -769,12 +897,54 @@
   }
 
   function getInitialSetNumber() {
-    const savedSet = Number(loadJson(CURRENT_SET_KEY, 1));
+    const savedSets = normaliseSavedSets();
+    const savedSet = Number(savedSets[practiceMode] || 1);
     if (Number.isInteger(savedSet) && savedSet >= 1 && savedSet <= getTotalDays()) {
       return savedSet;
     }
-    const nextOpenSet = days.find((day) => !progress[day.day]);
+    const nextOpenSet = days.find((day) => !isDayComplete(day.day));
     return nextOpenSet ? nextOpenSet.day : 1;
+  }
+
+  function getCompletedSetNumbers() {
+    const totalDays = getTotalDays();
+    return Array.from({ length: totalDays }, (_, index) => index + 1).filter((day) => isDayComplete(day));
+  }
+
+  function isDayComplete(dayNumber) {
+    return Boolean(progress[getSetKey(dayNumber)] || (practiceMode === "mix" && progress[dayNumber]));
+  }
+
+  function setProgressForDay(dayNumber, complete) {
+    const setKey = getSetKey(dayNumber);
+    if (complete) {
+      progress[setKey] = true;
+      if (practiceMode === "mix") progress[dayNumber] = true;
+      return;
+    }
+
+    delete progress[setKey];
+    if (practiceMode === "mix") delete progress[dayNumber];
+  }
+
+  function getSavedAnswersForSet(dayNumber) {
+    return savedAnswers[getSetKey(dayNumber)] || (practiceMode === "mix" && savedAnswers[dayNumber]) || {};
+  }
+
+  function getSetKey(dayNumber) {
+    return `${practiceMode}:${dayNumber}`;
+  }
+
+  function getSavedPracticeMode() {
+    const mode = loadJson(PRACTICE_MODE_KEY, "mix");
+    return PRACTICE_MODES[mode] ? mode : "mix";
+  }
+
+  function normaliseSavedSets() {
+    const savedSet = loadJson(CURRENT_SET_KEY, {});
+    if (typeof savedSet === "number") return { mix: savedSet };
+    if (savedSet && typeof savedSet === "object") return savedSet;
+    return {};
   }
 
   function pickLine(lines, seed) {
@@ -790,17 +960,17 @@
       happy: "cat-mini-happy.png",
       job: "cat-mini-job.png",
       mini: "cat-mini-happy.png",
-      ready: "buddy-cat.png",
+      ready: "buddy-cat.png?v=2",
       thinking: "cat-mini-heart.png"
     };
     const file = imageByMood[mood] || imageByMood.ready;
-    const sizeClass = file === "buddy-cat.png" ? "is-buddy" : "is-mini";
+    const sizeClass = file.startsWith("buddy-cat.png") ? "is-buddy" : "is-mini";
     return `<img class="cat-art ${sizeClass}" src="assets/${file}" alt="Cartoon cream cat with grey face and blue eyes">`;
   }
 
-  function saveAnswer(dayNumber, questionId, value) {
-    savedAnswers[dayNumber] = savedAnswers[dayNumber] || {};
-    savedAnswers[dayNumber][questionId] = value;
+  function saveAnswer(setKey, questionId, value) {
+    savedAnswers[setKey] = savedAnswers[setKey] || {};
+    savedAnswers[setKey][questionId] = value;
     saveJson(ANSWERS_KEY, savedAnswers);
   }
 
