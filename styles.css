@@ -51,7 +51,7 @@ button {
   overflow: visible;
   width: 100%;
   min-height: 148px;
-  padding: 4px max(8px, calc((100vw - 1520px) / 2)) 8px;
+  padding: 0 max(8px, calc((100vw - 1520px) / 2));
   display: grid;
   grid-template-columns: 430px minmax(560px, 1fr);
   gap: 28px;
@@ -97,7 +97,7 @@ button {
 
 .brand-art {
   display: block;
-  width: 432px;
+  width: 430px;
   max-width: 100%;
   height: auto;
   filter: drop-shadow(0 4px 0 rgba(40, 80, 112, 0.18));
