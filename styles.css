@@ -829,6 +829,46 @@ button {
   transform: translateY(-1px);
 }
 
+.practice-finish-panel {
+  position: sticky;
+  bottom: 10px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--small-shadow);
+  backdrop-filter: blur(8px);
+}
+
+.practice-finish-panel[hidden] {
+  display: none;
+}
+
+.finish-practice-button {
+  min-width: 150px;
+  min-height: 44px;
+  padding: 0 22px;
+  color: #fff;
+  background: linear-gradient(180deg, #ff8b7e, var(--coral));
+  border: 1px solid #e9574d;
+  border-radius: var(--radius);
+  box-shadow: 0 5px 0 #e9574d;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+.finish-practice-button:hover,
+.finish-practice-button:focus-visible {
+  outline: none;
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
 .question-list {
   display: grid;
   gap: 0;

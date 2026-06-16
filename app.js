@@ -66,13 +66,15 @@
   let savedAnswers = {};
   let currentDay = 1;
   let practiceMode = "mix";
-  let practiceStarted = false;
+  let practiceState = "ready";
   let setLabel;
   let setTitle;
   let setSummary;
   let modeButtons = [];
   let practiceStartPanel;
+  let practiceFinishPanel;
   let startPracticeButton;
+  let finishPracticeButton;
   let startSetName;
   let previousMixButton;
   let newMixButton;
@@ -115,7 +117,9 @@
     setSummary = document.getElementById("setSummary");
     modeButtons = Array.from(document.querySelectorAll(".practice-mode-button"));
     practiceStartPanel = document.getElementById("practiceStartPanel");
+    practiceFinishPanel = document.getElementById("practiceFinishPanel");
     startPracticeButton = document.getElementById("startPracticeButton");
+    finishPracticeButton = document.getElementById("finishPracticeButton");
     startSetName = document.getElementById("startSetName");
     previousMixButton = document.getElementById("previousMixButton");
     newMixButton = document.getElementById("newMixButton");
@@ -559,6 +563,10 @@
       startPracticeButton.addEventListener("click", beginPractice);
     }
 
+    if (finishPracticeButton) {
+      finishPracticeButton.addEventListener("click", finishPractice);
+    }
+
     previousMixButton.addEventListener("click", () => {
       renderDay(Math.max(1, currentDay - 1));
     });
@@ -571,7 +579,7 @@
   function setPracticeMode(mode) {
     if (!PRACTICE_MODES[mode] || mode === practiceMode) return;
     practiceMode = mode;
-    practiceStarted = false;
+    practiceState = "ready";
     days = buildPracticeDays(questionBank, practiceMode);
     currentDay = getInitialSetNumber();
     globalThis.FEFF_MATH_DAYS = days;
@@ -584,7 +592,7 @@
     const day = days[dayNumber - 1];
     const answersForDay = getSavedAnswersForSet(dayNumber);
 
-    practiceStarted = isDayComplete(dayNumber);
+    practiceState = isDayComplete(dayNumber) ? "finished" : "ready";
     saveJson(CURRENT_SET_KEY, { ...normaliseSavedSets(), [practiceMode]: currentDay });
     const sectionLabel = document.querySelector(".section-label");
     if (sectionLabel) sectionLabel.textContent = PRACTICE_MODES[practiceMode].sectionLabel;
@@ -655,10 +663,15 @@
   }
 
   function beginPractice() {
-    practiceStarted = true;
+    practiceState = "active";
     updatePracticeVisibility();
     const firstInput = questionList.querySelector(".answer-input");
     if (firstInput) firstInput.focus();
+  }
+
+  function finishPractice() {
+    practiceState = "finished";
+    updatePracticeVisibility();
   }
 
   function checkQuestion(question, input, status, feedback, forceExplanation) {
@@ -762,12 +775,11 @@
   }
 
   function updatePracticeVisibility(correctCount) {
-    const complete = Number.isFinite(correctCount)
-      ? correctCount === QUESTIONS_PER_DAY
-      : isDayComplete(currentDay);
-    const waitingToStart = !practiceStarted && !complete;
-    document.body.classList.toggle("is-practicing", practiceStarted && !complete);
+    const waitingToStart = practiceState === "ready";
+    const activePractice = practiceState === "active";
+    document.body.classList.toggle("is-practicing", activePractice);
     if (practiceStartPanel) practiceStartPanel.hidden = !waitingToStart;
+    if (practiceFinishPanel) practiceFinishPanel.hidden = !activePractice;
     if (questionList) questionList.hidden = waitingToStart;
   }
 
