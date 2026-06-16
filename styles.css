@@ -785,9 +785,87 @@ button {
   font-size: 2rem;
 }
 
+.practice-start-panel {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  margin: 20px 0 12px;
+  padding: 28px 18px;
+  text-align: center;
+  background: linear-gradient(180deg, #fffaf2, #f4fbff);
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius);
+  box-shadow: inset 0 -3px 0 rgba(38, 137, 212, 0.08);
+}
+
+.practice-start-panel[hidden] {
+  display: none;
+}
+
+.practice-start-panel strong {
+  color: var(--ink);
+  font-size: 1.25rem;
+}
+
+.start-practice-button {
+  min-width: 168px;
+  min-height: 48px;
+  padding: 0 24px;
+  color: #fff;
+  background: linear-gradient(180deg, #35bf87, #22966a);
+  border: 1px solid #16845b;
+  border-radius: var(--radius);
+  box-shadow: 0 5px 0 #16724f;
+  font-size: 1.05rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+.start-practice-button:hover,
+.start-practice-button:focus-visible {
+  outline: none;
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
 .question-list {
   display: grid;
   gap: 0;
+}
+
+.question-list[hidden] {
+  display: none;
+}
+
+body.is-practicing .app-header,
+body.is-practicing .day-panel,
+body.is-practicing .buddy-panel {
+  display: none;
+}
+
+body.is-practicing {
+  background: linear-gradient(180deg, #f7fcff 0, #fffdf8 280px, #fffaf2 100%);
+}
+
+body.is-practicing .app-shell {
+  width: min(960px, calc(100% - 24px));
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 18px;
+}
+
+body.is-practicing .practice-panel {
+  padding-inline: clamp(14px, 4vw, 34px);
+}
+
+body.is-practicing .practice-header::after,
+body.is-practicing .encouragement,
+body.is-practicing .question-cat-reaction {
+  display: none;
+}
+
+body.is-practicing .question-card {
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 240px);
 }
 
 .question-card {
@@ -1247,6 +1325,7 @@ sup {
 
 .fact-card {
   position: relative;
+  min-width: 0;
   min-height: 132px;
   padding-right: 122px;
   background: linear-gradient(180deg, #fff2bf, #fff);
@@ -1260,6 +1339,12 @@ sup {
   width: 112px;
   height: 82px;
   background: url("assets/fact-cat-box.png") center / contain no-repeat;
+}
+
+.fact-card h2,
+.fact-card p {
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .cat-art {
@@ -1447,6 +1532,10 @@ sup {
     height: 260px;
   }
 
+  .fact-card {
+    grid-column: span 2;
+  }
+
   .buddy-scene {
     min-height: 260px;
   }
@@ -1524,6 +1613,10 @@ sup {
   .buddy-card {
     grid-column: auto;
     height: 305px;
+  }
+
+  .fact-card {
+    grid-column: auto;
   }
 
   .buddy-scene {
@@ -1607,5 +1700,17 @@ sup {
 
   .score-box {
     width: 100%;
+  }
+
+  .fact-card {
+    min-height: 118px;
+    padding-right: 98px;
+  }
+
+  .fact-card::after {
+    right: 8px;
+    bottom: 8px;
+    width: 88px;
+    height: 70px;
   }
 }
