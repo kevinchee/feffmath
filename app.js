@@ -116,16 +116,14 @@
   async function initialise() {
     renderLoadingState();
     try {
-      questionBank = await loadQuestionBank();
-      days = buildDays(questionBank);
-      currentDay = getInitialSetNumber();
-      globalThis.FEFF_MATH_DAYS = days;
-      globalThis.FEFF_MATH_TEST = { isCorrect, buildDays };
-      setupNotifications();
-      setupSetControls();
-      renderDay(currentDay);
+      startPractice(await loadQuestionBank());
     } catch (error) {
-      renderQuestionLoadError(error);
+      console.info("Using fallback question bank.", error);
+      try {
+        startPractice(createFallbackQuestionBank());
+      } catch (fallbackError) {
+        renderQuestionLoadError(fallbackError);
+      }
     }
   }
 
@@ -135,6 +133,174 @@
       throw new Error(`Could not load ${QUESTION_BANK_URL}: ${response.status}`);
     }
     return response.json();
+  }
+
+  function startPractice(bank) {
+    questionBank = bank;
+    days = buildDays(questionBank);
+    currentDay = getInitialSetNumber();
+    globalThis.FEFF_MATH_DAYS = days;
+    globalThis.FEFF_MATH_TEST = { isCorrect, buildDays };
+    setupNotifications();
+    setupSetControls();
+    renderDay(currentDay);
+  }
+
+  function createFallbackQuestionBank() {
+    const number = (value, display = String(value)) => ({ type: "number", value, display });
+    const ratio = (a, b, display = `${a}:${b}`) => ({ type: "ratio", a, b, display });
+    const expression = (values, display) => ({ type: "expression", values, display });
+    const special = (values, display) => ({ type: "special", values, display });
+
+    return {
+      version: "fallback-1",
+      seed: "feff-math-fallback",
+      dayCount: TOTAL_DAYS,
+      questionsPerDay: QUESTIONS_PER_DAY,
+      trapQuestionsPerDay: 2,
+      groups: [
+        makeFallbackGroup("equations", "Equations", 12, (index) => {
+          const coefficient = 2 + (index % 5);
+          const x = 2 + (index % 10);
+          return {
+            prompt: `Solve ${coefficient}x = ${coefficient * x}.`,
+            answer: number(x),
+            hint: `Divide both sides by ${coefficient}.`,
+            explanation: `x = ${coefficient * x} / ${coefficient} = ${x}.`
+          };
+        }),
+        makeFallbackGroup("fractions", "Fractions", 12, (index) => {
+          const numerator = 2 + (index % 8);
+          const denominator = numerator * (2 + (index % 4));
+          const simplified = simplifyRatio(numerator, denominator);
+          return {
+            prompt: `Simplify ${numerator}/${denominator}.`,
+            answer: number(simplified.a / simplified.b, `${simplified.a}/${simplified.b}`),
+            hint: `Find a number that divides both ${numerator} and ${denominator}.`,
+            explanation: `${numerator}/${denominator} simplifies to ${simplified.a}/${simplified.b}.`
+          };
+        }),
+        makeFallbackGroup("percentages", "Percentages", 12, (index) => {
+          const percent = [10, 20, 25, 40, 50, 75][index % 6];
+          const base = 40 + (index % 8) * 20;
+          const value = base * (percent / 100);
+          return {
+            prompt: `What is ${percent}% of ${base}?`,
+            answer: number(value),
+            hint: `${percent}% means ${percent}/100.`,
+            explanation: `${percent}% of ${base} is ${value}.`
+          };
+        }),
+        makeFallbackGroup("negative-numbers", "Negative numbers", 12, (index) => {
+          const a = 4 + (index % 8);
+          const b = 2 + (index % 7);
+          const value = a + b;
+          return {
+            prompt: `What is ${a} - -${b}?`,
+            answer: number(value),
+            hint: "Subtracting a negative is the same as adding.",
+            explanation: `${a} - -${b} = ${a} + ${b} = ${value}.`
+          };
+        }),
+        makeFallbackGroup("algebra", "Algebra", 12, (index) => {
+          const coefficient = 2 + (index % 6);
+          const term = 1 + (index % 8);
+          const constant = coefficient * term;
+          return {
+            prompt: `Expand ${coefficient}(x + ${term}).`,
+            answer: expression([`${coefficient}x+${constant}`, `${constant}+${coefficient}x`], `${coefficient}x + ${constant}`),
+            hint: `Multiply both x and ${term} by ${coefficient}.`,
+            explanation: `${coefficient}(x + ${term}) = ${coefficient}x + ${constant}.`
+          };
+        }),
+        makeFallbackGroup("powers", "Powers", 12, (index) => {
+          const base = 2 + (index % 5);
+          const exponent = 2 + (index % 3);
+          const value = base ** exponent;
+          return {
+            prompt: `What is ${base}^${exponent}?`,
+            answer: number(value),
+            hint: `Multiply ${base} by itself ${exponent} times.`,
+            explanation: `${base}^${exponent} = ${value}.`
+          };
+        }),
+        makeFallbackGroup("decimals", "Decimals", 12, (index) => {
+          const options = [
+            [0.5, "1/2"],
+            [0.25, "1/4"],
+            [0.75, "3/4"],
+            [0.2, "1/5"],
+            [0.125, "1/8"],
+            [0.375, "3/8"]
+          ];
+          const pair = options[index % options.length];
+          return {
+            prompt: `Write ${pair[1]} as a decimal.`,
+            answer: number(pair[0], String(pair[0])),
+            hint: "Divide the top number by the bottom number.",
+            explanation: `${pair[1]} = ${pair[0]}.`
+          };
+        }),
+        makeFallbackGroup("ratios", "Ratios", 12, (index) => {
+          const a = 2 + (index % 7);
+          const b = 3 + (index % 8);
+          const factor = 2 + (index % 5);
+          const simplified = simplifyRatio(a * factor, b * factor);
+          return {
+            prompt: `Simplify the ratio ${a * factor}:${b * factor}.`,
+            answer: ratio(simplified.a, simplified.b),
+            hint: `Divide both parts by ${factor} if you can.`,
+            explanation: `${a * factor}:${b * factor} simplifies to ${simplified.a}:${simplified.b}.`
+          };
+        }),
+        makeFallbackGroup("traps", "Careful traps", 12, (index) => {
+          const traps = [
+            {
+              topic: "Undefined",
+              prompt: "What is 5/0?",
+              answer: special(["undefined", "not defined", "impossible", "cannot divide by zero"], "undefined"),
+              hint: "Division by zero is not allowed.",
+              explanation: "5/0 is undefined because you cannot divide by zero."
+            },
+            {
+              topic: "Zero powers",
+              prompt: "What is 3^0?",
+              answer: number(1),
+              hint: "Any non-zero number to the power of 0 equals 1.",
+              explanation: "3^0 = 1."
+            },
+            {
+              topic: "Trap question",
+              prompt: "What is -4^2?",
+              answer: number(-16),
+              hint: "The power happens before the minus sign.",
+              explanation: "-4^2 means -(4^2), so the answer is -16."
+            },
+            {
+              topic: "Trap question",
+              prompt: "What is (-4)^2?",
+              answer: number(16),
+              hint: "The brackets make the negative number the base.",
+              explanation: "(-4)^2 = 16."
+            }
+          ];
+          return { ...traps[index % traps.length], trap: true };
+        })
+      ]
+    };
+  }
+
+  function makeFallbackGroup(id, title, count, buildQuestion) {
+    return {
+      id,
+      title,
+      questions: Array.from({ length: count }, (_, index) => ({
+        id: `${id}-fallback-${index + 1}`,
+        topic: title,
+        trap: false,
+        ...buildQuestion(index)
+      }))
+    };
   }
 
   function buildDays(bank) {
@@ -739,6 +905,21 @@
   }
 
   function formatMath(value) {
-    return escapeHtml(value).replace(/(\(?-?\d+\)?|\d*[a-z])\^(-?\d+)/gi, "$1<sup>$2</sup>");
+    return escapeHtml(value)
+      .replace(/(\(?-?\d+\)?|\d*[a-z])\^(-?\d+)/gi, "$1<sup>$2</sup>")
+      .replace(/([+-]?\d+(?:\.\d+)?)\s*\/\s*([+-]?\d+(?:\.\d+)?)(?![\d<])/g, renderFraction)
+      .replace(/(\d)\s+x\s+(\(?&minus;?\d|\(?-?\d|[a-z])/gi, "$1 &times; $2")
+      .replace(/([a-z]|\))\s+x\s+(\(?&minus;?\d|\(?-?\d|[a-z])/gi, "$1 &times; $2")
+      .replace(/\s-\s-/g, " &minus; &minus;")
+      .replace(/(^|[\s(=])-(?=\d|\()/g, "$1&minus;")
+      .replace(/<sup>-/g, "<sup>&minus;");
+  }
+
+  function renderFraction(match, numerator, denominator) {
+    return `<span class="math-frac" aria-label="${numerator} over ${denominator}"><span>${normaliseMathSign(numerator)}</span><span>${normaliseMathSign(denominator)}</span></span>`;
+  }
+
+  function normaliseMathSign(value) {
+    return value.replace(/^-/, "&minus;");
   }
 })();
