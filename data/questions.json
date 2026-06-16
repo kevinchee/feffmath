@@ -3969,20 +3969,14 @@
         {
           "id": "traps-024-careful-powers-what-is-0-0-usually-treated-as-in-year-7",
           "topic": "Careful powers",
-          "prompt": "What is 0^0 usually treated as in Year 7?",
+          "prompt": "What is 0^0?",
           "answer": {
-            "type": "special",
-            "values": [
-              "undefined",
-              "indeterminate",
-              "usually undefined",
-              "avoid",
-              "not defined"
-            ],
-            "display": "undefined or indeterminate"
+            "type": "number",
+            "value": 1,
+            "display": "1"
           },
-          "hint": "This is a special case that is usually avoided at this level.",
-          "explanation": "0^0 is usually avoided or called undefined/indeterminate in Year 7 maths. It needs more advanced context.",
+          "hint": "Use the convention that any number to the power of 0 is 1.",
+          "explanation": "Using the convention for this practice set, 0^0 = 1.",
           "trap": true,
           "sourceDay": 17
         },

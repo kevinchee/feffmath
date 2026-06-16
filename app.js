@@ -577,7 +577,7 @@
     if (sectionLabel) sectionLabel.textContent = PRACTICE_MODES[practiceMode].sectionLabel;
     dayTitle.textContent = practiceMode === "mix" ? `Set ${dayNumber}` : `${PRACTICE_MODES[practiceMode].label} ${dayNumber}`;
     catFactText.textContent = catFacts[(dayNumber - 1) % catFacts.length];
-    buddyBubble.textContent = "Let’s do this.";
+    buddyBubble.textContent = "";
     buddyCat.innerHTML = catMascotSvg("ready");
     questionList.innerHTML = "";
 
@@ -765,7 +765,7 @@
       buddyBubble.textContent = "Nice streak. The cat is alert.";
       buddyCat.innerHTML = catMascotSvg("ready");
     } else {
-      buddyBubble.textContent = "Let’s do this.";
+      buddyBubble.textContent = "";
       buddyCat.innerHTML = catMascotSvg("ready");
     }
   }
