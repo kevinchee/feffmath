@@ -32,7 +32,16 @@
           <strong id="totalCorrectText">0 / 10</strong>
         </div>
       </div>
-      <img class="header-bell" src="assets/header-bell.png" alt="" aria-hidden="true">
+      <button id="notificationButton" class="notification-button" type="button" aria-label="Open 2 practice updates" aria-expanded="false" aria-controls="notificationPanel">
+        <img class="header-bell" src="assets/header-bell.png" alt="" aria-hidden="true">
+      </button>
+      <div id="notificationPanel" class="notification-panel" role="dialog" aria-label="Practice updates" hidden>
+        <div class="notification-panel-header">
+          <strong>Practice updates</strong>
+          <button id="notificationClose" class="notification-close" type="button" aria-label="Close practice updates">Close</button>
+        </div>
+        <div id="notificationList" class="notification-list"></div>
+      </div>
     </header>
 
     <main class="app-shell">

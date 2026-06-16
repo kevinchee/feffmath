@@ -1,0 +1,4078 @@
+{
+  "version": 1,
+  "seed": "feff-math-diverse-traps-v1",
+  "dayCount": 60,
+  "questionsPerDay": 10,
+  "trapQuestionsPerDay": 2,
+  "selection": {
+    "strategy": "Seed each day, draw from different domain groups first, then mix in trap questions and shuffle the final set.",
+    "note": "Questions are raw concrete prompts so content can be edited without touching app logic."
+  },
+  "groups": [
+    {
+      "id": "equations",
+      "title": "Equations",
+      "questions": [
+        {
+          "id": "equations-001-equations-solve-4x-16",
+          "topic": "Equations",
+          "prompt": "Solve 4x = 16.",
+          "answer": {
+            "type": "number",
+            "value": 4,
+            "display": "4"
+          },
+          "hint": "Divide both sides by 4.",
+          "explanation": "x = 16 / 4 = 4.",
+          "trap": false,
+          "sourceDay": 1
+        },
+        {
+          "id": "equations-002-equations-solve-2x-5-15",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 15.",
+          "answer": {
+            "type": "number",
+            "value": 5,
+            "display": "5"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 10, so x = 5.",
+          "trap": false,
+          "sourceDay": 2
+        },
+        {
+          "id": "equations-003-equations-solve-2x-5-17",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 17.",
+          "answer": {
+            "type": "number",
+            "value": 6,
+            "display": "6"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 12, so x = 6.",
+          "trap": false,
+          "sourceDay": 3
+        },
+        {
+          "id": "equations-004-equations-solve-2x-5-19",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 19.",
+          "answer": {
+            "type": "number",
+            "value": 7,
+            "display": "7"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 14, so x = 7.",
+          "trap": false,
+          "sourceDay": 4
+        },
+        {
+          "id": "equations-005-equations-solve-2x-5-23",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 23.",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 18, so x = 9.",
+          "trap": false,
+          "sourceDay": 6
+        },
+        {
+          "id": "equations-006-equations-solve-2x-5-25",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 25.",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 20, so x = 10.",
+          "trap": false,
+          "sourceDay": 7
+        },
+        {
+          "id": "equations-007-equations-solve-2x-5-27",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 27.",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 22, so x = 11.",
+          "trap": false,
+          "sourceDay": 8
+        },
+        {
+          "id": "equations-008-equations-solve-2x-5-9",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 9.",
+          "answer": {
+            "type": "number",
+            "value": 2,
+            "display": "2"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 4, so x = 2.",
+          "trap": false,
+          "sourceDay": 9
+        },
+        {
+          "id": "equations-009-equations-solve-2x-5-13",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 5 = 13.",
+          "answer": {
+            "type": "number",
+            "value": 4,
+            "display": "4"
+          },
+          "hint": "Subtract 5, then divide by 2.",
+          "explanation": "2x = 8, so x = 4.",
+          "trap": false,
+          "sourceDay": 11
+        },
+        {
+          "id": "equations-010-equations-solve-6x-30",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 30.",
+          "answer": {
+            "type": "number",
+            "value": 5,
+            "display": "5"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 30 / 6 = 5.",
+          "trap": false,
+          "sourceDay": 12
+        },
+        {
+          "id": "equations-011-equations-solve-6x-36",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 36.",
+          "answer": {
+            "type": "number",
+            "value": 6,
+            "display": "6"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 36 / 6 = 6.",
+          "trap": false,
+          "sourceDay": 13
+        },
+        {
+          "id": "equations-012-equations-solve-6x-42",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 42.",
+          "answer": {
+            "type": "number",
+            "value": 7,
+            "display": "7"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 42 / 6 = 7.",
+          "trap": false,
+          "sourceDay": 14
+        },
+        {
+          "id": "equations-013-equations-solve-6x-54",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 54.",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 54 / 6 = 9.",
+          "trap": false,
+          "sourceDay": 16
+        },
+        {
+          "id": "equations-014-equations-solve-6x-60",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 60.",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 60 / 6 = 10.",
+          "trap": false,
+          "sourceDay": 17
+        },
+        {
+          "id": "equations-015-equations-solve-6x-66",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 66.",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 66 / 6 = 11.",
+          "trap": false,
+          "sourceDay": 18
+        },
+        {
+          "id": "equations-016-equations-solve-6x-12",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 12.",
+          "answer": {
+            "type": "number",
+            "value": 2,
+            "display": "2"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 12 / 6 = 2.",
+          "trap": false,
+          "sourceDay": 19
+        },
+        {
+          "id": "equations-017-equations-solve-6x-24",
+          "topic": "Equations",
+          "prompt": "Solve 6x = 24.",
+          "answer": {
+            "type": "number",
+            "value": 4,
+            "display": "4"
+          },
+          "hint": "Divide both sides by 6.",
+          "explanation": "x = 24 / 6 = 4.",
+          "trap": false,
+          "sourceDay": 21
+        },
+        {
+          "id": "equations-018-equations-solve-2x-7-17",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 17.",
+          "answer": {
+            "type": "number",
+            "value": 5,
+            "display": "5"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 10, so x = 5.",
+          "trap": false,
+          "sourceDay": 22
+        },
+        {
+          "id": "equations-019-equations-solve-2x-7-19",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 19.",
+          "answer": {
+            "type": "number",
+            "value": 6,
+            "display": "6"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 12, so x = 6.",
+          "trap": false,
+          "sourceDay": 23
+        },
+        {
+          "id": "equations-020-equations-solve-2x-7-21",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 21.",
+          "answer": {
+            "type": "number",
+            "value": 7,
+            "display": "7"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 14, so x = 7.",
+          "trap": false,
+          "sourceDay": 24
+        },
+        {
+          "id": "equations-021-equations-solve-2x-7-25",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 25.",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 18, so x = 9.",
+          "trap": false,
+          "sourceDay": 26
+        },
+        {
+          "id": "equations-022-equations-solve-2x-7-27",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 27.",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 20, so x = 10.",
+          "trap": false,
+          "sourceDay": 27
+        },
+        {
+          "id": "equations-023-equations-solve-2x-7-29",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 29.",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 22, so x = 11.",
+          "trap": false,
+          "sourceDay": 28
+        },
+        {
+          "id": "equations-024-equations-solve-2x-7-11",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 11.",
+          "answer": {
+            "type": "number",
+            "value": 2,
+            "display": "2"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 4, so x = 2.",
+          "trap": false,
+          "sourceDay": 29
+        },
+        {
+          "id": "equations-025-equations-solve-2x-7-15",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 7 = 15.",
+          "answer": {
+            "type": "number",
+            "value": 4,
+            "display": "4"
+          },
+          "hint": "Subtract 7, then divide by 2.",
+          "explanation": "2x = 8, so x = 4.",
+          "trap": false,
+          "sourceDay": 31
+        },
+        {
+          "id": "equations-026-equations-solve-8x-40",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 40.",
+          "answer": {
+            "type": "number",
+            "value": 5,
+            "display": "5"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 40 / 8 = 5.",
+          "trap": false,
+          "sourceDay": 32
+        },
+        {
+          "id": "equations-027-equations-solve-8x-48",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 48.",
+          "answer": {
+            "type": "number",
+            "value": 6,
+            "display": "6"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 48 / 8 = 6.",
+          "trap": false,
+          "sourceDay": 33
+        },
+        {
+          "id": "equations-028-equations-solve-8x-56",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 56.",
+          "answer": {
+            "type": "number",
+            "value": 7,
+            "display": "7"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 56 / 8 = 7.",
+          "trap": false,
+          "sourceDay": 34
+        },
+        {
+          "id": "equations-029-equations-solve-8x-72",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 72.",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 72 / 8 = 9.",
+          "trap": false,
+          "sourceDay": 36
+        },
+        {
+          "id": "equations-030-equations-solve-8x-80",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 80.",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 80 / 8 = 10.",
+          "trap": false,
+          "sourceDay": 37
+        },
+        {
+          "id": "equations-031-equations-solve-8x-88",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 88.",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 88 / 8 = 11.",
+          "trap": false,
+          "sourceDay": 38
+        },
+        {
+          "id": "equations-032-equations-solve-8x-16",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 16.",
+          "answer": {
+            "type": "number",
+            "value": 2,
+            "display": "2"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 16 / 8 = 2.",
+          "trap": false,
+          "sourceDay": 39
+        },
+        {
+          "id": "equations-033-equations-solve-8x-32",
+          "topic": "Equations",
+          "prompt": "Solve 8x = 32.",
+          "answer": {
+            "type": "number",
+            "value": 4,
+            "display": "4"
+          },
+          "hint": "Divide both sides by 8.",
+          "explanation": "x = 32 / 8 = 4.",
+          "trap": false,
+          "sourceDay": 41
+        },
+        {
+          "id": "equations-034-equations-solve-2x-9-19",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 19.",
+          "answer": {
+            "type": "number",
+            "value": 5,
+            "display": "5"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 10, so x = 5.",
+          "trap": false,
+          "sourceDay": 42
+        },
+        {
+          "id": "equations-035-equations-solve-2x-9-21",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 21.",
+          "answer": {
+            "type": "number",
+            "value": 6,
+            "display": "6"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 12, so x = 6.",
+          "trap": false,
+          "sourceDay": 43
+        },
+        {
+          "id": "equations-036-equations-solve-2x-9-23",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 23.",
+          "answer": {
+            "type": "number",
+            "value": 7,
+            "display": "7"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 14, so x = 7.",
+          "trap": false,
+          "sourceDay": 44
+        },
+        {
+          "id": "equations-037-equations-solve-2x-9-27",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 27.",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 18, so x = 9.",
+          "trap": false,
+          "sourceDay": 46
+        },
+        {
+          "id": "equations-038-equations-solve-2x-9-29",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 29.",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 20, so x = 10.",
+          "trap": false,
+          "sourceDay": 47
+        },
+        {
+          "id": "equations-039-equations-solve-2x-9-31",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 31.",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 22, so x = 11.",
+          "trap": false,
+          "sourceDay": 48
+        },
+        {
+          "id": "equations-040-equations-solve-2x-9-13",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 13.",
+          "answer": {
+            "type": "number",
+            "value": 2,
+            "display": "2"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 4, so x = 2.",
+          "trap": false,
+          "sourceDay": 49
+        },
+        {
+          "id": "equations-041-equations-solve-2x-9-17",
+          "topic": "Equations",
+          "prompt": "Solve 2x + 9 = 17.",
+          "answer": {
+            "type": "number",
+            "value": 4,
+            "display": "4"
+          },
+          "hint": "Subtract 9, then divide by 2.",
+          "explanation": "2x = 8, so x = 4.",
+          "trap": false,
+          "sourceDay": 51
+        },
+        {
+          "id": "equations-042-equations-solve-10x-50",
+          "topic": "Equations",
+          "prompt": "Solve 10x = 50.",
+          "answer": {
+            "type": "number",
+            "value": 5,
+            "display": "5"
+          },
+          "hint": "Divide both sides by 10.",
+          "explanation": "x = 50 / 10 = 5.",
+          "trap": false,
+          "sourceDay": 52
+        },
+        {
+          "id": "equations-043-equations-solve-10x-60",
+          "topic": "Equations",
+          "prompt": "Solve 10x = 60.",
+          "answer": {
+            "type": "number",
+            "value": 6,
+            "display": "6"
+          },
+          "hint": "Divide both sides by 10.",
+          "explanation": "x = 60 / 10 = 6.",
+          "trap": false,
+          "sourceDay": 53
+        },
+        {
+          "id": "equations-044-equations-solve-10x-70",
+          "topic": "Equations",
+          "prompt": "Solve 10x = 70.",
+          "answer": {
+            "type": "number",
+            "value": 7,
+            "display": "7"
+          },
+          "hint": "Divide both sides by 10.",
+          "explanation": "x = 70 / 10 = 7.",
+          "trap": false,
+          "sourceDay": 54
+        },
+        {
+          "id": "equations-045-equations-solve-10x-90",
+          "topic": "Equations",
+          "prompt": "Solve 10x = 90.",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Divide both sides by 10.",
+          "explanation": "x = 90 / 10 = 9.",
+          "trap": false,
+          "sourceDay": 56
+        },
+        {
+          "id": "equations-046-equations-solve-10x-100",
+          "topic": "Equations",
+          "prompt": "Solve 10x = 100.",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "Divide both sides by 10.",
+          "explanation": "x = 100 / 10 = 10.",
+          "trap": false,
+          "sourceDay": 57
+        },
+        {
+          "id": "equations-047-equations-solve-10x-110",
+          "topic": "Equations",
+          "prompt": "Solve 10x = 110.",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "Divide both sides by 10.",
+          "explanation": "x = 110 / 10 = 11.",
+          "trap": false,
+          "sourceDay": 58
+        },
+        {
+          "id": "equations-048-equations-solve-10x-20",
+          "topic": "Equations",
+          "prompt": "Solve 10x = 20.",
+          "answer": {
+            "type": "number",
+            "value": 2,
+            "display": "2"
+          },
+          "hint": "Divide both sides by 10.",
+          "explanation": "x = 20 / 10 = 2.",
+          "trap": false,
+          "sourceDay": 59
+        }
+      ]
+    },
+    {
+      "id": "fractions",
+      "title": "Fractions",
+      "questions": [
+        {
+          "id": "fractions-001-fractions-simplify-15-40",
+          "topic": "Fractions",
+          "prompt": "Simplify 15/40.",
+          "answer": {
+            "type": "number",
+            "value": 0.375,
+            "display": "3/8"
+          },
+          "hint": "Look for a number that divides both 15 and 40.",
+          "explanation": "15/40 simplifies to 3/8.",
+          "trap": false,
+          "sourceDay": 1
+        },
+        {
+          "id": "fractions-002-fractions-simplify-12-32",
+          "topic": "Fractions",
+          "prompt": "Simplify 12/32.",
+          "answer": {
+            "type": "number",
+            "value": 0.375,
+            "display": "3/8"
+          },
+          "hint": "Look for a number that divides both 12 and 32.",
+          "explanation": "12/32 simplifies to 3/8.",
+          "trap": false,
+          "sourceDay": 2
+        },
+        {
+          "id": "fractions-003-fractions-simplify-15-27",
+          "topic": "Fractions",
+          "prompt": "Simplify 15/27.",
+          "answer": {
+            "type": "number",
+            "value": 0.5555555555555556,
+            "display": "5/9"
+          },
+          "hint": "Look for a number that divides both 15 and 27.",
+          "explanation": "15/27 simplifies to 5/9.",
+          "trap": false,
+          "sourceDay": 3
+        },
+        {
+          "id": "fractions-004-fractions-simplify-10-18",
+          "topic": "Fractions",
+          "prompt": "Simplify 10/18.",
+          "answer": {
+            "type": "number",
+            "value": 0.5555555555555556,
+            "display": "5/9"
+          },
+          "hint": "Look for a number that divides both 10 and 18.",
+          "explanation": "10/18 simplifies to 5/9.",
+          "trap": false,
+          "sourceDay": 4
+        },
+        {
+          "id": "fractions-005-fractions-simplify-25-45",
+          "topic": "Fractions",
+          "prompt": "Simplify 25/45.",
+          "answer": {
+            "type": "number",
+            "value": 0.5555555555555556,
+            "display": "5/9"
+          },
+          "hint": "Look for a number that divides both 25 and 45.",
+          "explanation": "25/45 simplifies to 5/9.",
+          "trap": false,
+          "sourceDay": 5
+        },
+        {
+          "id": "fractions-006-fractions-simplify-20-36",
+          "topic": "Fractions",
+          "prompt": "Simplify 20/36.",
+          "answer": {
+            "type": "number",
+            "value": 0.5555555555555556,
+            "display": "5/9"
+          },
+          "hint": "Look for a number that divides both 20 and 36.",
+          "explanation": "20/36 simplifies to 5/9.",
+          "trap": false,
+          "sourceDay": 6
+        },
+        {
+          "id": "fractions-007-fractions-simplify-25-50",
+          "topic": "Fractions",
+          "prompt": "Simplify 25/50.",
+          "answer": {
+            "type": "number",
+            "value": 0.5,
+            "display": "1/2"
+          },
+          "hint": "Look for a number that divides both 25 and 50.",
+          "explanation": "25/50 simplifies to 1/2.",
+          "trap": false,
+          "sourceDay": 13
+        },
+        {
+          "id": "fractions-008-fractions-simplify-20-40",
+          "topic": "Fractions",
+          "prompt": "Simplify 20/40.",
+          "answer": {
+            "type": "number",
+            "value": 0.5,
+            "display": "1/2"
+          },
+          "hint": "Look for a number that divides both 20 and 40.",
+          "explanation": "20/40 simplifies to 1/2.",
+          "trap": false,
+          "sourceDay": 14
+        },
+        {
+          "id": "fractions-009-fractions-simplify-15-30",
+          "topic": "Fractions",
+          "prompt": "Simplify 15/30.",
+          "answer": {
+            "type": "number",
+            "value": 0.5,
+            "display": "1/2"
+          },
+          "hint": "Look for a number that divides both 15 and 30.",
+          "explanation": "15/30 simplifies to 1/2.",
+          "trap": false,
+          "sourceDay": 15
+        },
+        {
+          "id": "fractions-010-fractions-simplify-10-20",
+          "topic": "Fractions",
+          "prompt": "Simplify 10/20.",
+          "answer": {
+            "type": "number",
+            "value": 0.5,
+            "display": "1/2"
+          },
+          "hint": "Look for a number that divides both 10 and 20.",
+          "explanation": "10/20 simplifies to 1/2.",
+          "trap": false,
+          "sourceDay": 16
+        },
+        {
+          "id": "fractions-011-fractions-simplify-9-33",
+          "topic": "Fractions",
+          "prompt": "Simplify 9/33.",
+          "answer": {
+            "type": "number",
+            "value": 0.2727272727272727,
+            "display": "3/11"
+          },
+          "hint": "Look for a number that divides both 9 and 33.",
+          "explanation": "9/33 simplifies to 3/11.",
+          "trap": false,
+          "sourceDay": 23
+        },
+        {
+          "id": "fractions-012-fractions-simplify-6-22",
+          "topic": "Fractions",
+          "prompt": "Simplify 6/22.",
+          "answer": {
+            "type": "number",
+            "value": 0.2727272727272727,
+            "display": "3/11"
+          },
+          "hint": "Look for a number that divides both 6 and 22.",
+          "explanation": "6/22 simplifies to 3/11.",
+          "trap": false,
+          "sourceDay": 24
+        },
+        {
+          "id": "fractions-013-fractions-simplify-15-55",
+          "topic": "Fractions",
+          "prompt": "Simplify 15/55.",
+          "answer": {
+            "type": "number",
+            "value": 0.2727272727272727,
+            "display": "3/11"
+          },
+          "hint": "Look for a number that divides both 15 and 55.",
+          "explanation": "15/55 simplifies to 3/11.",
+          "trap": false,
+          "sourceDay": 25
+        },
+        {
+          "id": "fractions-014-fractions-simplify-12-44",
+          "topic": "Fractions",
+          "prompt": "Simplify 12/44.",
+          "answer": {
+            "type": "number",
+            "value": 0.2727272727272727,
+            "display": "3/11"
+          },
+          "hint": "Look for a number that divides both 12 and 44.",
+          "explanation": "12/44 simplifies to 3/11.",
+          "trap": false,
+          "sourceDay": 26
+        },
+        {
+          "id": "fractions-015-fractions-simplify-50-60",
+          "topic": "Fractions",
+          "prompt": "Simplify 50/60.",
+          "answer": {
+            "type": "number",
+            "value": 0.8333333333333334,
+            "display": "5/6"
+          },
+          "hint": "Look for a number that divides both 50 and 60.",
+          "explanation": "50/60 simplifies to 5/6.",
+          "trap": false,
+          "sourceDay": 33
+        },
+        {
+          "id": "fractions-016-fractions-simplify-40-48",
+          "topic": "Fractions",
+          "prompt": "Simplify 40/48.",
+          "answer": {
+            "type": "number",
+            "value": 0.8333333333333334,
+            "display": "5/6"
+          },
+          "hint": "Look for a number that divides both 40 and 48.",
+          "explanation": "40/48 simplifies to 5/6.",
+          "trap": false,
+          "sourceDay": 34
+        },
+        {
+          "id": "fractions-017-fractions-simplify-30-36",
+          "topic": "Fractions",
+          "prompt": "Simplify 30/36.",
+          "answer": {
+            "type": "number",
+            "value": 0.8333333333333334,
+            "display": "5/6"
+          },
+          "hint": "Look for a number that divides both 30 and 36.",
+          "explanation": "30/36 simplifies to 5/6.",
+          "trap": false,
+          "sourceDay": 35
+        },
+        {
+          "id": "fractions-018-fractions-simplify-20-24",
+          "topic": "Fractions",
+          "prompt": "Simplify 20/24.",
+          "answer": {
+            "type": "number",
+            "value": 0.8333333333333334,
+            "display": "5/6"
+          },
+          "hint": "Look for a number that divides both 20 and 24.",
+          "explanation": "20/24 simplifies to 5/6.",
+          "trap": false,
+          "sourceDay": 36
+        },
+        {
+          "id": "fractions-019-fractions-simplify-15-39",
+          "topic": "Fractions",
+          "prompt": "Simplify 15/39.",
+          "answer": {
+            "type": "number",
+            "value": 0.38461538461538464,
+            "display": "5/13"
+          },
+          "hint": "Look for a number that divides both 15 and 39.",
+          "explanation": "15/39 simplifies to 5/13.",
+          "trap": false,
+          "sourceDay": 43
+        },
+        {
+          "id": "fractions-020-fractions-simplify-10-26",
+          "topic": "Fractions",
+          "prompt": "Simplify 10/26.",
+          "answer": {
+            "type": "number",
+            "value": 0.38461538461538464,
+            "display": "5/13"
+          },
+          "hint": "Look for a number that divides both 10 and 26.",
+          "explanation": "10/26 simplifies to 5/13.",
+          "trap": false,
+          "sourceDay": 44
+        },
+        {
+          "id": "fractions-021-fractions-simplify-25-65",
+          "topic": "Fractions",
+          "prompt": "Simplify 25/65.",
+          "answer": {
+            "type": "number",
+            "value": 0.38461538461538464,
+            "display": "5/13"
+          },
+          "hint": "Look for a number that divides both 25 and 65.",
+          "explanation": "25/65 simplifies to 5/13.",
+          "trap": false,
+          "sourceDay": 45
+        },
+        {
+          "id": "fractions-022-fractions-simplify-20-52",
+          "topic": "Fractions",
+          "prompt": "Simplify 20/52.",
+          "answer": {
+            "type": "number",
+            "value": 0.38461538461538464,
+            "display": "5/13"
+          },
+          "hint": "Look for a number that divides both 20 and 52.",
+          "explanation": "20/52 simplifies to 5/13.",
+          "trap": false,
+          "sourceDay": 46
+        },
+        {
+          "id": "fractions-023-fractions-simplify-55-70",
+          "topic": "Fractions",
+          "prompt": "Simplify 55/70.",
+          "answer": {
+            "type": "number",
+            "value": 0.7857142857142857,
+            "display": "11/14"
+          },
+          "hint": "Look for a number that divides both 55 and 70.",
+          "explanation": "55/70 simplifies to 11/14.",
+          "trap": false,
+          "sourceDay": 53
+        },
+        {
+          "id": "fractions-024-fractions-simplify-44-56",
+          "topic": "Fractions",
+          "prompt": "Simplify 44/56.",
+          "answer": {
+            "type": "number",
+            "value": 0.7857142857142857,
+            "display": "11/14"
+          },
+          "hint": "Look for a number that divides both 44 and 56.",
+          "explanation": "44/56 simplifies to 11/14.",
+          "trap": false,
+          "sourceDay": 54
+        },
+        {
+          "id": "fractions-025-fractions-simplify-33-42",
+          "topic": "Fractions",
+          "prompt": "Simplify 33/42.",
+          "answer": {
+            "type": "number",
+            "value": 0.7857142857142857,
+            "display": "11/14"
+          },
+          "hint": "Look for a number that divides both 33 and 42.",
+          "explanation": "33/42 simplifies to 11/14.",
+          "trap": false,
+          "sourceDay": 55
+        },
+        {
+          "id": "fractions-026-fractions-simplify-22-28",
+          "topic": "Fractions",
+          "prompt": "Simplify 22/28.",
+          "answer": {
+            "type": "number",
+            "value": 0.7857142857142857,
+            "display": "11/14"
+          },
+          "hint": "Look for a number that divides both 22 and 28.",
+          "explanation": "22/28 simplifies to 11/14.",
+          "trap": false,
+          "sourceDay": 56
+        }
+      ]
+    },
+    {
+      "id": "percentages",
+      "title": "Percentages",
+      "questions": [
+        {
+          "id": "percentages-001-percentages-what-is-25-of-80",
+          "topic": "Percentages",
+          "prompt": "What is 25% of 80?",
+          "answer": {
+            "type": "number",
+            "value": 20,
+            "display": "20"
+          },
+          "hint": "25% means 25/100.",
+          "explanation": "25% of 80 is 20.",
+          "trap": false,
+          "sourceDay": 1
+        },
+        {
+          "id": "percentages-002-percentages-what-is-25-of-100",
+          "topic": "Percentages",
+          "prompt": "What is 25% of 100?",
+          "answer": {
+            "type": "number",
+            "value": 25,
+            "display": "25"
+          },
+          "hint": "25% means 25/100.",
+          "explanation": "25% of 100 is 25.",
+          "trap": false,
+          "sourceDay": 2
+        },
+        {
+          "id": "percentages-003-percentages-increase-120-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 120 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 210,
+            "display": "210"
+          },
+          "hint": "Find 75% of 120, then add it.",
+          "explanation": "120 increased by 75% is 210.",
+          "trap": false,
+          "sourceDay": 4
+        },
+        {
+          "id": "percentages-004-percentages-increase-140-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 140 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 245,
+            "display": "245"
+          },
+          "hint": "Find 75% of 140, then add it.",
+          "explanation": "140 increased by 75% is 245.",
+          "trap": false,
+          "sourceDay": 5
+        },
+        {
+          "id": "percentages-005-percentages-increase-160-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 160 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 280,
+            "display": "280"
+          },
+          "hint": "Find 75% of 160, then add it.",
+          "explanation": "160 increased by 75% is 280.",
+          "trap": false,
+          "sourceDay": 6
+        },
+        {
+          "id": "percentages-006-percentages-increase-50-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 50 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 87.5,
+            "display": "87.5"
+          },
+          "hint": "Find 75% of 50, then add it.",
+          "explanation": "50 increased by 75% is 87.5.",
+          "trap": false,
+          "sourceDay": 7
+        },
+        {
+          "id": "percentages-007-percentages-increase-90-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 90 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 157.5,
+            "display": "157.5"
+          },
+          "hint": "Find 75% of 90, then add it.",
+          "explanation": "90 increased by 75% is 157.5.",
+          "trap": false,
+          "sourceDay": 9
+        },
+        {
+          "id": "percentages-008-percentages-increase-110-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 110 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 192.5,
+            "display": "192.5"
+          },
+          "hint": "Find 75% of 110, then add it.",
+          "explanation": "110 increased by 75% is 192.5.",
+          "trap": false,
+          "sourceDay": 10
+        },
+        {
+          "id": "percentages-009-percentages-increase-130-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 130 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 227.5,
+            "display": "227.5"
+          },
+          "hint": "Find 75% of 130, then add it.",
+          "explanation": "130 increased by 75% is 227.5.",
+          "trap": false,
+          "sourceDay": 11
+        },
+        {
+          "id": "percentages-010-percentages-increase-150-by-75",
+          "topic": "Percentages",
+          "prompt": "Increase 150 by 75%.",
+          "answer": {
+            "type": "number",
+            "value": 262.5,
+            "display": "262.5"
+          },
+          "hint": "Find 75% of 150, then add it.",
+          "explanation": "150 increased by 75% is 262.5.",
+          "trap": false,
+          "sourceDay": 12
+        },
+        {
+          "id": "percentages-011-percentages-decrease-40-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 40 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 32,
+            "display": "32"
+          },
+          "hint": "Find 20% of 40, then subtract it.",
+          "explanation": "40 decreased by 20% is 32.",
+          "trap": false,
+          "sourceDay": 14
+        },
+        {
+          "id": "percentages-012-percentages-decrease-60-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 60 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 48,
+            "display": "48"
+          },
+          "hint": "Find 20% of 60, then subtract it.",
+          "explanation": "60 decreased by 20% is 48.",
+          "trap": false,
+          "sourceDay": 15
+        },
+        {
+          "id": "percentages-013-percentages-decrease-80-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 80 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 64,
+            "display": "64"
+          },
+          "hint": "Find 20% of 80, then subtract it.",
+          "explanation": "80 decreased by 20% is 64.",
+          "trap": false,
+          "sourceDay": 16
+        },
+        {
+          "id": "percentages-014-percentages-decrease-100-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 100 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 80,
+            "display": "80"
+          },
+          "hint": "Find 20% of 100, then subtract it.",
+          "explanation": "100 decreased by 20% is 80.",
+          "trap": false,
+          "sourceDay": 17
+        },
+        {
+          "id": "percentages-015-percentages-decrease-140-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 140 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 112,
+            "display": "112"
+          },
+          "hint": "Find 20% of 140, then subtract it.",
+          "explanation": "140 decreased by 20% is 112.",
+          "trap": false,
+          "sourceDay": 19
+        },
+        {
+          "id": "percentages-016-percentages-a-40-cat-cushion-is-reduced-by-25-what-is-th",
+          "topic": "Percentages",
+          "prompt": "A $40 cat cushion is reduced by 25%. What is the new price?",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "$30"
+          },
+          "hint": "25% of 40 is 10, then subtract it.",
+          "explanation": "25% of 40 is 10, so the new price is 40 - 10 = 30.",
+          "trap": false,
+          "sourceDay": 20
+        },
+        {
+          "id": "percentages-017-percentages-decrease-160-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 160 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 128,
+            "display": "128"
+          },
+          "hint": "Find 20% of 160, then subtract it.",
+          "explanation": "160 decreased by 20% is 128.",
+          "trap": false,
+          "sourceDay": 20
+        },
+        {
+          "id": "percentages-018-percentages-decrease-50-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 50 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 40,
+            "display": "40"
+          },
+          "hint": "Find 20% of 50, then subtract it.",
+          "explanation": "50 decreased by 20% is 40.",
+          "trap": false,
+          "sourceDay": 21
+        },
+        {
+          "id": "percentages-019-percentages-decrease-70-by-20",
+          "topic": "Percentages",
+          "prompt": "Decrease 70 by 20%.",
+          "answer": {
+            "type": "number",
+            "value": 56,
+            "display": "56"
+          },
+          "hint": "Find 20% of 70, then subtract it.",
+          "explanation": "70 decreased by 20% is 56.",
+          "trap": false,
+          "sourceDay": 22
+        },
+        {
+          "id": "percentages-020-percentages-what-is-50-of-90",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 90?",
+          "answer": {
+            "type": "number",
+            "value": 45,
+            "display": "45"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 90 is 45.",
+          "trap": false,
+          "sourceDay": 24
+        },
+        {
+          "id": "percentages-021-percentages-what-is-50-of-110",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 110?",
+          "answer": {
+            "type": "number",
+            "value": 55,
+            "display": "55"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 110 is 55.",
+          "trap": false,
+          "sourceDay": 25
+        },
+        {
+          "id": "percentages-022-percentages-what-is-50-of-130",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 130?",
+          "answer": {
+            "type": "number",
+            "value": 65,
+            "display": "65"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 130 is 65.",
+          "trap": false,
+          "sourceDay": 26
+        },
+        {
+          "id": "percentages-023-percentages-what-is-50-of-150",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 150?",
+          "answer": {
+            "type": "number",
+            "value": 75,
+            "display": "75"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 150 is 75.",
+          "trap": false,
+          "sourceDay": 27
+        },
+        {
+          "id": "percentages-024-percentages-what-is-50-of-60",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 60?",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "30"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 60 is 30.",
+          "trap": false,
+          "sourceDay": 29
+        },
+        {
+          "id": "percentages-025-percentages-what-is-50-of-80",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 80?",
+          "answer": {
+            "type": "number",
+            "value": 40,
+            "display": "40"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 80 is 40.",
+          "trap": false,
+          "sourceDay": 30
+        },
+        {
+          "id": "percentages-026-percentages-what-is-50-of-100",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 100?",
+          "answer": {
+            "type": "number",
+            "value": 50,
+            "display": "50"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 100 is 50.",
+          "trap": false,
+          "sourceDay": 31
+        },
+        {
+          "id": "percentages-027-percentages-what-is-50-of-120",
+          "topic": "Percentages",
+          "prompt": "What is 50% of 120?",
+          "answer": {
+            "type": "number",
+            "value": 60,
+            "display": "60"
+          },
+          "hint": "50% means 50/100.",
+          "explanation": "50% of 120 is 60.",
+          "trap": false,
+          "sourceDay": 32
+        },
+        {
+          "id": "percentages-028-percentages-increase-140-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 140 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 157.5,
+            "display": "157.5"
+          },
+          "hint": "Find 12.5% of 140, then add it.",
+          "explanation": "140 increased by 12.5% is 157.5.",
+          "trap": false,
+          "sourceDay": 34
+        },
+        {
+          "id": "percentages-029-percentages-increase-160-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 160 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 180,
+            "display": "180"
+          },
+          "hint": "Find 12.5% of 160, then add it.",
+          "explanation": "160 increased by 12.5% is 180.",
+          "trap": false,
+          "sourceDay": 35
+        },
+        {
+          "id": "percentages-030-percentages-increase-50-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 50 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 56.25,
+            "display": "56.25"
+          },
+          "hint": "Find 12.5% of 50, then add it.",
+          "explanation": "50 increased by 12.5% is 56.25.",
+          "trap": false,
+          "sourceDay": 36
+        },
+        {
+          "id": "percentages-031-percentages-increase-70-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 70 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 78.75,
+            "display": "78.75"
+          },
+          "hint": "Find 12.5% of 70, then add it.",
+          "explanation": "70 increased by 12.5% is 78.75.",
+          "trap": false,
+          "sourceDay": 37
+        },
+        {
+          "id": "percentages-032-percentages-increase-110-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 110 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 123.75,
+            "display": "123.75"
+          },
+          "hint": "Find 12.5% of 110, then add it.",
+          "explanation": "110 increased by 12.5% is 123.75.",
+          "trap": false,
+          "sourceDay": 39
+        },
+        {
+          "id": "percentages-033-percentages-increase-130-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 130 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 146.25,
+            "display": "146.25"
+          },
+          "hint": "Find 12.5% of 130, then add it.",
+          "explanation": "130 increased by 12.5% is 146.25.",
+          "trap": false,
+          "sourceDay": 40
+        },
+        {
+          "id": "percentages-034-percentages-increase-150-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 150 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 168.75,
+            "display": "168.75"
+          },
+          "hint": "Find 12.5% of 150, then add it.",
+          "explanation": "150 increased by 12.5% is 168.75.",
+          "trap": false,
+          "sourceDay": 41
+        },
+        {
+          "id": "percentages-035-percentages-increase-40-by-12-5",
+          "topic": "Percentages",
+          "prompt": "Increase 40 by 12.5%.",
+          "answer": {
+            "type": "number",
+            "value": 45,
+            "display": "45"
+          },
+          "hint": "Find 12.5% of 40, then add it.",
+          "explanation": "40 increased by 12.5% is 45.",
+          "trap": false,
+          "sourceDay": 42
+        },
+        {
+          "id": "percentages-036-percentages-decrease-60-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 60 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 36,
+            "display": "36"
+          },
+          "hint": "Find 40% of 60, then subtract it.",
+          "explanation": "60 decreased by 40% is 36.",
+          "trap": false,
+          "sourceDay": 44
+        },
+        {
+          "id": "percentages-037-percentages-decrease-80-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 80 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 48,
+            "display": "48"
+          },
+          "hint": "Find 40% of 80, then subtract it.",
+          "explanation": "80 decreased by 40% is 48.",
+          "trap": false,
+          "sourceDay": 45
+        },
+        {
+          "id": "percentages-038-percentages-decrease-100-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 100 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 60,
+            "display": "60"
+          },
+          "hint": "Find 40% of 100, then subtract it.",
+          "explanation": "100 decreased by 40% is 60.",
+          "trap": false,
+          "sourceDay": 46
+        },
+        {
+          "id": "percentages-039-percentages-decrease-120-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 120 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 72,
+            "display": "72"
+          },
+          "hint": "Find 40% of 120, then subtract it.",
+          "explanation": "120 decreased by 40% is 72.",
+          "trap": false,
+          "sourceDay": 47
+        },
+        {
+          "id": "percentages-040-percentages-decrease-160-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 160 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 96,
+            "display": "96"
+          },
+          "hint": "Find 40% of 160, then subtract it.",
+          "explanation": "160 decreased by 40% is 96.",
+          "trap": false,
+          "sourceDay": 49
+        },
+        {
+          "id": "percentages-041-percentages-decrease-50-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 50 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "30"
+          },
+          "hint": "Find 40% of 50, then subtract it.",
+          "explanation": "50 decreased by 40% is 30.",
+          "trap": false,
+          "sourceDay": 50
+        },
+        {
+          "id": "percentages-042-percentages-decrease-70-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 70 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 42,
+            "display": "42"
+          },
+          "hint": "Find 40% of 70, then subtract it.",
+          "explanation": "70 decreased by 40% is 42.",
+          "trap": false,
+          "sourceDay": 51
+        },
+        {
+          "id": "percentages-043-percentages-decrease-90-by-40",
+          "topic": "Percentages",
+          "prompt": "Decrease 90 by 40%.",
+          "answer": {
+            "type": "number",
+            "value": 54,
+            "display": "54"
+          },
+          "hint": "Find 40% of 90, then subtract it.",
+          "explanation": "90 decreased by 40% is 54.",
+          "trap": false,
+          "sourceDay": 52
+        },
+        {
+          "id": "percentages-044-percentages-what-is-10-of-110",
+          "topic": "Percentages",
+          "prompt": "What is 10% of 110?",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "10% means 10/100.",
+          "explanation": "10% of 110 is 11.",
+          "trap": false,
+          "sourceDay": 54
+        },
+        {
+          "id": "percentages-045-percentages-what-is-10-of-130",
+          "topic": "Percentages",
+          "prompt": "What is 10% of 130?",
+          "answer": {
+            "type": "number",
+            "value": 13,
+            "display": "13"
+          },
+          "hint": "10% means 10/100.",
+          "explanation": "10% of 130 is 13.",
+          "trap": false,
+          "sourceDay": 55
+        },
+        {
+          "id": "percentages-046-percentages-what-is-10-of-150",
+          "topic": "Percentages",
+          "prompt": "What is 10% of 150?",
+          "answer": {
+            "type": "number",
+            "value": 15,
+            "display": "15"
+          },
+          "hint": "10% means 10/100.",
+          "explanation": "10% of 150 is 15.",
+          "trap": false,
+          "sourceDay": 56
+        },
+        {
+          "id": "percentages-047-percentages-what-is-10-of-40",
+          "topic": "Percentages",
+          "prompt": "What is 10% of 40?",
+          "answer": {
+            "type": "number",
+            "value": 4,
+            "display": "4"
+          },
+          "hint": "10% means 10/100.",
+          "explanation": "10% of 40 is 4.",
+          "trap": false,
+          "sourceDay": 57
+        },
+        {
+          "id": "percentages-048-percentages-what-is-10-of-80",
+          "topic": "Percentages",
+          "prompt": "What is 10% of 80?",
+          "answer": {
+            "type": "number",
+            "value": 8,
+            "display": "8"
+          },
+          "hint": "10% means 10/100.",
+          "explanation": "10% of 80 is 8.",
+          "trap": false,
+          "sourceDay": 59
+        },
+        {
+          "id": "percentages-049-percentages-what-is-10-of-100",
+          "topic": "Percentages",
+          "prompt": "What is 10% of 100?",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "10% means 10/100.",
+          "explanation": "10% of 100 is 10.",
+          "trap": false,
+          "sourceDay": 60
+        }
+      ]
+    },
+    {
+      "id": "negatives",
+      "title": "Negative numbers",
+      "questions": [
+        {
+          "id": "negatives-001-negative-numbers-what-is-6-x-7",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -7?",
+          "answer": {
+            "type": "number",
+            "value": 42,
+            "display": "42"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -7 = 42.",
+          "trap": false,
+          "sourceDay": 5
+        },
+        {
+          "id": "negatives-002-negative-numbers-what-is-6-x-9",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -9?",
+          "answer": {
+            "type": "number",
+            "value": 54,
+            "display": "54"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -9 = 54.",
+          "trap": false,
+          "sourceDay": 6
+        },
+        {
+          "id": "negatives-003-negative-numbers-what-is-6-x-2",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -2?",
+          "answer": {
+            "type": "number",
+            "value": 12,
+            "display": "12"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -2 = 12.",
+          "trap": false,
+          "sourceDay": 7
+        },
+        {
+          "id": "negatives-004-negative-numbers-what-is-6-x-4",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -4?",
+          "answer": {
+            "type": "number",
+            "value": 24,
+            "display": "24"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -4 = 24.",
+          "trap": false,
+          "sourceDay": 8
+        },
+        {
+          "id": "negatives-005-negative-numbers-what-is-6-x-6",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -6?",
+          "answer": {
+            "type": "number",
+            "value": 36,
+            "display": "36"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -6 = 36.",
+          "trap": false,
+          "sourceDay": 9
+        },
+        {
+          "id": "negatives-006-negative-numbers-what-is-6-x-8",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -8?",
+          "answer": {
+            "type": "number",
+            "value": 48,
+            "display": "48"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -8 = 48.",
+          "trap": false,
+          "sourceDay": 10
+        },
+        {
+          "id": "negatives-007-negative-numbers-what-is-6-x-1",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -1?",
+          "answer": {
+            "type": "number",
+            "value": 6,
+            "display": "6"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -1 = 6.",
+          "trap": false,
+          "sourceDay": 11
+        },
+        {
+          "id": "negatives-008-negative-numbers-what-is-6-x-3",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -3?",
+          "answer": {
+            "type": "number",
+            "value": 18,
+            "display": "18"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -3 = 18.",
+          "trap": false,
+          "sourceDay": 12
+        },
+        {
+          "id": "negatives-009-negative-numbers-what-is-6-x-5",
+          "topic": "Negative numbers",
+          "prompt": "What is -6 x -5?",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "30"
+          },
+          "hint": "A negative times a negative is positive.",
+          "explanation": "-6 x -5 = 30.",
+          "trap": false,
+          "sourceDay": 13
+        },
+        {
+          "id": "negatives-010-negative-numbers-what-is-24-6",
+          "topic": "Negative numbers",
+          "prompt": "What is -24 / 6?",
+          "answer": {
+            "type": "number",
+            "value": -4,
+            "display": "-4"
+          },
+          "hint": "A negative divided by a positive is negative.",
+          "explanation": "-24 / 6 = -4.",
+          "trap": false,
+          "sourceDay": 16
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "title": "Algebra",
+      "questions": [
+        {
+          "id": "algebra-001-factorisation-factorise-7x-56",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 56.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+8)"
+            ],
+            "display": "7(x + 8)"
+          },
+          "hint": "Find the common factor of 7x and 56.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 8).",
+          "trap": false,
+          "sourceDay": 2
+        },
+        {
+          "id": "algebra-002-factorisation-factorise-7x-7",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 7.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+1)"
+            ],
+            "display": "7(x + 1)"
+          },
+          "hint": "Find the common factor of 7x and 7.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 1).",
+          "trap": false,
+          "sourceDay": 3
+        },
+        {
+          "id": "algebra-003-factorisation-factorise-7x-14",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 14.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+2)"
+            ],
+            "display": "7(x + 2)"
+          },
+          "hint": "Find the common factor of 7x and 14.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 2).",
+          "trap": false,
+          "sourceDay": 4
+        },
+        {
+          "id": "algebra-004-factorisation-factorise-7x-21",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 21.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+3)"
+            ],
+            "display": "7(x + 3)"
+          },
+          "hint": "Find the common factor of 7x and 21.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 3).",
+          "trap": false,
+          "sourceDay": 5
+        },
+        {
+          "id": "algebra-005-factorisation-factorise-5x-35",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 35.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+7)"
+            ],
+            "display": "5(x + 7)"
+          },
+          "hint": "Find the common factor of 5x and 35.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 7).",
+          "trap": false,
+          "sourceDay": 7
+        },
+        {
+          "id": "algebra-006-factorisation-factorise-5x-40",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 40.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+8)"
+            ],
+            "display": "5(x + 8)"
+          },
+          "hint": "Find the common factor of 5x and 40.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 8).",
+          "trap": false,
+          "sourceDay": 8
+        },
+        {
+          "id": "algebra-007-factorisation-factorise-5x-5",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 5.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+1)"
+            ],
+            "display": "5(x + 1)"
+          },
+          "hint": "Find the common factor of 5x and 5.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 1).",
+          "trap": false,
+          "sourceDay": 9
+        },
+        {
+          "id": "algebra-008-factorisation-factorise-5x-10",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 10.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+2)"
+            ],
+            "display": "5(x + 2)"
+          },
+          "hint": "Find the common factor of 5x and 10.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 2).",
+          "trap": false,
+          "sourceDay": 10
+        },
+        {
+          "id": "algebra-009-factorisation-factorise-5x-20",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 20.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+4)"
+            ],
+            "display": "5(x + 4)"
+          },
+          "hint": "Find the common factor of 5x and 20.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 4).",
+          "trap": false,
+          "sourceDay": 12
+        },
+        {
+          "id": "algebra-010-factorisation-factorise-5x-25",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 25.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+5)"
+            ],
+            "display": "5(x + 5)"
+          },
+          "hint": "Find the common factor of 5x and 25.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 5).",
+          "trap": false,
+          "sourceDay": 13
+        },
+        {
+          "id": "algebra-011-factorisation-factorise-5x-30",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 30.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+6)"
+            ],
+            "display": "5(x + 6)"
+          },
+          "hint": "Find the common factor of 5x and 30.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 6).",
+          "trap": false,
+          "sourceDay": 14
+        },
+        {
+          "id": "algebra-012-factorisation-factorise-3x-9",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 9.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+3)"
+            ],
+            "display": "3(x + 3)"
+          },
+          "hint": "Find the common factor of 3x and 9.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 3).",
+          "trap": false,
+          "sourceDay": 17
+        },
+        {
+          "id": "algebra-013-factorisation-factorise-3x-12",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 12.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+4)"
+            ],
+            "display": "3(x + 4)"
+          },
+          "hint": "Find the common factor of 3x and 12.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 4).",
+          "trap": false,
+          "sourceDay": 18
+        },
+        {
+          "id": "algebra-014-factorisation-factorise-3x-15",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 15.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+5)"
+            ],
+            "display": "3(x + 5)"
+          },
+          "hint": "Find the common factor of 3x and 15.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 5).",
+          "trap": false,
+          "sourceDay": 19
+        },
+        {
+          "id": "algebra-015-factorisation-factorise-3x-18",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 18.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+6)"
+            ],
+            "display": "3(x + 6)"
+          },
+          "hint": "Find the common factor of 3x and 18.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 6).",
+          "trap": false,
+          "sourceDay": 20
+        },
+        {
+          "id": "algebra-016-factorisation-factorise-3x-24",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 24.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+8)"
+            ],
+            "display": "3(x + 8)"
+          },
+          "hint": "Find the common factor of 3x and 24.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 8).",
+          "trap": false,
+          "sourceDay": 22
+        },
+        {
+          "id": "algebra-017-factorisation-factorise-3x-3",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 3.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+1)"
+            ],
+            "display": "3(x + 1)"
+          },
+          "hint": "Find the common factor of 3x and 3.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 1).",
+          "trap": false,
+          "sourceDay": 23
+        },
+        {
+          "id": "algebra-018-factorisation-factorise-3x-6",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 6.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+2)"
+            ],
+            "display": "3(x + 2)"
+          },
+          "hint": "Find the common factor of 3x and 6.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 2).",
+          "trap": false,
+          "sourceDay": 24
+        },
+        {
+          "id": "algebra-019-factorisation-factorise-7x-49",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 49.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+7)"
+            ],
+            "display": "7(x + 7)"
+          },
+          "hint": "Find the common factor of 7x and 49.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 7).",
+          "trap": false,
+          "sourceDay": 27
+        },
+        {
+          "id": "algebra-020-factorisation-factorise-7x-28",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 28.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+4)"
+            ],
+            "display": "7(x + 4)"
+          },
+          "hint": "Find the common factor of 7x and 28.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 4).",
+          "trap": false,
+          "sourceDay": 32
+        },
+        {
+          "id": "algebra-021-factorisation-factorise-7x-35",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 35.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+5)"
+            ],
+            "display": "7(x + 5)"
+          },
+          "hint": "Find the common factor of 7x and 35.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 5).",
+          "trap": false,
+          "sourceDay": 33
+        },
+        {
+          "id": "algebra-022-factorisation-factorise-7x-42",
+          "topic": "Factorisation",
+          "prompt": "Factorise 7x + 42.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "7(x+6)"
+            ],
+            "display": "7(x + 6)"
+          },
+          "hint": "Find the common factor of 7x and 42.",
+          "explanation": "Both terms share 7, so the factorised form is 7(x + 6).",
+          "trap": false,
+          "sourceDay": 34
+        },
+        {
+          "id": "algebra-023-factorisation-factorise-5x-15",
+          "topic": "Factorisation",
+          "prompt": "Factorise 5x + 15.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "5(x+3)"
+            ],
+            "display": "5(x + 3)"
+          },
+          "hint": "Find the common factor of 5x and 15.",
+          "explanation": "Both terms share 5, so the factorised form is 5(x + 3).",
+          "trap": false,
+          "sourceDay": 37
+        },
+        {
+          "id": "algebra-024-factorisation-factorise-3x-21",
+          "topic": "Factorisation",
+          "prompt": "Factorise 3x + 21.",
+          "answer": {
+            "type": "expression",
+            "values": [
+              "3(x+7)"
+            ],
+            "display": "3(x + 7)"
+          },
+          "hint": "Find the common factor of 3x and 21.",
+          "explanation": "Both terms share 3, so the factorised form is 3(x + 7).",
+          "trap": false,
+          "sourceDay": 47
+        }
+      ]
+    },
+    {
+      "id": "powers",
+      "title": "Powers and factorials",
+      "questions": [
+        {
+          "id": "powers-001-zero-powers-what-is-3-0",
+          "topic": "Zero powers",
+          "prompt": "What is 3^0?",
+          "answer": {
+            "type": "number",
+            "value": 1,
+            "display": "1"
+          },
+          "hint": "Any non-zero number to the power of 0 equals 1.",
+          "explanation": "3 is not zero, so 3^0 = 1.",
+          "trap": false,
+          "sourceDay": 2
+        },
+        {
+          "id": "powers-002-powers-what-is-3-3",
+          "topic": "Powers",
+          "prompt": "What is 3^3?",
+          "answer": {
+            "type": "number",
+            "value": 27,
+            "display": "27"
+          },
+          "hint": "Multiply 3 by itself 3 times.",
+          "explanation": "3^3 = 27.",
+          "trap": false,
+          "sourceDay": 7
+        },
+        {
+          "id": "powers-003-powers-what-is-3-2",
+          "topic": "Powers",
+          "prompt": "What is 3^2?",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Multiply 3 by itself 2 times.",
+          "explanation": "3^2 = 9.",
+          "trap": false,
+          "sourceDay": 27
+        },
+        {
+          "id": "powers-004-powers-what-is-3-4",
+          "topic": "Powers",
+          "prompt": "What is 3^4?",
+          "answer": {
+            "type": "number",
+            "value": 81,
+            "display": "81"
+          },
+          "hint": "Multiply 3 by itself 4 times.",
+          "explanation": "3^4 = 81.",
+          "trap": false,
+          "sourceDay": 47
+        }
+      ]
+    },
+    {
+      "id": "decimals",
+      "title": "Decimals and reciprocals",
+      "questions": [
+        {
+          "id": "decimals-001-decimals-write-1-2-as-a-decimal",
+          "topic": "Decimals",
+          "prompt": "Write 1/2 as a decimal.",
+          "answer": {
+            "type": "number",
+            "value": 0.5,
+            "display": "0.5"
+          },
+          "hint": "Divide the top number by the bottom number.",
+          "explanation": "1/2 = 0.5.",
+          "trap": false,
+          "sourceDay": 1
+        },
+        {
+          "id": "decimals-002-decimals-write-1-5-as-a-decimal",
+          "topic": "Decimals",
+          "prompt": "Write 1/5 as a decimal.",
+          "answer": {
+            "type": "number",
+            "value": 0.2,
+            "display": "0.2"
+          },
+          "hint": "Divide the top number by the bottom number.",
+          "explanation": "1/5 = 0.2.",
+          "trap": false,
+          "sourceDay": 8
+        },
+        {
+          "id": "decimals-003-decimals-write-1-25-as-a-decimal",
+          "topic": "Decimals",
+          "prompt": "Write 1/25 as a decimal.",
+          "answer": {
+            "type": "number",
+            "value": 0.04,
+            "display": "0.04"
+          },
+          "hint": "Divide the top number by the bottom number.",
+          "explanation": "1/25 = 0.04.",
+          "trap": false,
+          "sourceDay": 18
+        },
+        {
+          "id": "decimals-004-decimals-write-0-125-as-a-fraction-in-simplest-form",
+          "topic": "Decimals",
+          "prompt": "Write 0.125 as a fraction in simplest form.",
+          "answer": {
+            "type": "number",
+            "value": 0.125,
+            "display": "1/8"
+          },
+          "hint": "0.125 is 125/1000 before simplifying.",
+          "explanation": "0.125 = 125/1000 = 1/8.",
+          "trap": false,
+          "sourceDay": 19
+        },
+        {
+          "id": "decimals-005-decimals-write-3-4-as-a-decimal",
+          "topic": "Decimals",
+          "prompt": "Write 3/4 as a decimal.",
+          "answer": {
+            "type": "number",
+            "value": 0.75,
+            "display": "0.75"
+          },
+          "hint": "Divide the top number by the bottom number.",
+          "explanation": "3/4 = 0.75.",
+          "trap": false,
+          "sourceDay": 28
+        },
+        {
+          "id": "decimals-006-decimals-write-3-8-as-a-decimal",
+          "topic": "Decimals",
+          "prompt": "Write 3/8 as a decimal.",
+          "answer": {
+            "type": "number",
+            "value": 0.375,
+            "display": "0.375"
+          },
+          "hint": "Divide the top number by the bottom number.",
+          "explanation": "3/8 = 0.375.",
+          "trap": false,
+          "sourceDay": 38
+        },
+        {
+          "id": "decimals-007-decimals-write-1-4-as-a-decimal",
+          "topic": "Decimals",
+          "prompt": "Write 1/4 as a decimal.",
+          "answer": {
+            "type": "number",
+            "value": 0.25,
+            "display": "0.25"
+          },
+          "hint": "Divide the top number by the bottom number.",
+          "explanation": "1/4 = 0.25.",
+          "trap": false,
+          "sourceDay": 48
+        },
+        {
+          "id": "decimals-008-decimals-write-1-8-as-a-decimal",
+          "topic": "Decimals",
+          "prompt": "Write 1/8 as a decimal.",
+          "answer": {
+            "type": "number",
+            "value": 0.125,
+            "display": "0.125"
+          },
+          "hint": "Divide the top number by the bottom number.",
+          "explanation": "1/8 = 0.125.",
+          "trap": false,
+          "sourceDay": 58
+        }
+      ]
+    },
+    {
+      "id": "ratios",
+      "title": "Ratios and proportion",
+      "questions": [
+        {
+          "id": "ratios-001-ratios-simplify-the-ratio-10-20",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:20.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 2,
+            "display": "1:2"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:20 simplifies to 1:2.",
+          "trap": false,
+          "sourceDay": 1
+        },
+        {
+          "id": "ratios-002-ratios-simplify-the-ratio-10-25",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:25.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 5,
+            "display": "2:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:25 simplifies to 2:5.",
+          "trap": false,
+          "sourceDay": 2
+        },
+        {
+          "id": "ratios-003-ratios-simplify-the-ratio-10-30",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:30.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 3,
+            "display": "1:3"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:30 simplifies to 1:3.",
+          "trap": false,
+          "sourceDay": 3
+        },
+        {
+          "id": "ratios-004-ratios-simplify-the-ratio-10-35",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:35.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 7,
+            "display": "2:7"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:35 simplifies to 2:7.",
+          "trap": false,
+          "sourceDay": 4
+        },
+        {
+          "id": "ratios-005-ratios-simplify-the-ratio-10-40",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:40.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 4,
+            "display": "1:4"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:40 simplifies to 1:4.",
+          "trap": false,
+          "sourceDay": 5
+        },
+        {
+          "id": "ratios-006-ratios-simplify-the-ratio-10-45",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:45.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 9,
+            "display": "2:9"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:45 simplifies to 2:9.",
+          "trap": false,
+          "sourceDay": 6
+        },
+        {
+          "id": "ratios-007-ratios-simplify-the-ratio-10-15",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:15.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 3,
+            "display": "2:3"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:15 simplifies to 2:3.",
+          "trap": false,
+          "sourceDay": 8
+        },
+        {
+          "id": "ratios-008-ratios-simplify-the-ratio-20-30",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:30.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 3,
+            "display": "2:3"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:30 simplifies to 2:3.",
+          "trap": false,
+          "sourceDay": 9
+        },
+        {
+          "id": "ratios-009-ratios-simplify-the-ratio-20-35",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:35.",
+          "answer": {
+            "type": "ratio",
+            "a": 4,
+            "b": 7,
+            "display": "4:7"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:35 simplifies to 4:7.",
+          "trap": false,
+          "sourceDay": 10
+        },
+        {
+          "id": "ratios-010-ratios-simplify-the-ratio-20-40",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:40.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 2,
+            "display": "1:2"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:40 simplifies to 1:2.",
+          "trap": false,
+          "sourceDay": 11
+        },
+        {
+          "id": "ratios-011-ratios-simplify-the-ratio-20-45",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:45.",
+          "answer": {
+            "type": "ratio",
+            "a": 4,
+            "b": 9,
+            "display": "4:9"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:45 simplifies to 4:9.",
+          "trap": false,
+          "sourceDay": 12
+        },
+        {
+          "id": "ratios-012-ratios-simplify-the-ratio-20-15",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:15.",
+          "answer": {
+            "type": "ratio",
+            "a": 4,
+            "b": 3,
+            "display": "4:3"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:15 simplifies to 4:3.",
+          "trap": false,
+          "sourceDay": 14
+        },
+        {
+          "id": "ratios-013-ratios-simplify-the-ratio-20-20",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:20.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 1,
+            "display": "1:1"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:20 simplifies to 1:1.",
+          "trap": false,
+          "sourceDay": 15
+        },
+        {
+          "id": "ratios-014-ratios-simplify-the-ratio-20-25",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:25.",
+          "answer": {
+            "type": "ratio",
+            "a": 4,
+            "b": 5,
+            "display": "4:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:25 simplifies to 4:5.",
+          "trap": false,
+          "sourceDay": 16
+        },
+        {
+          "id": "ratios-015-ratios-simplify-the-ratio-30-15",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:15.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 1,
+            "display": "2:1"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:15 simplifies to 2:1.",
+          "trap": false,
+          "sourceDay": 20
+        },
+        {
+          "id": "ratios-016-ratios-simplify-the-ratio-30-20",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:20.",
+          "answer": {
+            "type": "ratio",
+            "a": 3,
+            "b": 2,
+            "display": "3:2"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:20 simplifies to 3:2.",
+          "trap": false,
+          "sourceDay": 21
+        },
+        {
+          "id": "ratios-017-ratios-simplify-the-ratio-30-25",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:25.",
+          "answer": {
+            "type": "ratio",
+            "a": 6,
+            "b": 5,
+            "display": "6:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:25 simplifies to 6:5.",
+          "trap": false,
+          "sourceDay": 22
+        },
+        {
+          "id": "ratios-018-ratios-simplify-the-ratio-30-30",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:30.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 1,
+            "display": "1:1"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:30 simplifies to 1:1.",
+          "trap": false,
+          "sourceDay": 23
+        },
+        {
+          "id": "ratios-019-ratios-simplify-the-ratio-30-35",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:35.",
+          "answer": {
+            "type": "ratio",
+            "a": 6,
+            "b": 7,
+            "display": "6:7"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:35 simplifies to 6:7.",
+          "trap": false,
+          "sourceDay": 24
+        },
+        {
+          "id": "ratios-020-ratios-simplify-the-ratio-30-40",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:40.",
+          "answer": {
+            "type": "ratio",
+            "a": 3,
+            "b": 4,
+            "display": "3:4"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:40 simplifies to 3:4.",
+          "trap": false,
+          "sourceDay": 25
+        },
+        {
+          "id": "ratios-021-ratios-simplify-the-ratio-30-45",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:45.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 3,
+            "display": "2:3"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:45 simplifies to 2:3.",
+          "trap": false,
+          "sourceDay": 26
+        },
+        {
+          "id": "ratios-022-ratios-simplify-the-ratio-40-30",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:30.",
+          "answer": {
+            "type": "ratio",
+            "a": 4,
+            "b": 3,
+            "display": "4:3"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:30 simplifies to 4:3.",
+          "trap": false,
+          "sourceDay": 29
+        },
+        {
+          "id": "ratios-023-ratios-simplify-the-ratio-40-35",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:35.",
+          "answer": {
+            "type": "ratio",
+            "a": 8,
+            "b": 7,
+            "display": "8:7"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:35 simplifies to 8:7.",
+          "trap": false,
+          "sourceDay": 30
+        },
+        {
+          "id": "ratios-024-ratios-simplify-the-ratio-40-40",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:40.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 1,
+            "display": "1:1"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:40 simplifies to 1:1.",
+          "trap": false,
+          "sourceDay": 31
+        },
+        {
+          "id": "ratios-025-ratios-simplify-the-ratio-40-45",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:45.",
+          "answer": {
+            "type": "ratio",
+            "a": 8,
+            "b": 9,
+            "display": "8:9"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:45 simplifies to 8:9.",
+          "trap": false,
+          "sourceDay": 32
+        },
+        {
+          "id": "ratios-026-ratios-simplify-the-ratio-40-15",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:15.",
+          "answer": {
+            "type": "ratio",
+            "a": 8,
+            "b": 3,
+            "display": "8:3"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:15 simplifies to 8:3.",
+          "trap": false,
+          "sourceDay": 34
+        },
+        {
+          "id": "ratios-027-ratios-simplify-the-ratio-40-20",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:20.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 1,
+            "display": "2:1"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:20 simplifies to 2:1.",
+          "trap": false,
+          "sourceDay": 35
+        },
+        {
+          "id": "ratios-028-ratios-simplify-the-ratio-40-25",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:25.",
+          "answer": {
+            "type": "ratio",
+            "a": 8,
+            "b": 5,
+            "display": "8:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:25 simplifies to 8:5.",
+          "trap": false,
+          "sourceDay": 36
+        }
+      ]
+    },
+    {
+      "id": "measurement",
+      "title": "Measurement, area, and perimeter",
+      "questions": [
+        {
+          "id": "measurement-001-perimeter-a-rectangle-is-13-cm-by-4-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 13 cm by 4 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 34,
+            "display": "34 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (13 + 4) = 34 cm.",
+          "trap": false,
+          "sourceDay": 1
+        },
+        {
+          "id": "measurement-002-perimeter-a-rectangle-is-13-cm-by-6-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 13 cm by 6 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 38,
+            "display": "38 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (13 + 6) = 38 cm.",
+          "trap": false,
+          "sourceDay": 3
+        },
+        {
+          "id": "measurement-003-perimeter-a-rectangle-is-13-cm-by-7-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 13 cm by 7 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 40,
+            "display": "40 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (13 + 7) = 40 cm.",
+          "trap": false,
+          "sourceDay": 4
+        },
+        {
+          "id": "measurement-004-perimeter-a-rectangle-is-13-cm-by-8-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 13 cm by 8 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 42,
+            "display": "42 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (13 + 8) = 42 cm.",
+          "trap": false,
+          "sourceDay": 5
+        },
+        {
+          "id": "measurement-005-perimeter-a-rectangle-is-13-cm-by-9-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 13 cm by 9 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 44,
+            "display": "44 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (13 + 9) = 44 cm.",
+          "trap": false,
+          "sourceDay": 6
+        },
+        {
+          "id": "measurement-006-perimeter-a-rectangle-is-13-cm-by-11-cm-what-is-its-peri",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 13 cm by 11 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 48,
+            "display": "48 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (13 + 11) = 48 cm.",
+          "trap": false,
+          "sourceDay": 8
+        },
+        {
+          "id": "measurement-007-perimeter-a-rectangle-is-13-cm-by-3-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 13 cm by 3 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 32,
+            "display": "32 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (13 + 3) = 32 cm.",
+          "trap": false,
+          "sourceDay": 9
+        },
+        {
+          "id": "measurement-008-area-a-triangle-has-base-12-cm-and-height-11-cm-what-is-",
+          "topic": "Area",
+          "prompt": "A triangle has base 12 cm and height 11 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 66,
+            "display": "66 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 12 x 11 ÷ 2 = 66 cm².",
+          "trap": false,
+          "sourceDay": 10
+        },
+        {
+          "id": "measurement-009-area-a-triangle-has-base-12-cm-and-height-5-cm-what-is-i",
+          "topic": "Area",
+          "prompt": "A triangle has base 12 cm and height 5 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "30 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 12 x 5 ÷ 2 = 30 cm².",
+          "trap": false,
+          "sourceDay": 11
+        },
+        {
+          "id": "measurement-010-area-a-triangle-has-base-12-cm-and-height-9-cm-what-is-i",
+          "topic": "Area",
+          "prompt": "A triangle has base 12 cm and height 9 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 54,
+            "display": "54 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 12 x 9 ÷ 2 = 54 cm².",
+          "trap": false,
+          "sourceDay": 13
+        },
+        {
+          "id": "measurement-011-area-a-triangle-has-base-12-cm-and-height-7-cm-what-is-i",
+          "topic": "Area",
+          "prompt": "A triangle has base 12 cm and height 7 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 42,
+            "display": "42 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 12 x 7 ÷ 2 = 42 cm².",
+          "trap": false,
+          "sourceDay": 16
+        },
+        {
+          "id": "measurement-012-perimeter-a-rectangle-is-11-cm-by-7-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 11 cm by 7 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 36,
+            "display": "36 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (11 + 7) = 36 cm.",
+          "trap": false,
+          "sourceDay": 20
+        },
+        {
+          "id": "measurement-013-perimeter-a-rectangle-is-11-cm-by-8-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 11 cm by 8 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 38,
+            "display": "38 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (11 + 8) = 38 cm.",
+          "trap": false,
+          "sourceDay": 21
+        },
+        {
+          "id": "measurement-014-perimeter-a-rectangle-is-11-cm-by-10-cm-what-is-its-peri",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 11 cm by 10 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 42,
+            "display": "42 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (11 + 10) = 42 cm.",
+          "trap": false,
+          "sourceDay": 23
+        },
+        {
+          "id": "measurement-015-perimeter-a-rectangle-is-11-cm-by-11-cm-what-is-its-peri",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 11 cm by 11 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 44,
+            "display": "44 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (11 + 11) = 44 cm.",
+          "trap": false,
+          "sourceDay": 24
+        },
+        {
+          "id": "measurement-016-perimeter-a-rectangle-is-11-cm-by-3-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 11 cm by 3 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 28,
+            "display": "28 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (11 + 3) = 28 cm.",
+          "trap": false,
+          "sourceDay": 25
+        },
+        {
+          "id": "measurement-017-perimeter-a-rectangle-is-11-cm-by-4-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 11 cm by 4 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "30 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (11 + 4) = 30 cm.",
+          "trap": false,
+          "sourceDay": 26
+        },
+        {
+          "id": "measurement-018-perimeter-a-rectangle-is-11-cm-by-6-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 11 cm by 6 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 34,
+            "display": "34 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (11 + 6) = 34 cm.",
+          "trap": false,
+          "sourceDay": 28
+        },
+        {
+          "id": "measurement-019-area-a-triangle-has-base-10-cm-and-height-7-cm-what-is-i",
+          "topic": "Area",
+          "prompt": "A triangle has base 10 cm and height 7 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 35,
+            "display": "35 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 10 x 7 ÷ 2 = 35 cm².",
+          "trap": false,
+          "sourceDay": 30
+        },
+        {
+          "id": "measurement-020-area-a-triangle-has-base-10-cm-and-height-9-cm-what-is-i",
+          "topic": "Area",
+          "prompt": "A triangle has base 10 cm and height 9 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 45,
+            "display": "45 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 10 x 9 ÷ 2 = 45 cm².",
+          "trap": false,
+          "sourceDay": 31
+        },
+        {
+          "id": "measurement-021-area-a-triangle-has-base-10-cm-and-height-5-cm-what-is-i",
+          "topic": "Area",
+          "prompt": "A triangle has base 10 cm and height 5 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 25,
+            "display": "25 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 10 x 5 ÷ 2 = 25 cm².",
+          "trap": false,
+          "sourceDay": 33
+        },
+        {
+          "id": "measurement-022-area-a-triangle-has-base-10-cm-and-height-11-cm-what-is-",
+          "topic": "Area",
+          "prompt": "A triangle has base 10 cm and height 11 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 55,
+            "display": "55 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 10 x 11 ÷ 2 = 55 cm².",
+          "trap": false,
+          "sourceDay": 36
+        },
+        {
+          "id": "measurement-023-perimeter-a-rectangle-is-9-cm-by-11-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 9 cm by 11 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 40,
+            "display": "40 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (9 + 11) = 40 cm.",
+          "trap": false,
+          "sourceDay": 40
+        },
+        {
+          "id": "measurement-024-perimeter-a-rectangle-is-9-cm-by-3-cm-what-is-its-perime",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 9 cm by 3 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 24,
+            "display": "24 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (9 + 3) = 24 cm.",
+          "trap": false,
+          "sourceDay": 41
+        },
+        {
+          "id": "measurement-025-perimeter-a-rectangle-is-9-cm-by-5-cm-what-is-its-perime",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 9 cm by 5 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 28,
+            "display": "28 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (9 + 5) = 28 cm.",
+          "trap": false,
+          "sourceDay": 43
+        },
+        {
+          "id": "measurement-026-perimeter-a-rectangle-is-9-cm-by-6-cm-what-is-its-perime",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 9 cm by 6 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "30 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (9 + 6) = 30 cm.",
+          "trap": false,
+          "sourceDay": 44
+        },
+        {
+          "id": "measurement-027-perimeter-a-rectangle-is-9-cm-by-7-cm-what-is-its-perime",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 9 cm by 7 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 32,
+            "display": "32 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (9 + 7) = 32 cm.",
+          "trap": false,
+          "sourceDay": 45
+        },
+        {
+          "id": "measurement-028-perimeter-a-rectangle-is-9-cm-by-8-cm-what-is-its-perime",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 9 cm by 8 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 34,
+            "display": "34 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (9 + 8) = 34 cm.",
+          "trap": false,
+          "sourceDay": 46
+        },
+        {
+          "id": "measurement-029-perimeter-a-rectangle-is-9-cm-by-10-cm-what-is-its-perim",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 9 cm by 10 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 38,
+            "display": "38 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (9 + 10) = 38 cm.",
+          "trap": false,
+          "sourceDay": 48
+        },
+        {
+          "id": "measurement-030-area-a-triangle-has-base-8-cm-and-height-11-cm-what-is-i",
+          "topic": "Area",
+          "prompt": "A triangle has base 8 cm and height 11 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 44,
+            "display": "44 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 8 x 11 ÷ 2 = 44 cm².",
+          "trap": false,
+          "sourceDay": 50
+        },
+        {
+          "id": "measurement-031-area-a-triangle-has-base-8-cm-and-height-5-cm-what-is-it",
+          "topic": "Area",
+          "prompt": "A triangle has base 8 cm and height 5 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 20,
+            "display": "20 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 8 x 5 ÷ 2 = 20 cm².",
+          "trap": false,
+          "sourceDay": 51
+        },
+        {
+          "id": "measurement-032-area-a-triangle-has-base-8-cm-and-height-9-cm-what-is-it",
+          "topic": "Area",
+          "prompt": "A triangle has base 8 cm and height 9 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 36,
+            "display": "36 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 8 x 9 ÷ 2 = 36 cm².",
+          "trap": false,
+          "sourceDay": 53
+        },
+        {
+          "id": "measurement-033-area-a-triangle-has-base-8-cm-and-height-7-cm-what-is-it",
+          "topic": "Area",
+          "prompt": "A triangle has base 8 cm and height 7 cm. What is its area?",
+          "answer": {
+            "type": "number",
+            "value": 28,
+            "display": "28 cm²"
+          },
+          "hint": "Area of a triangle is base x height ÷ 2.",
+          "explanation": "Area = 8 x 7 ÷ 2 = 28 cm².",
+          "trap": false,
+          "sourceDay": 56
+        },
+        {
+          "id": "measurement-034-perimeter-a-rectangle-is-7-cm-by-6-cm-what-is-its-perime",
+          "topic": "Perimeter",
+          "prompt": "A rectangle is 7 cm by 6 cm. What is its perimeter?",
+          "answer": {
+            "type": "number",
+            "value": 26,
+            "display": "26 cm"
+          },
+          "hint": "Add all four sides, or use 2 x (length + width).",
+          "explanation": "Perimeter = 2 x (7 + 6) = 26 cm.",
+          "trap": false,
+          "sourceDay": 60
+        }
+      ]
+    },
+    {
+      "id": "patterns_probability",
+      "title": "Patterns and probability",
+      "questions": [
+        {
+          "id": "patterns_probability-001-probability-a-treat-pouch-has-2-salmon-treats-and-8-tuna",
+          "topic": "Probability",
+          "prompt": "A treat pouch has 2 salmon treats and 8 tuna treats. What is the probability of picking salmon?",
+          "answer": {
+            "type": "number",
+            "value": 0.2,
+            "display": "1/5"
+          },
+          "hint": "Probability is wanted outcomes over total outcomes.",
+          "explanation": "There are 2 salmon treats out of 10 treats, so the probability is 1/5.",
+          "trap": false,
+          "sourceDay": 1
+        },
+        {
+          "id": "patterns_probability-002-probability-a-treat-pouch-has-2-salmon-treats-and-3-tuna",
+          "topic": "Probability",
+          "prompt": "A treat pouch has 2 salmon treats and 3 tuna treats. What is the probability of picking salmon?",
+          "answer": {
+            "type": "number",
+            "value": 0.4,
+            "display": "2/5"
+          },
+          "hint": "Probability is wanted outcomes over total outcomes.",
+          "explanation": "There are 2 salmon treats out of 5 treats, so the probability is 2/5.",
+          "trap": false,
+          "sourceDay": 2
+        },
+        {
+          "id": "patterns_probability-003-probability-a-treat-pouch-has-2-salmon-treats-and-4-tuna",
+          "topic": "Probability",
+          "prompt": "A treat pouch has 2 salmon treats and 4 tuna treats. What is the probability of picking salmon?",
+          "answer": {
+            "type": "number",
+            "value": 0.3333333333333333,
+            "display": "1/3"
+          },
+          "hint": "Probability is wanted outcomes over total outcomes.",
+          "explanation": "There are 2 salmon treats out of 6 treats, so the probability is 1/3.",
+          "trap": false,
+          "sourceDay": 3
+        },
+        {
+          "id": "patterns_probability-004-probability-a-treat-pouch-has-2-salmon-treats-and-5-tuna",
+          "topic": "Probability",
+          "prompt": "A treat pouch has 2 salmon treats and 5 tuna treats. What is the probability of picking salmon?",
+          "answer": {
+            "type": "number",
+            "value": 0.2857142857142857,
+            "display": "2/7"
+          },
+          "hint": "Probability is wanted outcomes over total outcomes.",
+          "explanation": "There are 2 salmon treats out of 7 treats, so the probability is 2/7.",
+          "trap": false,
+          "sourceDay": 4
+        },
+        {
+          "id": "patterns_probability-005-probability-a-treat-pouch-has-2-salmon-treats-and-6-tuna",
+          "topic": "Probability",
+          "prompt": "A treat pouch has 2 salmon treats and 6 tuna treats. What is the probability of picking salmon?",
+          "answer": {
+            "type": "number",
+            "value": 0.25,
+            "display": "1/4"
+          },
+          "hint": "Probability is wanted outcomes over total outcomes.",
+          "explanation": "There are 2 salmon treats out of 8 treats, so the probability is 1/4.",
+          "trap": false,
+          "sourceDay": 5
+        },
+        {
+          "id": "patterns_probability-006-probability-a-treat-pouch-has-2-salmon-treats-and-7-tuna",
+          "topic": "Probability",
+          "prompt": "A treat pouch has 2 salmon treats and 7 tuna treats. What is the probability of picking salmon?",
+          "answer": {
+            "type": "number",
+            "value": 0.2222222222222222,
+            "display": "2/9"
+          },
+          "hint": "Probability is wanted outcomes over total outcomes.",
+          "explanation": "There are 2 salmon treats out of 9 treats, so the probability is 2/9.",
+          "trap": false,
+          "sourceDay": 6
+        },
+        {
+          "id": "patterns_probability-007-number-patterns-what-comes-next-4-9-14-19",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 4, 9, 14, 19, ...",
+          "answer": {
+            "type": "number",
+            "value": 24,
+            "display": "24"
+          },
+          "hint": "The sequence adds 5 each time.",
+          "explanation": "Add 5 again to get 24.",
+          "trap": false,
+          "sourceDay": 21
+        },
+        {
+          "id": "patterns_probability-008-number-patterns-what-comes-next-4-10-16-22",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 4, 10, 16, 22, ...",
+          "answer": {
+            "type": "number",
+            "value": 28,
+            "display": "28"
+          },
+          "hint": "The sequence adds 6 each time.",
+          "explanation": "Add 6 again to get 28.",
+          "trap": false,
+          "sourceDay": 22
+        },
+        {
+          "id": "patterns_probability-009-number-patterns-what-comes-next-4-11-18-25",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 4, 11, 18, 25, ...",
+          "answer": {
+            "type": "number",
+            "value": 32,
+            "display": "32"
+          },
+          "hint": "The sequence adds 7 each time.",
+          "explanation": "Add 7 again to get 32.",
+          "trap": false,
+          "sourceDay": 23
+        },
+        {
+          "id": "patterns_probability-010-number-patterns-what-comes-next-4-6-8-10",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 4, 6, 8, 10, ...",
+          "answer": {
+            "type": "number",
+            "value": 12,
+            "display": "12"
+          },
+          "hint": "The sequence adds 2 each time.",
+          "explanation": "Add 2 again to get 12.",
+          "trap": false,
+          "sourceDay": 24
+        },
+        {
+          "id": "patterns_probability-011-number-patterns-what-comes-next-4-7-10-13",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 4, 7, 10, 13, ...",
+          "answer": {
+            "type": "number",
+            "value": 16,
+            "display": "16"
+          },
+          "hint": "The sequence adds 3 each time.",
+          "explanation": "Add 3 again to get 16.",
+          "trap": false,
+          "sourceDay": 25
+        },
+        {
+          "id": "patterns_probability-012-number-patterns-what-comes-next-4-8-12-16",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 4, 8, 12, 16, ...",
+          "answer": {
+            "type": "number",
+            "value": 20,
+            "display": "20"
+          },
+          "hint": "The sequence adds 4 each time.",
+          "explanation": "Add 4 again to get 20.",
+          "trap": false,
+          "sourceDay": 26
+        },
+        {
+          "id": "patterns_probability-013-number-patterns-what-comes-next-6-11-16-21",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 6, 11, 16, 21, ...",
+          "answer": {
+            "type": "number",
+            "value": 26,
+            "display": "26"
+          },
+          "hint": "The sequence adds 5 each time.",
+          "explanation": "Add 5 again to get 26.",
+          "trap": false,
+          "sourceDay": 51
+        },
+        {
+          "id": "patterns_probability-014-number-patterns-what-comes-next-6-12-18-24",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 6, 12, 18, 24, ...",
+          "answer": {
+            "type": "number",
+            "value": 30,
+            "display": "30"
+          },
+          "hint": "The sequence adds 6 each time.",
+          "explanation": "Add 6 again to get 30.",
+          "trap": false,
+          "sourceDay": 52
+        },
+        {
+          "id": "patterns_probability-015-number-patterns-what-comes-next-6-13-20-27",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 6, 13, 20, 27, ...",
+          "answer": {
+            "type": "number",
+            "value": 34,
+            "display": "34"
+          },
+          "hint": "The sequence adds 7 each time.",
+          "explanation": "Add 7 again to get 34.",
+          "trap": false,
+          "sourceDay": 53
+        },
+        {
+          "id": "patterns_probability-016-number-patterns-what-comes-next-6-8-10-12",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 6, 8, 10, 12, ...",
+          "answer": {
+            "type": "number",
+            "value": 14,
+            "display": "14"
+          },
+          "hint": "The sequence adds 2 each time.",
+          "explanation": "Add 2 again to get 14.",
+          "trap": false,
+          "sourceDay": 54
+        },
+        {
+          "id": "patterns_probability-017-number-patterns-what-comes-next-6-9-12-15",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 6, 9, 12, 15, ...",
+          "answer": {
+            "type": "number",
+            "value": 18,
+            "display": "18"
+          },
+          "hint": "The sequence adds 3 each time.",
+          "explanation": "Add 3 again to get 18.",
+          "trap": false,
+          "sourceDay": 55
+        },
+        {
+          "id": "patterns_probability-018-number-patterns-what-comes-next-6-10-14-18",
+          "topic": "Number patterns",
+          "prompt": "What comes next? 6, 10, 14, 18, ...",
+          "answer": {
+            "type": "number",
+            "value": 22,
+            "display": "22"
+          },
+          "hint": "The sequence adds 4 each time.",
+          "explanation": "Add 4 again to get 22.",
+          "trap": false,
+          "sourceDay": 56
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "title": "Traps and edge cases",
+      "questions": [
+        {
+          "id": "traps-001-negative-numbers-what-is-6-7",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -7?",
+          "answer": {
+            "type": "number",
+            "value": 13,
+            "display": "13"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -7 = 6 + 7 = 13.",
+          "trap": true,
+          "sourceDay": 1
+        },
+        {
+          "id": "traps-002-negative-exponents-what-is-2-1",
+          "topic": "Negative exponents",
+          "prompt": "What is 2^-1?",
+          "answer": {
+            "type": "number",
+            "value": 0.5,
+            "display": "1/2 or 0.5"
+          },
+          "hint": "A negative exponent means reciprocal.",
+          "explanation": "2^-1 means 1/2, which is the same as 0.5.",
+          "trap": true,
+          "sourceDay": 1
+        },
+        {
+          "id": "traps-003-negative-exponents-what-is-3-1",
+          "topic": "Negative exponents",
+          "prompt": "What is 3^-1?",
+          "answer": {
+            "type": "number",
+            "value": 0.3333333333333333,
+            "display": "1/3"
+          },
+          "hint": "A power of -1 means reciprocal.",
+          "explanation": "3^-1 = 1/3.",
+          "trap": true,
+          "sourceDay": 1
+        },
+        {
+          "id": "traps-004-negative-numbers-what-is-6-9",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -9?",
+          "answer": {
+            "type": "number",
+            "value": 15,
+            "display": "15"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -9 = 6 + 9 = 15.",
+          "trap": true,
+          "sourceDay": 2
+        },
+        {
+          "id": "traps-005-negative-exponents-what-is-10-2",
+          "topic": "Negative exponents",
+          "prompt": "What is 10^-2?",
+          "answer": {
+            "type": "number",
+            "value": 0.01,
+            "display": "1/100 or 0.01"
+          },
+          "hint": "Move 10^2 to the denominator.",
+          "explanation": "10^-2 = 1 / 10^2 = 1/100 = 0.01.",
+          "trap": true,
+          "sourceDay": 3
+        },
+        {
+          "id": "traps-006-negative-numbers-what-is-6-2",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -2?",
+          "answer": {
+            "type": "number",
+            "value": 8,
+            "display": "8"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -2 = 6 + 2 = 8.",
+          "trap": true,
+          "sourceDay": 3
+        },
+        {
+          "id": "traps-007-negative-numbers-what-is-6-4",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -4?",
+          "answer": {
+            "type": "number",
+            "value": 10,
+            "display": "10"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -4 = 6 + 4 = 10.",
+          "trap": true,
+          "sourceDay": 4
+        },
+        {
+          "id": "traps-008-trap-question-what-is-4-2",
+          "topic": "Trap question",
+          "prompt": "What is -4^2?",
+          "answer": {
+            "type": "number",
+            "value": -16,
+            "display": "-16"
+          },
+          "hint": "The power happens before the minus sign.",
+          "explanation": "-4^2 means -(4^2), so the answer is -16.",
+          "trap": true,
+          "sourceDay": 4
+        },
+        {
+          "id": "traps-009-trap-question-what-is-4-2",
+          "topic": "Trap question",
+          "prompt": "What is (-4)^2?",
+          "answer": {
+            "type": "number",
+            "value": 16,
+            "display": "16"
+          },
+          "hint": "The brackets make the negative number the base.",
+          "explanation": "(-4)^2 = (-4) x (-4) = 16.",
+          "trap": true,
+          "sourceDay": 5
+        },
+        {
+          "id": "traps-010-factorials-what-is-0",
+          "topic": "Factorials",
+          "prompt": "What is 0!?",
+          "answer": {
+            "type": "number",
+            "value": 1,
+            "display": "1"
+          },
+          "hint": "This is a special rule.",
+          "explanation": "0! is defined as 1. It helps factorial patterns work neatly.",
+          "trap": true,
+          "sourceDay": 6
+        },
+        {
+          "id": "traps-011-ratios-simplify-the-ratio-10-50",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 10:50.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 5,
+            "display": "1:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "10:50 simplifies to 1:5.",
+          "trap": true,
+          "sourceDay": 7
+        },
+        {
+          "id": "traps-012-fractions-simplify-0-9",
+          "topic": "Fractions",
+          "prompt": "Simplify 0/9.",
+          "answer": {
+            "type": "number",
+            "value": 0,
+            "display": "0"
+          },
+          "hint": "Zero shared between 9 parts is still zero.",
+          "explanation": "0 divided by any non-zero number is 0.",
+          "trap": true,
+          "sourceDay": 7
+        },
+        {
+          "id": "traps-013-undefined-what-is-5-0",
+          "topic": "Undefined",
+          "prompt": "What is 5/0?",
+          "answer": {
+            "type": "special",
+            "values": [
+              "undefined",
+              "not defined",
+              "impossible",
+              "cannot divide by zero"
+            ],
+            "display": "undefined"
+          },
+          "hint": "Division by zero is not allowed.",
+          "explanation": "5/0 is undefined because you cannot divide a number into zero equal groups.",
+          "trap": true,
+          "sourceDay": 8
+        },
+        {
+          "id": "traps-014-negative-fractions-simplify-3-6",
+          "topic": "Negative fractions",
+          "prompt": "Simplify -3/6.",
+          "answer": {
+            "type": "number",
+            "value": -0.5,
+            "display": "-1/2 or -0.5"
+          },
+          "hint": "Simplify 3/6 first, then keep the negative sign.",
+          "explanation": "-3/6 simplifies to -1/2.",
+          "trap": true,
+          "sourceDay": 9
+        },
+        {
+          "id": "traps-015-negative-fractions-simplify-3-6",
+          "topic": "Negative fractions",
+          "prompt": "Simplify 3/-6.",
+          "answer": {
+            "type": "number",
+            "value": -0.5,
+            "display": "-1/2 or -0.5"
+          },
+          "hint": "One negative sign makes the whole fraction negative.",
+          "explanation": "3/-6 simplifies to -1/2.",
+          "trap": true,
+          "sourceDay": 10
+        },
+        {
+          "id": "traps-016-negative-fractions-simplify-3-6",
+          "topic": "Negative fractions",
+          "prompt": "Simplify -3/-6.",
+          "answer": {
+            "type": "number",
+            "value": 0.5,
+            "display": "1/2 or 0.5"
+          },
+          "hint": "Two negatives make a positive.",
+          "explanation": "-3/-6 simplifies to positive 1/2.",
+          "trap": true,
+          "sourceDay": 11
+        },
+        {
+          "id": "traps-017-reciprocals-what-is-the-reciprocal-of-6",
+          "topic": "Reciprocals",
+          "prompt": "What is the reciprocal of 6?",
+          "answer": {
+            "type": "number",
+            "value": 0.16666666666666666,
+            "display": "1/6"
+          },
+          "hint": "Put 1 over the number.",
+          "explanation": "The reciprocal of 6 is 1/6.",
+          "trap": true,
+          "sourceDay": 11
+        },
+        {
+          "id": "traps-018-ratios-simplify-the-ratio-0-5",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 0:5.",
+          "answer": {
+            "type": "ratio",
+            "a": 0,
+            "b": 1,
+            "display": "0:1"
+          },
+          "hint": "Divide both parts by 5.",
+          "explanation": "0:5 simplifies to 0:1. A zero part is allowed in a ratio.",
+          "trap": true,
+          "sourceDay": 12
+        },
+        {
+          "id": "traps-019-ratios-simplify-the-ratio-12-0",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 12:0.",
+          "answer": {
+            "type": "ratio",
+            "a": 1,
+            "b": 0,
+            "display": "1:0"
+          },
+          "hint": "Divide both parts by 12. Do not treat this as 12 divided by 0.",
+          "explanation": "12:0 simplifies to 1:0. This is a ratio, not the calculation 12 / 0.",
+          "trap": true,
+          "sourceDay": 13
+        },
+        {
+          "id": "traps-020-ratios-simplify-the-ratio-20-50",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 20:50.",
+          "answer": {
+            "type": "ratio",
+            "a": 2,
+            "b": 5,
+            "display": "2:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "20:50 simplifies to 2:5.",
+          "trap": true,
+          "sourceDay": 13
+        },
+        {
+          "id": "traps-021-double-negatives-what-is-5-3",
+          "topic": "Double negatives",
+          "prompt": "What is 5 - -3?",
+          "answer": {
+            "type": "number",
+            "value": 8,
+            "display": "8"
+          },
+          "hint": "Subtracting a negative is the same as adding.",
+          "explanation": "5 - -3 = 5 + 3 = 8.",
+          "trap": true,
+          "sourceDay": 14
+        },
+        {
+          "id": "traps-022-negative-numbers-what-is-6-1",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -1?",
+          "answer": {
+            "type": "number",
+            "value": 7,
+            "display": "7"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -1 = 6 + 1 = 7.",
+          "trap": true,
+          "sourceDay": 15
+        },
+        {
+          "id": "traps-023-negative-numbers-what-is-6-3",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -3?",
+          "answer": {
+            "type": "number",
+            "value": 9,
+            "display": "9"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -3 = 6 + 3 = 9.",
+          "trap": true,
+          "sourceDay": 16
+        },
+        {
+          "id": "traps-024-careful-powers-what-is-0-0-usually-treated-as-in-year-7",
+          "topic": "Careful powers",
+          "prompt": "What is 0^0 usually treated as in Year 7?",
+          "answer": {
+            "type": "special",
+            "values": [
+              "undefined",
+              "indeterminate",
+              "usually undefined",
+              "avoid",
+              "not defined"
+            ],
+            "display": "undefined or indeterminate"
+          },
+          "hint": "This is a special case that is usually avoided at this level.",
+          "explanation": "0^0 is usually avoided or called undefined/indeterminate in Year 7 maths. It needs more advanced context.",
+          "trap": true,
+          "sourceDay": 17
+        },
+        {
+          "id": "traps-025-negative-numbers-what-is-6-5",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -5?",
+          "answer": {
+            "type": "number",
+            "value": 11,
+            "display": "11"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -5 = 6 + 5 = 11.",
+          "trap": true,
+          "sourceDay": 17
+        },
+        {
+          "id": "traps-026-reciprocals-what-is-the-reciprocal-of-5",
+          "topic": "Reciprocals",
+          "prompt": "What is the reciprocal of 5?",
+          "answer": {
+            "type": "number",
+            "value": 0.2,
+            "display": "1/5 or 0.2"
+          },
+          "hint": "The reciprocal of a number is 1 divided by that number.",
+          "explanation": "The reciprocal of 5 is 1/5, which equals 0.2.",
+          "trap": true,
+          "sourceDay": 18
+        },
+        {
+          "id": "traps-027-ratios-simplify-the-ratio-30-50",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 30:50.",
+          "answer": {
+            "type": "ratio",
+            "a": 3,
+            "b": 5,
+            "display": "3:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "30:50 simplifies to 3:5.",
+          "trap": true,
+          "sourceDay": 19
+        },
+        {
+          "id": "traps-028-negative-numbers-what-is-6-6",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -6?",
+          "answer": {
+            "type": "number",
+            "value": 12,
+            "display": "12"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -6 = 6 + 6 = 12.",
+          "trap": true,
+          "sourceDay": 22
+        },
+        {
+          "id": "traps-029-negative-numbers-what-is-6-8",
+          "topic": "Negative numbers",
+          "prompt": "What is 6 - -8?",
+          "answer": {
+            "type": "number",
+            "value": 14,
+            "display": "14"
+          },
+          "hint": "Subtracting a negative is adding.",
+          "explanation": "6 - -8 = 6 + 8 = 14.",
+          "trap": true,
+          "sourceDay": 23
+        },
+        {
+          "id": "traps-030-ratios-simplify-the-ratio-40-50",
+          "topic": "Ratios",
+          "prompt": "Simplify the ratio 40:50.",
+          "answer": {
+            "type": "ratio",
+            "a": 4,
+            "b": 5,
+            "display": "4:5"
+          },
+          "hint": "Divide both parts by 5 if you can.",
+          "explanation": "40:50 simplifies to 4:5.",
+          "trap": true,
+          "sourceDay": 33
+        }
+      ]
+    }
+  ]
+}

@@ -34,163 +34,9 @@
     "Close. Check the sign and try again."
   ];
 
-  const categories = [
-    makeEquationQuestion,
-    makeFractionQuestion,
-    makePercentageQuestion,
-    makeNegativeQuestion,
-    makeAlgebraQuestion,
-    makePowerQuestion,
-    makeDecimalQuestion,
-    makeRatioQuestion,
-    makeMeasurementQuestion,
-    makePatternQuestion
-  ];
-
-  const edgeQuestions = [
-    {
-      topic: "Negative exponents",
-      prompt: "What is 2^-1?",
-      answer: numberAnswer(0.5, "1/2 or 0.5"),
-      hint: "A negative exponent means reciprocal.",
-      explanation: "2^-1 means 1/2, which is the same as 0.5."
-    },
-    {
-      topic: "Zero powers",
-      prompt: "What is 3^0?",
-      answer: numberAnswer(1, "1"),
-      hint: "Any non-zero number to the power of 0 equals 1.",
-      explanation: "3 is not zero, so 3^0 = 1."
-    },
-    {
-      topic: "Negative exponents",
-      prompt: "What is 10^-2?",
-      answer: numberAnswer(0.01, "1/100 or 0.01"),
-      hint: "Move 10^2 to the denominator.",
-      explanation: "10^-2 = 1 / 10^2 = 1/100 = 0.01."
-    },
-    {
-      topic: "Trap question",
-      prompt: "What is -4^2?",
-      answer: numberAnswer(-16, "-16"),
-      hint: "The power happens before the minus sign.",
-      explanation: "-4^2 means -(4^2), so the answer is -16."
-    },
-    {
-      topic: "Trap question",
-      prompt: "What is (-4)^2?",
-      answer: numberAnswer(16, "16"),
-      hint: "The brackets make the negative number the base.",
-      explanation: "(-4)^2 = (-4) x (-4) = 16."
-    },
-    {
-      topic: "Factorials",
-      prompt: "What is 0!?",
-      answer: numberAnswer(1, "1"),
-      hint: "This is a special rule.",
-      explanation: "0! is defined as 1. It helps factorial patterns work neatly."
-    },
-    {
-      topic: "Fractions",
-      prompt: "Simplify 0/9.",
-      answer: numberAnswer(0, "0"),
-      hint: "Zero shared between 9 parts is still zero.",
-      explanation: "0 divided by any non-zero number is 0."
-    },
-    {
-      topic: "Undefined",
-      prompt: "What is 5/0?",
-      answer: specialAnswer(["undefined", "not defined", "impossible", "cannot divide by zero"], "undefined"),
-      hint: "Division by zero is not allowed.",
-      explanation: "5/0 is undefined because you cannot divide a number into zero equal groups."
-    },
-    {
-      topic: "Negative fractions",
-      prompt: "Simplify -3/6.",
-      answer: numberAnswer(-0.5, "-1/2 or -0.5"),
-      hint: "Simplify 3/6 first, then keep the negative sign.",
-      explanation: "-3/6 simplifies to -1/2."
-    },
-    {
-      topic: "Negative fractions",
-      prompt: "Simplify 3/-6.",
-      answer: numberAnswer(-0.5, "-1/2 or -0.5"),
-      hint: "One negative sign makes the whole fraction negative.",
-      explanation: "3/-6 simplifies to -1/2."
-    },
-    {
-      topic: "Negative fractions",
-      prompt: "Simplify -3/-6.",
-      answer: numberAnswer(0.5, "1/2 or 0.5"),
-      hint: "Two negatives make a positive.",
-      explanation: "-3/-6 simplifies to positive 1/2."
-    },
-    {
-      topic: "Ratios",
-      prompt: "Simplify the ratio 0:5.",
-      answer: ratioAnswer(0, 1, "0:1"),
-      hint: "Divide both parts by 5.",
-      explanation: "0:5 simplifies to 0:1. A zero part is allowed in a ratio."
-    },
-    {
-      topic: "Ratios",
-      prompt: "Simplify the ratio 12:0.",
-      answer: ratioAnswer(1, 0, "1:0"),
-      hint: "Divide both parts by 12. Do not treat this as 12 divided by 0.",
-      explanation: "12:0 simplifies to 1:0. This is a ratio, not the calculation 12 / 0."
-    },
-    {
-      topic: "Double negatives",
-      prompt: "What is 5 - -3?",
-      answer: numberAnswer(8, "8"),
-      hint: "Subtracting a negative is the same as adding.",
-      explanation: "5 - -3 = 5 + 3 = 8."
-    },
-    {
-      topic: "Negative numbers",
-      prompt: "What is -6 x -4?",
-      answer: numberAnswer(24, "24"),
-      hint: "A negative times a negative is positive.",
-      explanation: "-6 x -4 = 24."
-    },
-    {
-      topic: "Negative numbers",
-      prompt: "What is -24 / 6?",
-      answer: numberAnswer(-4, "-4"),
-      hint: "A negative divided by a positive is negative.",
-      explanation: "-24 / 6 = -4."
-    },
-    {
-      topic: "Careful powers",
-      prompt: "What is 0^0 usually treated as in Year 7?",
-      answer: specialAnswer(["undefined", "indeterminate", "usually undefined", "avoid", "not defined"], "undefined or indeterminate"),
-      hint: "This is a special case that is usually avoided at this level.",
-      explanation: "0^0 is usually avoided or called undefined/indeterminate in Year 7 maths. It needs more advanced context."
-    },
-    {
-      topic: "Reciprocals",
-      prompt: "What is the reciprocal of 5?",
-      answer: numberAnswer(0.2, "1/5 or 0.2"),
-      hint: "The reciprocal of a number is 1 divided by that number.",
-      explanation: "The reciprocal of 5 is 1/5, which equals 0.2."
-    },
-    {
-      topic: "Decimals",
-      prompt: "Write 0.125 as a fraction in simplest form.",
-      answer: numberAnswer(0.125, "1/8"),
-      hint: "0.125 is 125/1000 before simplifying.",
-      explanation: "0.125 = 125/1000 = 1/8."
-    },
-    {
-      topic: "Percentages",
-      prompt: "A $40 cat cushion is reduced by 25%. What is the new price?",
-      answer: numberAnswer(30, "$30"),
-      hint: "25% of 40 is 10, then subtract it.",
-      explanation: "25% of 40 is 10, so the new price is 40 - 10 = 30."
-    }
-  ];
-
-  const days = buildDays();
+  const QUESTION_BANK_URL = "data/questions.json";
+  let days = [];
+  let questionBank = null;
   let progress = {};
   let savedAnswers = {};
   let currentDay = 1;
@@ -215,6 +61,10 @@
   let mysteryBox;
   let mysteryText;
   let catFactText;
+  let notificationButton;
+  let notificationPanel;
+  let notificationClose;
+  let notificationList;
 
   globalThis.FEFF_MATH_DAYS = days;
   globalThis.FEFF_MATH_TEST = { isCorrect };
@@ -243,28 +93,174 @@
     mysteryBox = document.getElementById("mysteryBox");
     mysteryText = document.getElementById("mysteryText");
     catFactText = document.getElementById("catFactText");
+    notificationButton = document.getElementById("notificationButton");
+    notificationPanel = document.getElementById("notificationPanel");
+    notificationClose = document.getElementById("notificationClose");
+    notificationList = document.getElementById("notificationList");
     initialise();
   }
 
-  function initialise() {
-    renderDayControls();
-    renderDay(1);
+  async function initialise() {
+    renderLoadingState();
+    try {
+      questionBank = await loadQuestionBank();
+      days = buildDays(questionBank);
+      globalThis.FEFF_MATH_DAYS = days;
+      globalThis.FEFF_MATH_TEST = { isCorrect, buildDays };
+      setupNotifications();
+      renderDayControls();
+      renderDay(1);
+    } catch (error) {
+      renderQuestionLoadError(error);
+    }
   }
 
-  function buildDays() {
-    return Array.from({ length: TOTAL_DAYS }, (_, dayIndex) => {
+  async function loadQuestionBank() {
+    const response = await fetch(QUESTION_BANK_URL, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`Could not load ${QUESTION_BANK_URL}: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  function buildDays(bank) {
+    const totalDays = bank.dayCount || TOTAL_DAYS;
+    const questionsPerDay = bank.questionsPerDay || QUESTIONS_PER_DAY;
+    const requestedTrapCount = bank.trapQuestionsPerDay ?? 2;
+    const groups = normaliseQuestionGroups(bank.groups);
+    const regularGroups = groups
+      .map((group) => ({ ...group, questions: group.questions.filter((question) => !question.trap) }))
+      .filter((group) => group.questions.length > 0);
+    const trapPool = groups.flatMap((group) => group.questions.filter((question) => question.trap));
+    const trapCount = Math.min(requestedTrapCount, trapPool.length, questionsPerDay);
+
+    if (!regularGroups.length && !trapPool.length) {
+      throw new Error("Question bank is empty.");
+    }
+
+    return Array.from({ length: totalDays }, (_, dayIndex) => {
       const day = dayIndex + 1;
-      const edgeIndex = (day - 1) % edgeQuestions.length;
-      const edgeSlot = (day * 3 + 1) % QUESTIONS_PER_DAY;
-      const questions = Array.from({ length: QUESTIONS_PER_DAY }, (_, slot) => {
-        if (slot === edgeSlot) {
-          return { ...edgeQuestions[edgeIndex], id: `d${day}-q${slot + 1}` };
-        }
-        const category = categories[(slot + dayIndex) % categories.length];
-        return { ...category(day, slot), id: `d${day}-q${slot + 1}` };
+      const rng = createSeededRandom(`${bank.seed || "feff-math"}:${bank.version || 1}:day-${day}`);
+      const selected = [];
+      const usedSourceIds = new Set();
+      const regularTarget = Math.max(0, questionsPerDay - trapCount);
+      const shuffledGroups = shuffle(regularGroups, rng);
+
+      for (let index = 0; selected.length < regularTarget && index < regularTarget * 3; index += 1) {
+        const group = shuffledGroups[index % shuffledGroups.length];
+        const question = pickUnusedQuestion(group.questions, usedSourceIds, rng);
+        if (!question) break;
+        selected.push(question);
+      }
+
+      shuffle(trapPool, rng).some((question) => {
+        if (selected.length >= questionsPerDay) return true;
+        if (usedSourceIds.has(question.sourceId)) return false;
+        usedSourceIds.add(question.sourceId);
+        selected.push(question);
+        return selected.filter((candidate) => candidate.trap).length >= trapCount;
       });
+
+      for (let index = 0; selected.length < questionsPerDay && index < groups.length * questionsPerDay; index += 1) {
+        const group = groups[index % groups.length];
+        const question = pickUnusedQuestion(group.questions, usedSourceIds, rng);
+        if (question) selected.push(question);
+      }
+
+      const questions = shuffle(selected, rng).slice(0, questionsPerDay).map((question, index) => ({
+        ...question,
+        id: `d${day}-q${index + 1}-${question.sourceId}`
+      }));
+
       return { day, questions };
     });
+  }
+
+  function normaliseQuestionGroups(groups) {
+    return (groups || []).map((group) => ({
+      id: group.id,
+      title: group.title,
+      questions: (group.questions || []).map((question, index) => {
+        const sourceId = question.id || `${group.id}-${index + 1}`;
+        return {
+          sourceId,
+          topic: question.topic || group.title || "Mixed maths",
+          prompt: question.prompt,
+          answer: question.answer,
+          hint: question.hint,
+          explanation: question.explanation,
+          trap: Boolean(question.trap)
+        };
+      }).filter((question) => question.prompt && question.answer && question.hint && question.explanation)
+    })).filter((group) => group.questions.length > 0);
+  }
+
+  function pickUnusedQuestion(questions, usedSourceIds, rng) {
+    const options = questions.filter((question) => !usedSourceIds.has(question.sourceId));
+    if (!options.length) return null;
+    const question = options[Math.floor(rng() * options.length)];
+    usedSourceIds.add(question.sourceId);
+    return question;
+  }
+
+  function shuffle(items, rng) {
+    const result = items.slice();
+    for (let index = result.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(rng() * (index + 1));
+      [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
+    }
+    return result;
+  }
+
+  function createSeededRandom(seed) {
+    let state = hashSeed(seed);
+    return function random() {
+      state += 0x6d2b79f5;
+      let value = state;
+      value = Math.imul(value ^ (value >>> 15), value | 1);
+      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function hashSeed(seed) {
+    let hash = 2166136261;
+    for (let index = 0; index < seed.length; index += 1) {
+      hash ^= seed.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return hash >>> 0;
+  }
+
+  function renderLoadingState() {
+    if (!questionList) return;
+    questionList.innerHTML = `
+      <section class="question-card">
+        <div class="question-main">
+          <div class="question-meta">
+            <span class="question-number">…</span>
+            <span class="topic">Loading</span>
+          </div>
+          <p class="prompt">Preparing today’s mixed maths.</p>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderQuestionLoadError(error) {
+    console.error(error);
+    if (!questionList) return;
+    questionList.innerHTML = `
+      <section class="question-card">
+        <div class="question-main">
+          <div class="question-meta">
+            <span class="question-number">!</span>
+            <span class="topic">Question bank unavailable</span>
+          </div>
+          <p class="prompt">Refresh the page once the question bank is available.</p>
+        </div>
+      </section>
+    `;
   }
 
   function renderDayControls() {
@@ -418,13 +414,15 @@
 
     saveJson(STORAGE_KEY, progress);
     updateProgress();
+    updateNotifications(correctCount);
     updateSelectedDayButton();
   }
 
   function updateProgress() {
     const completed = Object.values(progress).filter(Boolean).length;
-    const percent = (completed / TOTAL_DAYS) * 100;
-    progressText.textContent = `${completed} of ${TOTAL_DAYS} days`;
+    const totalDays = getTotalDays();
+    const percent = (completed / totalDays) * 100;
+    progressText.textContent = `${completed} of ${totalDays} days`;
     progressBar.style.width = `${percent}%`;
 
     Array.from(dayGrid.children).forEach((button, index) => {
@@ -472,8 +470,9 @@
   }
 
   function renderStickerAlbum(completed) {
-    const completedDays = Array.from({ length: TOTAL_DAYS }, (_, index) => index + 1).filter((day) => progress[day]);
-    albumCount.textContent = `${completedDays.length} / ${TOTAL_DAYS}`;
+    const totalDays = getTotalDays();
+    const completedDays = Array.from({ length: totalDays }, (_, index) => index + 1).filter((day) => progress[day]);
+    albumCount.textContent = `${completedDays.length} / ${totalDays}`;
     headerStickerTrail.innerHTML = "";
     stickerGrid.innerHTML = "";
 
@@ -493,17 +492,107 @@
       stickerGrid.append(sticker);
     });
 
-    if (completed >= TOTAL_DAYS) {
+    if (completed >= totalDays) {
       nextStickerText.textContent = "Album complete. Legendary cat scholar.";
     } else if (completed === 0) {
       nextStickerText.textContent = "Finish a day to collect the first sticker.";
     } else {
-      nextStickerText.textContent = `Next surprise in ${Math.min(3, TOTAL_DAYS - completed)} day${TOTAL_DAYS - completed === 1 ? "" : "s"}.`;
+      nextStickerText.textContent = `Next surprise in ${Math.min(3, totalDays - completed)} day${totalDays - completed === 1 ? "" : "s"}.`;
     }
+  }
+
+  function setupNotifications() {
+    if (!notificationButton || !notificationPanel || !notificationClose) return;
+
+    notificationButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleNotifications();
+    });
+
+    notificationClose.addEventListener("click", () => {
+      closeNotifications();
+      notificationButton.focus();
+    });
+
+    notificationPanel.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    document.addEventListener("click", closeNotifications);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeNotifications();
+    });
+  }
+
+  function toggleNotifications() {
+    if (notificationPanel.hidden) {
+      updateNotifications();
+      openNotifications();
+    } else {
+      closeNotifications();
+    }
+  }
+
+  function openNotifications() {
+    notificationPanel.hidden = false;
+    notificationButton.setAttribute("aria-expanded", "true");
+  }
+
+  function closeNotifications() {
+    if (!notificationPanel || notificationPanel.hidden) return;
+    notificationPanel.hidden = true;
+    notificationButton.setAttribute("aria-expanded", "false");
+  }
+
+  function updateNotifications(correctCount) {
+    if (!notificationButton || !notificationList) return;
+
+    const completedDays = Object.values(progress).filter(Boolean).length;
+    const totalDays = getTotalDays();
+    const correct = Number.isFinite(correctCount) ? correctCount : getCurrentCorrectCount();
+    const remaining = Math.max(0, QUESTIONS_PER_DAY - correct);
+    const dayComplete = remaining === 0;
+    const missionBody = dayComplete
+      ? `Day ${currentDay} is complete. The ${stickerForDay(currentDay)} sticker is in your album.`
+      : `${remaining} ${remaining === 1 ? "question" : "questions"} left to open today's mystery box.`;
+    const albumBody = completedDays >= totalDays
+      ? "Sticker album complete."
+      : `${completedDays} of ${totalDays} stickers collected. Next surprise after another completed day.`;
+
+    notificationButton.setAttribute("aria-label", "Open 2 practice updates");
+    notificationList.innerHTML = `
+      <article class="notification-item">
+        <span class="notification-dot" aria-hidden="true"></span>
+        <div>
+          <strong>Day ${currentDay} mission</strong>
+          <p>${escapeHtml(missionBody)}</p>
+        </div>
+      </article>
+      <article class="notification-item">
+        <span class="notification-dot" aria-hidden="true"></span>
+        <div>
+          <strong>Sticker album</strong>
+          <p>${escapeHtml(albumBody)}</p>
+        </div>
+      </article>
+    `;
+  }
+
+  function getCurrentCorrectCount() {
+    const day = days[currentDay - 1];
+    const cards = Array.from(questionList.querySelectorAll(".question-card"));
+    return cards.reduce((count, card, index) => {
+      const input = card.querySelector(".answer-input");
+      return count + (isCorrect(input.value.trim(), day.questions[index].answer) ? 1 : 0);
+    }, 0);
   }
 
   function stickerForDay(dayNumber) {
     return stickerRewards[(dayNumber - 1) % stickerRewards.length];
+  }
+
+  function getTotalDays() {
+    return days.length || (questionBank && questionBank.dayCount) || TOTAL_DAYS;
   }
 
   function pickLine(lines, seed) {
@@ -597,390 +686,6 @@
     return text.toLowerCase().replace(/[−–—]/g, "-").replace(/\s+/g, "").replace(/\*/g, "");
   }
 
-  function numberAnswer(value, display) {
-    return { type: "number", value, display };
-  }
-
-  function specialAnswer(values, display) {
-    return { type: "special", values, display };
-  }
-
-  function expressionAnswer(values, display) {
-    return { type: "expression", values, display };
-  }
-
-  function ratioAnswer(a, b, display) {
-    return { type: "ratio", a, b, display };
-  }
-
-  function makeEquationQuestion(day, slot) {
-    const a = 3 + ((day + slot) % 9);
-    const x = 2 + ((day * 2 + slot) % 10);
-    const style = (day + slot) % 4;
-
-    if (style === 0) {
-      return {
-        topic: "Equations",
-        prompt: `Solve x + ${a} = ${x + a}.`,
-        answer: numberAnswer(x, String(x)),
-        hint: `Subtract ${a} from both sides.`,
-        explanation: `x = ${x + a} - ${a} = ${x}.`
-      };
-    }
-
-    if (style === 1) {
-      return {
-        topic: "Equations",
-        prompt: `Solve ${a}x = ${a * x}.`,
-        answer: numberAnswer(x, String(x)),
-        hint: `Divide both sides by ${a}.`,
-        explanation: `x = ${a * x} / ${a} = ${x}.`
-      };
-    }
-
-    if (style === 2) {
-      return {
-        topic: "Equations",
-        prompt: `Solve x - ${a} = ${x - a}.`,
-        answer: numberAnswer(x, String(x)),
-        hint: `Add ${a} to both sides.`,
-        explanation: `x = ${x - a} + ${a} = ${x}.`
-      };
-    }
-
-    return {
-      topic: "Equations",
-      prompt: `Solve 2x + ${a} = ${2 * x + a}.`,
-      answer: numberAnswer(x, String(x)),
-      hint: `Subtract ${a}, then divide by 2.`,
-      explanation: `2x = ${2 * x}, so x = ${x}.`
-    };
-  }
-
-  function makeFractionQuestion(day, slot) {
-    const denominator = 6 + ((day + slot) % 9);
-    const factor = 2 + ((day + 2 * slot) % 4);
-    const numerator = (1 + ((day + slot) % (denominator - 1))) * factor;
-    const fullDenominator = denominator * factor;
-    const simplified = simplifyFraction(numerator, fullDenominator);
-    return {
-      topic: "Fractions",
-      prompt: `Simplify ${numerator}/${fullDenominator}.`,
-      answer: numberAnswer(simplified.n / simplified.d, formatFraction(simplified.n, simplified.d)),
-      hint: `Look for a number that divides both ${numerator} and ${fullDenominator}.`,
-      explanation: `${numerator}/${fullDenominator} simplifies to ${formatFraction(simplified.n, simplified.d)}.`
-    };
-  }
-
-  function makePercentageQuestion(day, slot) {
-    const percentOptions = [10, 12.5, 20, 25, 40, 50, 75];
-    const percent = percentOptions[(day + slot) % percentOptions.length];
-    const base = 40 + (((day * 7 + slot * 5) % 13) * 10);
-    const style = (day + slot) % 3;
-
-    if (style === 0) {
-      const value = base * (percent / 100);
-      return {
-        topic: "Percentages",
-        prompt: `What is ${percent}% of ${base}?`,
-        answer: numberAnswer(value, formatNumber(value)),
-        hint: `${percent}% means ${percent}/100.`,
-        explanation: `${percent}% of ${base} is ${formatNumber(value)}.`
-      };
-    }
-
-    if (style === 1) {
-      const value = base * (1 + percent / 100);
-      return {
-        topic: "Percentages",
-        prompt: `Increase ${base} by ${percent}%.`,
-        answer: numberAnswer(value, formatNumber(value)),
-        hint: `Find ${percent}% of ${base}, then add it.`,
-        explanation: `${base} increased by ${percent}% is ${formatNumber(value)}.`
-      };
-    }
-
-    const value = base * (1 - percent / 100);
-    return {
-      topic: "Percentages",
-      prompt: `Decrease ${base} by ${percent}%.`,
-      answer: numberAnswer(value, formatNumber(value)),
-      hint: `Find ${percent}% of ${base}, then subtract it.`,
-      explanation: `${base} decreased by ${percent}% is ${formatNumber(value)}.`
-    };
-  }
-
-  function makeNegativeQuestion(day, slot) {
-    const a = 2 + ((day + slot) % 10);
-    const b = 1 + ((day * 3 + slot) % 9);
-    const style = (day + slot) % 4;
-
-    if (style === 0) {
-      return {
-        topic: "Negative numbers",
-        prompt: `What is ${a} - -${b}?`,
-        answer: numberAnswer(a + b, String(a + b)),
-        hint: "Subtracting a negative is adding.",
-        explanation: `${a} - -${b} = ${a} + ${b} = ${a + b}.`
-      };
-    }
-
-    if (style === 1) {
-      return {
-        topic: "Negative numbers",
-        prompt: `What is -${a} x ${b}?`,
-        answer: numberAnswer(-a * b, String(-a * b)),
-        hint: "A negative times a positive is negative.",
-        explanation: `-${a} x ${b} = ${-a * b}.`
-      };
-    }
-
-    if (style === 2) {
-      return {
-        topic: "Negative numbers",
-        prompt: `What is -${a} x -${b}?`,
-        answer: numberAnswer(a * b, String(a * b)),
-        hint: "A negative times a negative is positive.",
-        explanation: `-${a} x -${b} = ${a * b}.`
-      };
-    }
-
-    return {
-      topic: "Negative numbers",
-      prompt: `What is ${-a * b} / ${b}?`,
-      answer: numberAnswer(-a, String(-a)),
-      hint: "A negative divided by a positive is negative.",
-      explanation: `${-a * b} / ${b} = ${-a}.`
-    };
-  }
-
-  function makeAlgebraQuestion(day, slot) {
-    const coefficient = 2 + ((day + slot) % 6);
-    const term = 1 + ((day * 2 + slot) % 8);
-    const style = (day + slot) % 2;
-
-    if (style === 0) {
-      const constant = coefficient * term;
-      return {
-        topic: "Expanding brackets",
-        prompt: `Expand ${coefficient}(x + ${term}).`,
-        answer: expressionAnswer([`${coefficient}x+${constant}`, `${constant}+${coefficient}x`], `${coefficient}x + ${constant}`),
-        hint: `Multiply both x and ${term} by ${coefficient}.`,
-        explanation: `${coefficient}(x + ${term}) = ${coefficient}x + ${constant}.`
-      };
-    }
-
-    const constant = coefficient * term;
-    return {
-      topic: "Factorisation",
-      prompt: `Factorise ${coefficient}x + ${constant}.`,
-      answer: expressionAnswer([`${coefficient}(x+${term})`], `${coefficient}(x + ${term})`),
-      hint: `Find the common factor of ${coefficient}x and ${constant}.`,
-      explanation: `Both terms share ${coefficient}, so the factorised form is ${coefficient}(x + ${term}).`
-    };
-  }
-
-  function makePowerQuestion(day, slot) {
-    const base = 2 + ((day + slot) % 5);
-    const exponent = 2 + ((day + slot) % 3);
-    const style = (day + slot) % 4;
-
-    if (style === 0) {
-      const value = base ** exponent;
-      return {
-        topic: "Powers",
-        prompt: `What is ${base}^${exponent}?`,
-        answer: numberAnswer(value, String(value)),
-        hint: `Multiply ${base} by itself ${exponent} times.`,
-        explanation: `${base}^${exponent} = ${value}.`
-      };
-    }
-
-    if (style === 1) {
-      return {
-        topic: "Zero powers",
-        prompt: `What is ${base}^0?`,
-        answer: numberAnswer(1, "1"),
-        hint: "Any non-zero number to the power of 0 is 1.",
-        explanation: `${base}^0 = 1 because ${base} is not zero.`
-      };
-    }
-
-    if (style === 2) {
-      const value = 1 / base;
-      return {
-        topic: "Negative exponents",
-        prompt: `What is ${base}^-1?`,
-        answer: numberAnswer(value, `1/${base}`),
-        hint: "A power of -1 means reciprocal.",
-        explanation: `${base}^-1 = 1/${base}.`
-      };
-    }
-
-    const n = 3 + ((day + slot) % 4);
-    return {
-      topic: "Factorials",
-      prompt: `What is ${n}! ?`,
-      answer: numberAnswer(factorial(n), String(factorial(n))),
-      hint: `Multiply ${n} x ${n - 1} x ${n - 2} and keep going to 1.`,
-      explanation: `${n}! = ${factorialExpression(n)} = ${factorial(n)}.`
-    };
-  }
-
-  function makeDecimalQuestion(day, slot) {
-    const pairs = [
-      [0.5, "1/2"],
-      [0.25, "1/4"],
-      [0.75, "3/4"],
-      [0.2, "1/5"],
-      [0.125, "1/8"],
-      [0.375, "3/8"],
-      [0.04, "1/25"]
-    ];
-    const pair = pairs[(day + slot) % pairs.length];
-    const style = (day + slot) % 2;
-
-    if (style === 0) {
-      return {
-        topic: "Decimals",
-        prompt: `Write ${pair[0]} as a fraction in simplest form.`,
-        answer: numberAnswer(pair[0], pair[1]),
-        hint: "Write the decimal over 10, 100, or 1000, then simplify.",
-        explanation: `${pair[0]} = ${pair[1]}.`
-      };
-    }
-
-    return {
-      topic: "Decimals",
-      prompt: `Write ${pair[1]} as a decimal.`,
-      answer: numberAnswer(pair[0], String(pair[0])),
-      hint: "Divide the top number by the bottom number.",
-      explanation: `${pair[1]} = ${pair[0]}.`
-    };
-  }
-
-  function makeRatioQuestion(day, slot) {
-    const a = 2 + ((day + slot) % 8);
-    const b = 3 + ((day * 2 + slot) % 8);
-    const factor = 2 + ((day + slot) % 5);
-    const style = (day + slot) % 2;
-
-    if (style === 0) {
-      const ratio = simplifyRatio(a * factor, b * factor);
-      return {
-        topic: "Ratios",
-        prompt: `Simplify the ratio ${a * factor}:${b * factor}.`,
-        answer: ratioAnswer(ratio.a, ratio.b, `${ratio.a}:${ratio.b}`),
-        hint: `Divide both parts by ${factor} if you can.`,
-        explanation: `${a * factor}:${b * factor} simplifies to ${ratio.a}:${ratio.b}.`
-      };
-    }
-
-    const people = 3 + ((day + slot) % 5);
-    const costEach = 4 + ((day * 2 + slot) % 7);
-    return {
-      topic: "Proportion",
-      prompt: `If ${people} cat stickers cost $${people * costEach}, how much do ${people + 2} cat stickers cost?`,
-      answer: numberAnswer((people + 2) * costEach, `$${(people + 2) * costEach}`),
-      hint: "Find the cost of one sticker first.",
-      explanation: `One sticker costs $${costEach}, so ${people + 2} stickers cost $${(people + 2) * costEach}.`
-    };
-  }
-
-  function makeMeasurementQuestion(day, slot) {
-    const style = (day + slot) % 4;
-    const length = 4 + ((day + slot) % 11);
-    const width = 3 + ((day * 2 + slot) % 9);
-
-    if (style === 0) {
-      const cm = 120 + ((day + slot) % 16) * 25;
-      return {
-        topic: "Measurement",
-        prompt: `Convert ${cm} cm to metres.`,
-        answer: numberAnswer(cm / 100, `${formatNumber(cm / 100)} m`),
-        hint: "There are 100 cm in 1 m.",
-        explanation: `${cm} cm = ${formatNumber(cm / 100)} m.`
-      };
-    }
-
-    if (style === 1) {
-      return {
-        topic: "Perimeter",
-        prompt: `A rectangle is ${length} cm by ${width} cm. What is its perimeter?`,
-        answer: numberAnswer(2 * (length + width), `${2 * (length + width)} cm`),
-        hint: "Add all four sides, or use 2 x (length + width).",
-        explanation: `Perimeter = 2 x (${length} + ${width}) = ${2 * (length + width)} cm.`
-      };
-    }
-
-    if (style === 2) {
-      return {
-        topic: "Area",
-        prompt: `A rectangle is ${length} cm by ${width} cm. What is its area?`,
-        answer: numberAnswer(length * width, `${length * width} cm²`),
-        hint: "Area of a rectangle is length x width.",
-        explanation: `Area = ${length} x ${width} = ${length * width} cm².`
-      };
-    }
-
-    const height = 4 + ((day * 3 + slot) % 8);
-    return {
-      topic: "Area",
-      prompt: `A triangle has base ${length} cm and height ${height} cm. What is its area?`,
-      answer: numberAnswer((length * height) / 2, `${formatNumber((length * height) / 2)} cm²`),
-      hint: "Area of a triangle is base x height ÷ 2.",
-      explanation: `Area = ${length} x ${height} ÷ 2 = ${formatNumber((length * height) / 2)} cm².`
-    };
-  }
-
-  function makePatternQuestion(day, slot) {
-    const style = (day + slot) % 3;
-
-    if (style === 0) {
-      const start = 2 + ((day + slot) % 7);
-      const step = 2 + ((day * 2 + slot) % 6);
-      const sequence = [start, start + step, start + 2 * step, start + 3 * step];
-      return {
-        topic: "Number patterns",
-        prompt: `What comes next? ${sequence.join(", ")}, ...`,
-        answer: numberAnswer(start + 4 * step, String(start + 4 * step)),
-        hint: `The sequence adds ${step} each time.`,
-        explanation: `Add ${step} again to get ${start + 4 * step}.`
-      };
-    }
-
-    if (style === 1) {
-      const red = 2 + ((day + slot) % 5);
-      const blue = 3 + ((day * 2 + slot) % 6);
-      const total = red + blue;
-      return {
-        topic: "Probability",
-        prompt: `A treat pouch has ${red} salmon treats and ${blue} tuna treats. What is the probability of picking salmon?`,
-        answer: numberAnswer(red / total, formatFraction(simplifyFraction(red, total).n, simplifyFraction(red, total).d)),
-        hint: "Probability is wanted outcomes over total outcomes.",
-        explanation: `There are ${red} salmon treats out of ${total} treats, so the probability is ${formatFraction(simplifyFraction(red, total).n, simplifyFraction(red, total).d)}.`
-      };
-    }
-
-    const n = 4 + ((day + slot) % 6);
-    return {
-      topic: "Reciprocals",
-      prompt: `What is the reciprocal of ${n}?`,
-      answer: numberAnswer(1 / n, `1/${n}`),
-      hint: "Put 1 over the number.",
-      explanation: `The reciprocal of ${n} is 1/${n}.`
-    };
-  }
-
-  function simplifyFraction(n, d) {
-    if (d < 0) {
-      n = -n;
-      d = -d;
-    }
-    const divisor = gcd(Math.abs(n), Math.abs(d));
-    return { n: n / divisor, d: d / divisor };
-  }
-
   function simplifyRatio(a, b) {
     if (a === 0 && b === 0) return { a: 0, b: 0 };
     const divisor = gcd(Math.abs(a), Math.abs(b));
@@ -994,22 +699,6 @@
       a = temp;
     }
     return a || 1;
-  }
-
-  function factorial(n) {
-    return Array.from({ length: n }, (_, index) => index + 1).reduce((product, value) => product * value, 1);
-  }
-
-  function factorialExpression(n) {
-    return Array.from({ length: n }, (_, index) => n - index).join(" x ");
-  }
-
-  function formatFraction(n, d) {
-    return d === 1 ? String(n) : `${n}/${d}`;
-  }
-
-  function formatNumber(value) {
-    return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(3)));
   }
 
   function loadJson(key, fallback) {
