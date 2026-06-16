@@ -780,7 +780,7 @@
     document.body.classList.toggle("is-practicing", activePractice);
     if (practiceStartPanel) practiceStartPanel.hidden = !waitingToStart;
     if (practiceFinishPanel) practiceFinishPanel.hidden = !activePractice;
-    if (questionList) questionList.hidden = waitingToStart;
+    if (questionList) questionList.hidden = !activePractice;
   }
 
   function updateRewardPanel(dayNumber, correctCount) {
