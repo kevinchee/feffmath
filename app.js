@@ -5,6 +5,7 @@
   const QUESTIONS_PER_DAY = 10;
   const STORAGE_KEY = "feffmath-progress-v1";
   const ANSWERS_KEY = "feffmath-answers-v1";
+  const CURRENT_SET_KEY = "feffmath-current-set-v1";
   const EPSILON = 0.000001;
   const stickerRewards = ["⭐", "🐾", "🐟", "🧶", "🧁", "🌈", "🎀", "💎", "🌻", "✨"];
   const catFacts = [
@@ -40,8 +41,14 @@
   let progress = {};
   let savedAnswers = {};
   let currentDay = 1;
-  let daySelect;
-  let dayGrid;
+  let setLabel;
+  let setTitle;
+  let setSummary;
+  let previousMixButton;
+  let newMixButton;
+  let completedSetsText;
+  let topicCountText;
+  let trapCountText;
   let dayTitle;
   let questionList;
   let scoreText;
@@ -72,8 +79,14 @@
   if (typeof document !== "undefined") {
     progress = loadJson(STORAGE_KEY, {});
     savedAnswers = loadJson(ANSWERS_KEY, {});
-    daySelect = document.getElementById("daySelect");
-    dayGrid = document.getElementById("dayGrid");
+    setLabel = document.getElementById("setLabel");
+    setTitle = document.getElementById("setTitle");
+    setSummary = document.getElementById("setSummary");
+    previousMixButton = document.getElementById("previousMixButton");
+    newMixButton = document.getElementById("newMixButton");
+    completedSetsText = document.getElementById("completedSetsText");
+    topicCountText = document.getElementById("topicCountText");
+    trapCountText = document.getElementById("trapCountText");
     dayTitle = document.getElementById("dayTitle");
     questionList = document.getElementById("questionList");
     scoreText = document.getElementById("scoreText");
@@ -105,11 +118,12 @@
     try {
       questionBank = await loadQuestionBank();
       days = buildDays(questionBank);
+      currentDay = getInitialSetNumber();
       globalThis.FEFF_MATH_DAYS = days;
       globalThis.FEFF_MATH_TEST = { isCorrect, buildDays };
       setupNotifications();
-      renderDayControls();
-      renderDay(1);
+      setupSetControls();
+      renderDay(currentDay);
     } catch (error) {
       renderQuestionLoadError(error);
     }
@@ -263,26 +277,13 @@
     `;
   }
 
-  function renderDayControls() {
-    daySelect.innerHTML = "";
-    dayGrid.innerHTML = "";
-
-    days.forEach((day) => {
-      const option = document.createElement("option");
-      option.value = String(day.day);
-      option.textContent = `Day ${day.day}`;
-      daySelect.append(option);
-
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "day-button";
-      button.textContent = day.day;
-      button.setAttribute("aria-label", `Day ${day.day}`);
-      button.addEventListener("click", () => renderDay(day.day));
-      dayGrid.append(button);
+  function setupSetControls() {
+    previousMixButton.addEventListener("click", () => {
+      renderDay(Math.max(1, currentDay - 1));
     });
-
-    daySelect.addEventListener("change", () => renderDay(Number(daySelect.value)));
+    newMixButton.addEventListener("click", () => {
+      renderDay(Math.min(getTotalDays(), currentDay + 1));
+    });
     updateProgress();
   }
 
@@ -291,8 +292,8 @@
     const day = days[dayNumber - 1];
     const answersForDay = savedAnswers[dayNumber] || {};
 
-    daySelect.value = String(dayNumber);
-    dayTitle.textContent = `Day ${dayNumber}`;
+    saveJson(CURRENT_SET_KEY, currentDay);
+    dayTitle.textContent = `Set ${dayNumber}`;
     catFactText.textContent = catFacts[(dayNumber - 1) % catFacts.length];
     buddyBubble.textContent = "Let’s do this.";
     buddyCat.innerHTML = catMascotSvg("ready");
@@ -354,7 +355,7 @@
     });
 
     updateScore(dayNumber);
-    updateSelectedDayButton();
+    updateSetControls(day);
   }
 
   function checkQuestion(question, input, status, feedback, forceExplanation) {
@@ -400,7 +401,7 @@
 
     if (correctCount === QUESTIONS_PER_DAY) {
       progress[dayNumber] = true;
-      encouragement.textContent = "Day complete. Mystery box opened and a sticker joined the album.";
+      encouragement.textContent = "Set complete. Mystery box opened and a sticker joined the album.";
     } else if (correctCount >= 7) {
       encouragement.textContent = "Good progress. The study cat is watching the last few carefully.";
       delete progress[dayNumber];
@@ -415,26 +416,32 @@
     saveJson(STORAGE_KEY, progress);
     updateProgress();
     updateNotifications(correctCount);
-    updateSelectedDayButton();
+    updateSetControls(day);
   }
 
   function updateProgress() {
     const completed = Object.values(progress).filter(Boolean).length;
     const totalDays = getTotalDays();
     const percent = (completed / totalDays) * 100;
-    progressText.textContent = `${completed} of ${totalDays} days`;
+    progressText.textContent = `${completed} of ${totalDays} sets`;
     progressBar.style.width = `${percent}%`;
 
-    Array.from(dayGrid.children).forEach((button, index) => {
-      button.classList.toggle("is-complete", Boolean(progress[index + 1]));
-    });
+    if (completedSetsText) completedSetsText.textContent = String(completed);
     renderStickerAlbum(completed);
   }
 
-  function updateSelectedDayButton() {
-    Array.from(dayGrid.children).forEach((button, index) => {
-      button.classList.toggle("is-selected", index + 1 === currentDay);
-    });
+  function updateSetControls(day) {
+    if (!day) return;
+    const totalDays = getTotalDays();
+    const topics = new Set(day.questions.map((question) => question.topic));
+    const trapCount = day.questions.filter((question) => question.trap).length;
+    setLabel.textContent = `Set ${currentDay} of ${totalDays}`;
+    setTitle.textContent = progress[currentDay] ? "Sticker collected" : "Random challenge";
+    setSummary.textContent = `${day.questions.length} questions with ${topics.size} topics and ${trapCount} sneaky ${trapCount === 1 ? "trap" : "traps"}.`;
+    topicCountText.textContent = String(topics.size);
+    trapCountText.textContent = String(trapCount);
+    previousMixButton.disabled = currentDay <= 1;
+    newMixButton.disabled = currentDay >= totalDays;
   }
 
   function updateRewardPanel(dayNumber, correctCount) {
@@ -454,7 +461,7 @@
     }
 
     mysteryBox.classList.remove("is-open");
-    mysteryText.textContent = "Finish the day to open it.";
+    mysteryText.textContent = "Finish the set to open it.";
     missionRewardText.textContent = `${remaining} ${remaining === 1 ? "question" : "questions"} to open your surprise.`;
 
     if (correctCount >= 7) {
@@ -488,14 +495,14 @@
       const sticker = document.createElement("span");
       sticker.className = `album-sticker${day ? " is-earned" : ""}`;
       sticker.textContent = day ? stickerForDay(day) : index === 11 ? "?" : "";
-      sticker.setAttribute("aria-label", day ? `Sticker for day ${day}` : "Locked sticker");
+      sticker.setAttribute("aria-label", day ? `Sticker for set ${day}` : "Locked sticker");
       stickerGrid.append(sticker);
     });
 
     if (completed >= totalDays) {
       nextStickerText.textContent = "Album complete. Legendary cat scholar.";
     } else if (completed === 0) {
-      nextStickerText.textContent = "Finish a day to collect the first sticker.";
+      nextStickerText.textContent = "Finish a set to collect the first sticker.";
     } else {
       nextStickerText.textContent = `Next surprise in ${Math.min(3, totalDays - completed)} day${totalDays - completed === 1 ? "" : "s"}.`;
     }
@@ -553,18 +560,18 @@
     const remaining = Math.max(0, QUESTIONS_PER_DAY - correct);
     const dayComplete = remaining === 0;
     const missionBody = dayComplete
-      ? `Day ${currentDay} is complete. The ${stickerForDay(currentDay)} sticker is in your album.`
+      ? `Set ${currentDay} is complete. The ${stickerForDay(currentDay)} sticker is in your album.`
       : `${remaining} ${remaining === 1 ? "question" : "questions"} left to open today's mystery box.`;
     const albumBody = completedDays >= totalDays
       ? "Sticker album complete."
-      : `${completedDays} of ${totalDays} stickers collected. Next surprise after another completed day.`;
+      : `${completedDays} of ${totalDays} stickers collected. Next surprise after another completed set.`;
 
     notificationButton.setAttribute("aria-label", "Open 2 practice updates");
     notificationList.innerHTML = `
       <article class="notification-item">
         <span class="notification-dot" aria-hidden="true"></span>
         <div>
-          <strong>Day ${currentDay} mission</strong>
+          <strong>Set ${currentDay} mission</strong>
           <p>${escapeHtml(missionBody)}</p>
         </div>
       </article>
@@ -593,6 +600,15 @@
 
   function getTotalDays() {
     return days.length || (questionBank && questionBank.dayCount) || TOTAL_DAYS;
+  }
+
+  function getInitialSetNumber() {
+    const savedSet = Number(loadJson(CURRENT_SET_KEY, 1));
+    if (Number.isInteger(savedSet) && savedSet >= 1 && savedSet <= getTotalDays()) {
+      return savedSet;
+    }
+    const nextOpenSet = days.find((day) => !progress[day.day]);
+    return nextOpenSet ? nextOpenSet.day : 1;
   }
 
   function pickLine(lines, seed) {

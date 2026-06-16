@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feff Math</title>
-    <meta name="description" content="60 days of Year 7 mixed maths practice.">
+    <meta name="description" content="60 random sets of Year 7 mixed maths practice.">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -21,7 +21,7 @@
       <div class="header-stats">
         <div class="progress-card" aria-live="polite">
           <span class="progress-label">Progress</span>
-          <strong id="progressText">0 of 60 days</strong>
+          <strong id="progressText">0 of 60 sets</strong>
           <div id="headerStickerTrail" class="header-sticker-trail" aria-hidden="true"></div>
           <div class="progress-track" aria-hidden="true">
             <span id="progressBar"></span>
@@ -45,19 +45,40 @@
     </header>
 
     <main class="app-shell">
-      <aside class="day-panel" aria-label="Choose a practice day">
+      <aside class="day-panel practice-hub" aria-label="Practice hub">
         <div class="day-panel-header">
-          <h2>Choose a day</h2>
-          <select id="daySelect" aria-label="Choose day"></select>
+          <h2>Today's mix</h2>
+          <div class="set-card" aria-live="polite">
+            <span id="setLabel">Set 1 of 60</span>
+            <strong id="setTitle">Random challenge</strong>
+            <p id="setSummary">10 questions with mixed topics and sneaky traps.</p>
+          </div>
         </div>
-        <div id="dayGrid" class="day-grid"></div>
+        <div class="mix-actions">
+          <button id="previousMixButton" class="mix-button is-secondary" type="button">Previous</button>
+          <button id="newMixButton" class="mix-button" type="button">New mix</button>
+        </div>
+        <div class="mix-stats" aria-live="polite">
+          <span>
+            <strong id="completedSetsText">0</strong>
+            completed
+          </span>
+          <span>
+            <strong id="topicCountText">0</strong>
+            topics
+          </span>
+          <span>
+            <strong id="trapCountText">0</strong>
+            traps
+          </span>
+        </div>
         <div class="sticker-album" aria-live="polite">
           <div class="album-heading">
             <span>Sticker album</span>
             <strong id="albumCount">0 / 60</strong>
           </div>
           <div id="stickerGrid" class="sticker-grid"></div>
-          <p id="nextStickerText">Finish a day to collect the first sticker.</p>
+          <p id="nextStickerText">Finish a set to collect the first sticker.</p>
         </div>
       </aside>
 
@@ -65,7 +86,7 @@
         <div class="practice-header">
           <div>
             <p class="section-label">Mixed challenge</p>
-            <h2 id="dayTitle">Day 1</h2>
+            <h2 id="dayTitle">Set 1</h2>
           </div>
           <div class="score-box">
             <span>Correct</span>
@@ -90,7 +111,7 @@
         </section>
 
         <section class="mission-card">
-          <h2>Today’s mission</h2>
+          <h2>Set mission</h2>
           <p>Answer 10 questions</p>
           <div class="mission-row">
             <div class="mission-track" aria-hidden="true">
@@ -107,7 +128,7 @@
             <div class="box-lid"></div>
             <div class="box-body">?</div>
           </div>
-          <p id="mysteryText">Finish the day to open it.</p>
+          <p id="mysteryText">Finish the set to open it.</p>
         </section>
 
         <section class="fact-card">
